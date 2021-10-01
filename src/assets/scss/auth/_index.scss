@@ -1,0 +1,52 @@
+.auth-cmn-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .auth-cmn-subcontainer {
+    width: 65%;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+  }
+}
+
+.auth-cmn-title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.auth-cmn-subtitle {
+  font-weight: normal;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.auth-cmn-btn {
+  > button {
+    background: #3842b0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    border: 2px solid #3842b0;
+    height: 60px;
+  }
+}
+
+.auth-cmn-signin {
+  font-size: 14px;
+
+  > span {
+    cursor: pointer;
+    color: #3842b0;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .auth-cmn-main {
+    > .auth-cmn-subcontainer {
+      width: 100% !important;
+    }
+  }
+}
