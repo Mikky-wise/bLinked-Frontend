@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import images from "../../../../api/images";
-import Footer from "../../../components/footer";
+import Footer from "../_components/_footer";
 import validator from "validator";
 
 const ForgotEmailScreen = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import images from "../../../../api/images";
-import Footer from "../../../components/footer";
+import Footer from "../_components/_footer";
 
 const PassResetSuccessScreen = () => {
   const handleClick = () => {
