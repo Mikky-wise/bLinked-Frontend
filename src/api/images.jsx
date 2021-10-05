@@ -25,6 +25,7 @@ import dashboardVector3 from "../assets/img/dashboard-vector3.png";
 import filterIcon from "../assets/img/filter-icon.png";
 import orderEmpty from '../assets/img/order-empty.png'
 import map from '../assets/img/map.png'
+import location from '../assets/img/location.png'
 
 const images = {
   logo,
@@ -53,7 +54,8 @@ const images = {
   dashboardVector3,
   filterIcon,
   orderEmpty,
-  map
+  map,
+  location
 };
 
 export default images;

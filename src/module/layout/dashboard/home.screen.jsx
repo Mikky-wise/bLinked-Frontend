@@ -2,16 +2,16 @@ import React from "react";
 import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
-import { BsGridFill, BsThreeDots } from "react-icons/bs";
-import images from "../../../../api/images";
-import TotalRatingCard from "./_total_rating_card";
-import order from "../../../../localdata/pending_order.json";
-// import PendingOrderBox from "./_pending_order_box";
+import { BsGridFill } from "react-icons/bs";
+import images from "../../../api/images";
+import TotalRatingCard from "./_components/_total_rating_card";
+import order from "../../../localdata/pending_order.json";
+import PendingOrderBox from "./_components/_pending_order_box";
 
 const HomeScreen = () => {
   return (
-    <>
-      <div className="dashboard-subcontainer px-4 mt-4">
+    <div className="main-container">
+      <div className="dashboard-subcontainer px-md-4 px-2 mt-4">
         <div className="dashboard-title-container">
           <div className="dashboard-title"> Welcome back, Assurance 🌤</div>
           <div className="dashboard-subtitle mt-2">
@@ -33,7 +33,7 @@ const HomeScreen = () => {
             </div>
           </div>
         </div>
-        <div className="dashboard-complete-registration mt-4 p-4">
+        <div className="dashboard-complete-registration mt-4 p-3 p-md-4">
           <div className="dashboard-complate-close-icon mx-4">
             <IoClose size={18} color="#332C2C" />
           </div>
@@ -82,10 +82,10 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      <div className="px-4 pt-4 pb-4">
+      <div className="px-md-4 px-2 pt-4 pb-4">
         <div className="total-rating-container">
           <div className="row px-4 py-4">
-            <div className="col-lg-4 px-3">
+            <div className="col-lg-4 px-md-3">
               <TotalRatingCard
                 title="Total Orders"
                 total="32,400"
@@ -93,7 +93,7 @@ const HomeScreen = () => {
                 desc="Analytics for last 30 days"
               />
             </div>
-            <div className="col-lg-4 px-3 mt-md-0 mt-4">
+            <div className="col-lg-4 px-md-3 mt-md-0 mt-4">
               <TotalRatingCard
                 title="Transactions"
                 total="32,400"
@@ -101,7 +101,7 @@ const HomeScreen = () => {
                 desc="Analytics for last 30 days"
               />
             </div>
-            <div className="col-lg-4 px-3 mt-md-0 mt-4">
+            <div className="col-lg-4 px-md-3 mt-md-0 mt-4">
               <TotalRatingCard
                 title="Performance"
                 total="32,400"
@@ -113,7 +113,7 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      <div className="px-4 pb-4">
+      <div className="px-md-4 px-2 pb-4">
         <div className="home-pending-orders-container p-4">
           <div className="d-md-flex justify-content-between">
             <div className="home-pending-orders-title">
@@ -131,7 +131,7 @@ const HomeScreen = () => {
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="home-pending-filter my-3 my-md-0">
-                  <button>
+                  <button className="px-4">
                     <img src={images.filterIcon} alt="" className="img-fluid" />
                     <span>Filter orders</span>
                   </button>
@@ -151,26 +151,33 @@ const HomeScreen = () => {
             </div>
           </div>
           <div className="home-pending-order-grid-container">
-            {/* <div className="row">
-              {order.map((item, i) => {
-                return (
-                  <div className="col-lg-4 mt-3" key={i}>
-                    <PendingOrderBox item={item} />
+            {order.length > 0 ? (
+              <div className="row">
+                {order.map((item, i) => {
+                  return (
+                    <div className="col-lg-4 mt-3" key={i}>
+                      <PendingOrderBox item={item} />
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="row py-3">
+                <div className="col-12 py-5 home-pending-order-empty">
+                  <div>
+                    <img
+                      src={images.orderEmpty}
+                      alt="No Order"
+                      className="img-fluid"
+                    />
                   </div>
-                );
-              })}
-            </div> */}
-            {/* <div className="row py-3">
-              <div className="col-12 py-5 home-pending-order-empty">
-              <div>
-              <img src={images.orderEmpty} alt="No Order" className="img-fluid" />
+                  <div className="mt-3">You have no pending orders yet!</div>
+                </div>
               </div>
-              <div className="mt-3">You have no pending orders yet!</div>
-              </div>
-            </div> */}
+            )}
           </div>
           <div className="home-pending-order-list-container">
-            <table className="table">
+            {/* <table className="">
               <thead>
                 <tr>
                   <th>CUSTOMER NAME</th>
@@ -218,6 +225,7 @@ const HomeScreen = () => {
                 })}
               </tbody>
             </table>
+          */}
           </div>
           <div className="home-pending-order-loadmore-btn mt-5 mb-3">
             <button>Load more orders</button>
@@ -225,7 +233,7 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      <div className="px-4 pb-4">
+      <div className="px-md-4 px-2 pb-4">
         <div className="d-md-flex">
           <div className="home-location-container px-4 py-4">
             <div className="mt-2 mb-4">Agent Locations</div>
@@ -280,7 +288,7 @@ const HomeScreen = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

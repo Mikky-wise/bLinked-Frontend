@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "agentName": "Goodness Chiesom",
+        "location": "Agent Current Location",
+        "status": "available"
+    },
+    {
+        "id": 2,
+        "agentName": "Goodness Chiesom",
+        "location": "Agent Current Location",
+        "status": "available"
+    },
+    {
+        "id": 3,
+        "agentName": "Goodness Chiesom",
+        "location": "Agent Current Location",
+        "status": "available"
+    },
+    {
+        "id": 4,
+        "agentName": "Goodness Chiesom",
+        "location": "Agent Current Location",
+        "status": "working"
+    }
+]

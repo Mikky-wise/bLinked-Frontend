@@ -45,7 +45,7 @@
       background: #f5f5f7;
       border-radius: 6px;
       height: 38px;
-      width: 180px;
+      width: auto;
       color: #5a5d82;
       font-weight: 500;
       display: flex;
@@ -339,6 +339,7 @@
         color: #0f112b;
       }
     }
+
     &:nth-child(2) {
       > div:nth-child(1) {
         width: 15px;
@@ -353,6 +354,7 @@
         color: #0f112b;
       }
     }
+
     &:nth-child(3) {
       > div:nth-child(1) {
         width: 15px;
@@ -367,6 +369,7 @@
         color: #0f112b;
       }
     }
+
     &:nth-child(4) {
       > div:nth-child(1) {
         width: 15px;
@@ -394,6 +397,12 @@
         width: 100%;
       }
     }
+
+  .home-pending-order-list-view {
+    margin-right: 0px;
+
+  }
+
   }
 
   .home-location-container {
@@ -403,5 +412,41 @@
   .home-agent-container {
     width: 100%;
     margin-left: 0px;
+  }
+
+  .home-agent-status-a {
+    padding-left: 5%;
+
+    > div {
+      &:nth-child(1) {
+        width: 115px !important;
+        height: 115px !important;
+        background: #f0efef;
+      }
+
+      &:nth-child(2) {
+        width: 85px;
+        height: 85px;
+        background: #ffebec;
+        margin-left: 40px;
+      }
+    }
+  }
+
+  .home-agent-status-b {
+    > div {
+      &:nth-child(1) {
+        width: 125px;
+        height: 125px;
+        background: #e7ffec;
+      }
+
+      &:nth-child(2) {
+        width: 90px;
+        height: 90px;
+        background: #e9eeff;
+        margin-left: 30px;
+      }
+    }
   }
 }

@@ -3,6 +3,7 @@
   border: 1px solid #ecebf5;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+  overflow-x: hidden;
 
   .orders-title {
     display: flex;
@@ -61,11 +62,15 @@
   }
 
   .order-list-container {
-    // overflow-x: auto;
-    // overflow-y: hidden;
+    overflow-x: auto;
+    // overflow: hidden;
+    width: 100%;
 
-    table {
-      width: 100%;
+    > table {
+      overflow-x: scroll;
+      word-wrap: break-word;
+  
+      // width: 100%;
 
       tr {
         border-bottom: 2px solid rgba(#9395b4, 0.06);
@@ -75,6 +80,10 @@
           background: rgba(#9395b4, 0.06);
           font-size: 12px;
           color: #5a5d82;
+
+          &:nth-child(1) {
+            cursor: pointer;
+          }
         }
 
         > td {
@@ -84,7 +93,7 @@
           font-weight: 500;
           vertical-align: middle;
 
-          &:nth-last-child(1) {
+          &:nth-child(1) {
             cursor: pointer;
           }
         }
@@ -94,10 +103,10 @@
         }
 
         .order-item-name {
-          display: flex;
-          align-items: center;
+          // display: flex;
+          // align-items: center;
 
-          > div:nth-child(1) {
+          > span > span:nth-child(1) {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -116,9 +125,6 @@
   }
 
   .order-pagination-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     color: #92929d;
     font-size: 25px;
 
@@ -181,18 +187,220 @@
       }
     }
   }
+}
 
-  .order-modal-main {
-    .order-modal-id {
-      font-weight: 500;
+.order-modal-header {
+  font-weight: 500;
+  font-size: 22px;
+  color: #211104;
+
+  > div:nth-child(2) {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background: rgba(#3842b0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    color: #3842b0;
+  }
+}
+
+.order-modal-agent {
+  border: 1px solid #e2e2ea;
+  border-radius: 12px;
+
+  > div > div {
+    position: relative;
+
+    &:nth-child(1) {
+      border-right: 1px solid #e2e2ea;
+
+      > div:nth-child(1) {
+        font-size: 14px;
+        color: #9395b4;
+      }
+
+      > div:nth-child(2) {
+        font-weight: 500;
+        font-size: 16px;
+        color: #0f112b;
+      }
+    }
+
+    &:nth-child(2) {
+      > div:nth-child(1) {
+        font-size: 14px;
+        color: #9395b4;
+      }
+
+      > div:nth-child(2) {
+        font-weight: 500;
+        font-size: 16px;
+        color: #0f112b;
+      }
+    }
+
+    .order-agent-menu {
+      cursor: pointer;
+      position: absolute;
+      top: -10px;
+      right: 0;
+      color: #5a5d82;
       font-size: 18px;
-      color: #0f112b;
-    }
-    .order-modal-from-price {
-    }
-    .order-modal-to {
-    }
-    .order-modal-status {
     }
   }
+}
+
+.order-modal-close-btn {
+  background: #f5f5f7;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5a5d82;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 25px;
+}
+
+.order-modal-submit-btn {
+  background: #3842b0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 25px;
+  margin-right: 25px;
+}
+
+.order-modal-main {
+  .order-modal-id {
+    font-weight: 500;
+    font-size: 16px;
+    color: #0f112b;
+  }
+  .order-modal-from-price {
+    font-size: 14px;
+    color: #5a5d82;
+    display: flex;
+    justify-content: space-between;
+
+    > span > span {
+      font-weight: 500;
+    }
+
+    > span:nth-child(2) {
+      font-weight: 500;
+      font-size: 18px;
+      color: #3842b0;
+    }
+  }
+
+  .order-modal-to {
+    font-size: 14px;
+    color: #5a5d82;
+    display: flex;
+
+    > span {
+      font-weight: 500;
+    }
+  }
+
+  .order-modal-status {
+    > span {
+      font-size: 12px;
+    }
+  }
+}
+
+.order-modal-title {
+  font-weight: 500;
+  font-size: 16px;
+  color: #0f112b;
+}
+
+.modal-content {
+  border-radius: 18px;
+}
+
+.order-modal-search-agent {
+  .order-modal-search-agent-input {
+     > input {
+       width: 100%;
+       border: 1px solid #ecebf5;
+       padding: 12px 16px;
+       border-radius: 6px;
+       font-size: 14px;
+       color: #9395B4;
+      outline: none;
+
+       &:focus {
+        border: 1px solid #ecebf5;
+       }
+
+       &::placeholder {
+        color: #9395B4;
+       }
+     }
+  }
+}
+
+.order-modal-agent-result-main {
+  border: 1px solid #ecebf5;
+  border-radius: 6px;
+  padding: 5px 20px;
+  background: #fff;
+  height: 250px;
+  overflow: auto;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    // padding-top: 20px;
+
+    li {
+      margin-top: 25px;
+    }
+  }
+}
+
+.order-agent-logo {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background: #0D99F2;
+  font-weight: 500;
+  font-size: 16px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.order-agent-name-loc {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+
+  > span:nth-child(1) {
+    font-size: 14px;    
+    color: #0F112B;
+  }
+
+  > span:nth-child(2) {
+    font-size: 13px;
+    text-transform: capitalize;
+    color: rgba(#5A5D82, 0.8);
+  }
+}
+
+.order-modal-agent-status {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.order-agent-err {
+  font-size: 12px;
+  color: #FF4554;
 }
