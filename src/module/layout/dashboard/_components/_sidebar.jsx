@@ -10,11 +10,11 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
     <div className={!activeSidebar ? "" : "sidebar-bg"}>
       <div
         className={
-          !activeSidebar ? "sidebar-main px-4" : "sidebar-main active px-4"
+          !activeSidebar ? "sidebar-main" : "sidebar-main active"
         }
       >
         <div className="mt-5 position-relative sidebar-logo">
-          <img src={images.logo} alt="" />
+          <img src={images.logo} alt="" className="img-fluid" />
           <div onClick={handleSideBar} className="d-flex d-md-none">
             <MdClose />
           </div>

@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
-import { BsGridFill } from "react-icons/bs";
+import { BsGridFill, BsThreeDots } from "react-icons/bs";
 import images from "../../../api/images";
 import TotalRatingCard from "./_components/_total_rating_card";
 import order from "../../../localdata/pending_order.json";
 import PendingOrderBox from "./_components/_pending_order_box";
+import { Dropdown } from "react-bootstrap";
 
 const HomeScreen = () => {
+  const [activeView, setActiveView] = useState("grid");
+
+  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <span
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      {children}
+    </span>
+  ));
+
   return (
     <div className="main-container">
       <div className="dashboard-subcontainer px-md-4 px-2 mt-4">
@@ -18,19 +33,41 @@ const HomeScreen = () => {
             <div className="tag-line">
               Here is what's happening with your business today!
             </div>
-            <div className="dashboard-date mt-md-0 mt-4 shadow-sm">
-              <div className="d-flex align-items-center">
-                <img
-                  src={images.calenderIcon}
-                  alt="Calender"
-                  className="img-fluid"
-                />
-                <div className="mx-2">Jan 04, 2019 - Dec 04 2019</div>
-              </div>
-              <div>
-                <GoChevronDown size={18} />
-              </div>
-            </div>
+
+            <Dropdown className="d-inline mx-2 border-0">
+              <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
+                <div className="dashboard-date mt-md-0 mt-4 shadow-sm">
+                  <div className="d-flex align-items-center">
+                    <img
+                      src={images.calenderIcon}
+                      alt="Calender"
+                      className="img-fluid"
+                    />
+                    <div className="mx-2">Jan 04, 2019 - Dec 04 2019</div>
+                  </div>
+                  <div>
+                    <GoChevronDown size={18} />
+                  </div>
+                </div>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu className="p-2">
+                <Dropdown.Item className="drop-menu-item">
+                  <div className="drop"></div>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item className="drop-menu-item">Today</Dropdown.Item>
+                <Dropdown.Item className="drop-menu-item">
+                  Last 7 days
+                </Dropdown.Item>
+                <Dropdown.Item className="drop-menu-item">
+                  Last 90 days
+                </Dropdown.Item>
+                <Dropdown.Item className="drop-menu-item">
+                  Customize
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className="dashboard-complete-registration mt-4 p-3 p-md-4">
@@ -84,7 +121,7 @@ const HomeScreen = () => {
 
       <div className="px-md-4 px-2 pt-4 pb-4">
         <div className="total-rating-container">
-          <div className="row px-4 py-4">
+          <div className="row px-md-4 px-2 py-4">
             <div className="col-lg-4 px-md-3">
               <TotalRatingCard
                 title="Total Orders"
@@ -114,14 +151,27 @@ const HomeScreen = () => {
       </div>
 
       <div className="px-md-4 px-2 pb-4">
-        <div className="home-pending-orders-container p-4">
+        <div className="home-pending-orders-container p-md-4 p-2">
           <div className="d-md-flex justify-content-between">
-            <div className="home-pending-orders-title">
-              <span>Pending Orders (0)</span>
-              <span>
-                <GoChevronDown />
-              </span>
-            </div>
+            <Dropdown className="d-inline mx-2 border-0">
+              <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
+                <div className="home-pending-orders-title">
+                  <span>Pending Orders (0)</span>
+                  <span>
+                    <GoChevronDown />
+                  </span>
+                </div>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu className="p-2">
+                <Dropdown.Item className="drop-menu-item py-3">
+                  Pending Orders (0)
+                </Dropdown.Item>
+                <Dropdown.Item className="drop-menu-item py-3">
+                  New Orders (0)
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <div className="d-md-flex">
               <div className="home-pending-search-input mt-3 mt-md-0">
                 <span>
@@ -138,10 +188,24 @@ const HomeScreen = () => {
                 </div>
                 <div className="home-pending-vertical mx-3 d-md-block d-none"></div>
                 <div className="d-flex">
-                  <div className="home-pending-order-grid-view">
+                  <div
+                    className={
+                      activeView === "grid"
+                        ? "home-pending-order-grid-view active"
+                        : "home-pending-order-grid-view"
+                    }
+                    onClick={() => setActiveView("grid")}
+                  >
                     <BsGridFill color="#0F112B" size={20} />
                   </div>
-                  <div className="home-pending-order-list-view">
+                  <div
+                    className={
+                      activeView === "list"
+                        ? "home-pending-order-list-view active"
+                        : "home-pending-order-list-view"
+                    }
+                    onClick={() => setActiveView("list")}
+                  >
                     <div></div>
                     <div></div>
                     <div></div>
@@ -150,83 +214,104 @@ const HomeScreen = () => {
               </div>
             </div>
           </div>
-          <div className="home-pending-order-grid-container">
-            {order.length > 0 ? (
-              <div className="row">
-                {order.map((item, i) => {
-                  return (
-                    <div className="col-lg-4 mt-3" key={i}>
-                      <PendingOrderBox item={item} />
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="row py-3">
-                <div className="col-12 py-5 home-pending-order-empty">
-                  <div>
-                    <img
-                      src={images.orderEmpty}
-                      alt="No Order"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="mt-3">You have no pending orders yet!</div>
+          {activeView === "grid" ? (
+            <div className="home-pending-order-grid-container">
+              {order.length > 0 ? (
+                <div className="row">
+                  {order.map((item, i) => {
+                    return (
+                      <div className="col-lg-4 mt-3" key={i}>
+                        <PendingOrderBox item={item} />
+                      </div>
+                    );
+                  })}
                 </div>
-              </div>
-            )}
-          </div>
-          <div className="home-pending-order-list-container">
-            {/* <table className="">
-              <thead>
-                <tr>
-                  <th>CUSTOMER NAME</th>
-                  <th>FROM LOCATION</th>
-                  <th>TO LOCATION</th>
-                  <th>TOTAL AMOUNT</th>
-                  <th>STATUS</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {order.map((item, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{item.name}</td>
-                      <td>{item.from}</td>
-                      <td>{item.to}</td>
-                      <td>₦{parseInt(item.price).toFixed(2)}</td>
-                      <td className="home-pending-order-list-status">
-                        <span
-                          className="px-2 py-1 rounded-pill"
-                          style={{
-                            background:
-                              item.status === "New"
-                                ? "#FFEBEC"
-                                : item.status === "Enroute Dropoff"
-                                ? "#E9EEFF"
-                                : "#FCF2E3",
-                            color:
-                              item.status === "New"
-                                ? "#FF4554"
-                                : item.status === "Enroute Dropoff"
-                                ? "#1752FF"
-                                : "#F1872D",
-                          }}
-                        >
-                          {item.status}
-                        </span>
-                      </td>
-                      <td>
-                        <BsThreeDots color="#727E8F" size={23} />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          */}
-          </div>
+              ) : (
+                <div className="row py-3">
+                  <div className="col-12 py-5 home-pending-order-empty">
+                    <div>
+                      <img
+                        src={images.orderEmpty}
+                        alt="No Order"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <div className="mt-3">You have no pending orders yet!</div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="home-pending-order-list-container">
+              <table className="mt-4">
+                <thead>
+                  <tr>
+                    <th>CUSTOMER NAME</th>
+                    <th>FROM LOCATION</th>
+                    <th>TO LOCATION</th>
+                    <th>TOTAL AMOUNT</th>
+                    <th>STATUS</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* {order.length > 0 ? "" : ""} */}
+                  {order.map((item, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{item.name}</td>
+                        <td>{item.from}</td>
+                        <td>{item.to}</td>
+                        <td>₦{parseInt(item.price).toFixed(2)}</td>
+                        <td className="home-pending-order-list-status">
+                          <span
+                            className="px-2 py-1 rounded-pill"
+                            style={{
+                              background:
+                                item.status === "New"
+                                  ? "#FFEBEC"
+                                  : item.status === "Enroute Dropoff"
+                                  ? "#E9EEFF"
+                                  : "#FCF2E3",
+                              color:
+                                item.status === "New"
+                                  ? "#FF4554"
+                                  : item.status === "Enroute Dropoff"
+                                  ? "#1752FF"
+                                  : "#F1872D",
+                            }}
+                          >
+                            {item.status}
+                          </span>
+                        </td>
+                        <td>
+                          <Dropdown className="d-inline mx-2 border-0">
+                            <Dropdown.Toggle
+                              as={CustomToggle}
+                              id="dropdown-autoclose-true"
+                            >
+                              <BsThreeDots color="#727E8F" size={23} />
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu className="p-1">
+                              <Dropdown.Item className="drop-menu-item">
+                                Edit Agent
+                              </Dropdown.Item>
+                              <Dropdown.Item className="drop-menu-item">
+                                Suspend Agent
+                              </Dropdown.Item>
+                              <Dropdown.Item className="drop-menu-item logout">
+                                Remove Agent
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
           <div className="home-pending-order-loadmore-btn mt-5 mb-3">
             <button>Load more orders</button>
           </div>

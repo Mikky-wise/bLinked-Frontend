@@ -112,15 +112,15 @@ const SettingsTeamMember = () => {
                           <BsThreeDots color="#727E8F" size={23} />
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                          <Dropdown.Item className="settings-team-menu-item">
+                        <Dropdown.Menu className="p-1">
+                          <Dropdown.Item className="drop-menu-item">
                             Edit Profile
                           </Dropdown.Item>
-                          <Dropdown.Item className="settings-team-menu-item">
+                          <Dropdown.Item className="drop-menu-item">
                             Add money
                           </Dropdown.Item>
                           <Dropdown.Item
-                            className="settings-team-menu-item"
+                            className="drop-menu-item"
                             style={{
                               color: item.isActive
                                 ? "#219653"

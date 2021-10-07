@@ -1,13 +1,15 @@
-// @import url(//db.onlinewebfonts.com/c/b82329475307e0380dc1ea23f0c35266?family=adineue+PRO);
+@import url(//db.onlinewebfonts.com/c/f7afe66fe9d022d7dc7fd57e4adc078f?family=GT+Walsheim+Pro+Bold);
+@import url(//db.onlinewebfonts.com/c/d4f20dfedfdf197ed0ac52b09bf25551?family=GT+Walsheim+Pro+Medium);
+@import url(//db.onlinewebfonts.com/c/0abeb2471faeb5269db428b9eac2075e?family=GT+Walsheim+Pro+Regular);
+@import url(//db.onlinewebfonts.com/c/b82329475307e0380dc1ea23f0c35266?family=adineue+PRO);
 
 :root {
   --main-background: tomato;
 }
 
-// * {
-//   font-family: adineue PRO;
-//   letter-spacing: 0.04em;
-// }
+* {
+  letter-spacing: 0.04em;
+}
 
 .auth-main {
   background: url(./assets/img/background.png);

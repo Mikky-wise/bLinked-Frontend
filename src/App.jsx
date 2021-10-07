@@ -27,6 +27,7 @@ import OTPScreen from "./module/layout/auth/forget/otp.screen";
 import SetPasswordScreen from "./module/layout/auth/setpassword/setpassword.screen";
 import PassResetSuccessScreen from "./module/layout/auth/setpassword/passResetSuccess.screen";
 import Dashboard from "./module/layout/dashboard";
+import PrivateRoute from "./auth/PrivateRoute";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
           {/* Authentications - end */}
 
           {/* Dashboard - start */}
-          <Route exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={Dashboard} />
           {/* Dashboard - end */}
         </Switch>
       </BrowserRouter>
