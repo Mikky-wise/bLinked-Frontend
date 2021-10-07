@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import images from "../../../../api/images";
+import validator from "validator";
+import { useHistory } from "react-router-dom";
 
 const SigninScreen = () => {
+  const history = useHistory();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
+  });
+
+  const [userErr, setUserErr] = useState({
+    emailErr: false,
+    passwordErr: false,
   });
 
   const [userFocus, setUserFocus] = useState({
@@ -25,6 +34,26 @@ const SigninScreen = () => {
       ...user,
       [name]: value,
     });
+  };
+
+  const handleLogin = () => {
+    const { email, password } = user;
+    if (!email || !password) {
+      setUserErr({
+        emailErr: !email ? true : false,
+        passwordErr: !password ? true : false,
+      });
+    } else {
+      history.push("/");
+    }
+  };
+
+  const handleForgot = () => {
+    history.push("/auth/forgot");
+  };
+
+  const handleCreateAC = () => {
+    history.push("/auth/signup1");
   };
 
   return (
@@ -53,6 +82,8 @@ const SigninScreen = () => {
                   className={
                     userFocus.email
                       ? "input-box active w-100"
+                      : userErr.emailErr
+                      ? "input-box w-100 forgot-email-border"
                       : "input-box w-100"
                   }
                 >
@@ -80,9 +111,14 @@ const SigninScreen = () => {
                   className={
                     userFocus.password
                       ? "input-box active w-100"
+                      : userErr.passwordErr
+                      ? "input-box w-100 forgot-email-border"
                       : "input-box w-100"
                   }
                 >
+                <div>
+                  <img src={images.eye} alt="Eye" className="img-fluid" />
+                </div>
                   <label>Password</label>
                   <input
                     type="password"
@@ -105,13 +141,19 @@ const SigninScreen = () => {
             </div>
 
             <div className="signin-with-email-btn px-md-3 mt-5">
-              <button className="w-100">Log in</button>
+              <button className="w-100" onClick={handleLogin}>
+                Log in
+              </button>
             </div>
-            <div className="signin-forgot-password mt-5 px-3">
+            <div
+              className="signin-forgot-password mt-5 px-3"
+              onClick={handleForgot}
+            >
               Forgot your password?
             </div>
             <div className="signin-create-ac mt-4 px-3">
-              Don’t have an account yet? <span>Create account</span>
+              Don’t have an account yet?{" "}
+              <span onClick={handleCreateAC}>Create account</span>
             </div>
             <div className="signin-footer px-3 mb-5">
               <div>Help</div>

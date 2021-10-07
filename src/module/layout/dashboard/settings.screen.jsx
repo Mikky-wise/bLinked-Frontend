@@ -7,7 +7,7 @@ import SettingsUserProfile from "./_components/_settings_user_profile";
 
 const SettingsScreen = () => {
   const [menuActive, setMenuActive] = useState(false);
-  const [menu, setMenu] = useState("teammember");
+  const [menu, setMenu] = useState("profile");
 
 
   const handleMenu = () => {

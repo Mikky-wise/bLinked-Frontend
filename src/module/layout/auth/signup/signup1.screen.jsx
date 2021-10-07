@@ -1,13 +1,23 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import images from "../../../../api/images";
 import Footer from "../_components/_footer";
 
 const Signup1Screen = () => {
+  const history = useHistory();
+
   const [user, setUser] = useState({
     fname: "",
     lname: "",
     email: "",
     password: "",
+  });
+
+  const [userErr, setUserErr] = useState({
+    fnameErr: false,
+    lnameErr: false,
+    emailErr: false,
+    passwordErr: false,
   });
 
   const [userFocus, setUserFocus] = useState({
@@ -32,6 +42,24 @@ const Signup1Screen = () => {
     });
   };
 
+  const handleSignup = () => {
+    const { fname, lname, email, password } = user;
+    if (!fname || !lname || !email || !password) {
+      setUserErr({
+        fnameErr: !fname ? true : false,
+        lnameErr: !lname ? true : false,
+        emailErr: !email ? true : false,
+        passwordErr: !password ? true : false,
+      });
+    } else {
+      history.push("/auth/signin");
+    }
+  };
+
+  const handleLogin = () => {
+    history.push("/auth/signin");
+  }
+
   return (
     <div className="auth-main">
       <div className="container auth-cmn-main">
@@ -46,7 +74,11 @@ const Signup1Screen = () => {
             <div className="col-lg-6 px-4 mt-md-2 mt-4 auth-input-container">
               <div
                 className={
-                  userFocus.fname ? "input-box active w-100" : "input-box w-100"
+                  userFocus.fname
+                    ? "input-box active w-100"
+                    : userErr.fnameErr
+                    ? "input-box w-100 forgot-email-border"
+                    : "input-box w-100"
                 }
               >
                 <label>First name</label>
@@ -73,7 +105,11 @@ const Signup1Screen = () => {
             <div className="col-lg-6 px-4 mt-md-2 mt-4 auth-input-container">
               <div
                 className={
-                  userFocus.lname ? "input-box active w-100" : "input-box w-100"
+                  userFocus.lname
+                    ? "input-box active w-100"
+                    : userErr.lnameErr
+                    ? "input-box w-100 forgot-email-border"
+                    : "input-box w-100"
                 }
               >
                 <label>Last name</label>
@@ -100,7 +136,11 @@ const Signup1Screen = () => {
             <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container">
               <div
                 className={
-                  userFocus.email ? "input-box active w-100" : "input-box w-100"
+                  userFocus.email
+                    ? "input-box active w-100"
+                    : userErr.emailErr
+                    ? "input-box w-100 forgot-email-border"
+                    : "input-box w-100"
                 }
               >
                 <label>Email</label>
@@ -129,6 +169,8 @@ const Signup1Screen = () => {
                 className={
                   userFocus.password
                     ? "input-box active w-100"
+                    : userErr.passwordErr
+                    ? "input-box w-100 forgot-email-border"
                     : "input-box w-100"
                 }
               >
@@ -166,11 +208,13 @@ const Signup1Screen = () => {
           </div>
 
           <div className="px-2 auth-cmn-btn">
-            <button className="w-100">Continue</button>
+            <button className="w-100" onClick={handleSignup}>
+              Continue
+            </button>
           </div>
 
           <div className="auth-cmn-signin mt-4">
-            Don’t have an account yet? <span> Create account </span>
+            Don’t have an account yet? <span onClick={handleLogin}> Create account </span>
           </div>
         </div>
         <Footer />

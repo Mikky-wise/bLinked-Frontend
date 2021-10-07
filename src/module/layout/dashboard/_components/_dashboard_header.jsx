@@ -72,7 +72,7 @@ const Header = ({ handleSideBar }) => {
             <Dropdown.Item className="drop-menu-item">Add money</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item className="drop-menu-item logout">
-              Logut
+              Logout
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

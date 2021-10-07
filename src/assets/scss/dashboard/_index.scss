@@ -39,10 +39,13 @@
 
 .sidebar-menu {
   ul {
+    font-family: var(--font-adineue-pro);
     list-style: none;
     padding-left: 0;
-
+    
     li {
+      font-style: normal;
+      font-weight: normal;
       cursor: pointer;
       margin-top: 4px;
       display: flex;
@@ -54,7 +57,6 @@
       font-size: 14px;
       transition: all 0.2s ease-in-out;
       background: none;
-      font-weight: 700;
       letter-spacing: 0.2s;
 
       > div {
@@ -135,6 +137,7 @@
     color: #0f112b;
     font-weight: 500;
     font-size: 18px;
+    font-family: var(--font-gt-walsheim-pro);
   }
 
   .dashboard-header-account {
@@ -146,6 +149,7 @@
     font-size: 16px;
     color: #5a5d82;
     display: flex;
+    font-family: var(--font-adineue-pro);
 
     > .search-icon {
       margin-right: 5px;
@@ -162,6 +166,7 @@
 
   .dashboard-header-ac-section {
     position: relative;
+    font-family: var(--font-adineue-pro);
 
     > .dashboard-header-ac {
       display: flex;
@@ -210,10 +215,12 @@
     .dashboard-title {
       font-weight: bold;
       font-size: 28px;
+      font-family: var(--font-gt-walsheim-pro);
     }
     .dashboard-subtitle {
       display: flex;
       justify-content: space-between;
+      font-family: var(--font-gt-walsheim-pro);
 
       > .tag-line {
         font-size: 18px;
@@ -233,6 +240,7 @@
     padding: 0 15px;
     border-radius: 6px;
     border: 1px solid #ecebf5;
+    font-family: var(--font-adineue-pro);
 
     > div:nth-child(1) {
       font-size: 12px;
@@ -262,12 +270,14 @@
     .dashboard-complete-title {
       font-weight: bold;
       font-size: 16px;
+      font-family: var(--font-gt-walsheim-pro);
     }
 
     .dashboard-complete-subtitle {
       font-weight: 400;
       color: rgba(#5a5d82, 0.8);
       font-size: 14px;
+      font-family: var(--font-adineue-pro);
     }
 
     .dashboard-complete-vector {
@@ -287,9 +297,10 @@
       align-items: center;
     }
   }
-
+  
   .dashboard-complate-setup-btn {
     > button {
+      font-family: var(--font-adineue-pro);
       background: #3842b0;
       color: #fff;
       font-weight: bold;
@@ -314,24 +325,29 @@
       font-weight: 500;
       font-size: 18px;
       color: #5a5d82;
+      font-family: var(--font-gt-walsheim-pro);
     }
+
     .total-rating-card-total {
       > span:nth-child(1) {
         font-weight: bold;
         font-size: 28px;
         color: #3842b0;
+      font-family: var(--font-gt-walsheim-pro);
       }
       > span:nth-child(2) {
         font-weight: 500;
         font-size: 15px;
         color: #1eb75b;
         margin-left: 8px;
+        font-family: var(--font-adineue-pro);
       }
     }
     .total-rating-card-desc {
       font-size: 14px;
       letter-spacing: 0.04em;
       color: rgba(#5a5d82, 0.8);
+      font-family: var(--font-adineue-pro);
     }
   }
 }
@@ -348,6 +364,7 @@
     font-weight: 500;
     font-size: 18px;
     color: rgba(#0f112b, 0.8);
+    font-family: var(--font-gt-walsheim-pro);
 
     > span:nth-child(1) {
       margin-right: 5px;
@@ -359,6 +376,7 @@
     display: flex;
     align-items: center;
     font-size: 14px;
+    font-family: var(--font-inter);
 
     > span {
       position: absolute;
@@ -372,6 +390,10 @@
       height: 38px;
       color: #9395b4;
       width: 220px;
+    
+      &::placeholder {
+        color: #9395B4;
+      }
     }
   }
 
@@ -379,6 +401,7 @@
     margin-left: 10px;
     font-weight: 500;
     font-size: 14px;
+    font-family: var(--font-inter);
 
     > button {
       border: none;
@@ -464,6 +487,7 @@
     padding: 10px 20px;
     border: 1px solid #ecebf5;
     border-radius: 12px;
+    font-family: var(--font-gt-walsheim-pro);
   }
 
   .home-pending-order-name {
@@ -494,6 +518,7 @@
   .home-pending-order-loadmore-btn {
     display: flex;
     justify-content: center;
+    font-family: var(--font-gt-walsheim-pro);
 
     > button {
       padding: 10px 25px;
@@ -508,6 +533,7 @@
 
   .home-pending-order-list-container {
     overflow-x: auto;
+    font-family: var(--font-gt-walsheim-pro);
 
     table {
       width: 100%;
@@ -692,15 +718,16 @@
     padding: 10px 20px;
     transition: all 0.3s;
     border-radius: 8px;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: var(--font-gt-walsheim-pro);
 
     &.logout {
       color: red;
       transition: all 0.3s;
+      font-family: var(--font-inter);
     }
 
     &:hover {
-      font-weight: 500;
       color: #3842b0;
       background: #eff0f9;
     }
@@ -722,6 +749,7 @@
       color: #fff;
       font-weight: 500;
       font-size: 18px;
+      font-family: var(--font-adineue-pro);
     }
     > div:nth-child(2) {
       display: flex;
@@ -731,17 +759,42 @@
       > span:nth-child(1) {
         font-size: 16px;
         color: #5a5d82;
+        font-family: var(--font-adineue-pro);
       }
 
       > span:nth-child(2) {
         font-size: 12px;
         color: #9395b4;
+        font-family: var(--font-inter);
       }
     }
 
     &:hover {
       color: none;
       background: none;
+    }
+  }
+
+  .drop--menu-date-item {
+    display: flex;
+    flex-direction: column;
+
+    > span:nth-child(1) {
+      font-family: var(--font-gt-walsheim-pro);
+      font-style: normal;
+      font-weight: normal;
+      font-size: 8px;     
+      color: #212B36;
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+
+    > span:nth-child(2) {
+      font-family: var(--font-gt-walsheim-pro);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      color: #212B36;
     }
   }
 }

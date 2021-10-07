@@ -3,6 +3,7 @@ import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
 import { BsGridFill, BsThreeDots } from "react-icons/bs";
+import { FcMenu } from "react-icons/fc";
 import images from "../../../api/images";
 import TotalRatingCard from "./_components/_total_rating_card";
 import order from "../../../localdata/pending_order.json";
@@ -53,7 +54,10 @@ const HomeScreen = () => {
 
               <Dropdown.Menu className="p-2">
                 <Dropdown.Item className="drop-menu-item">
-                  <div className="drop"></div>
+                  <div className="drop--menu-date-item">
+                    <span>LAST 28 DAYS</span>
+                    <span>Desc 04, 2019 - Feb 04 2020</span>
+                  </div>
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item className="drop-menu-item">Today</Dropdown.Item>
@@ -206,9 +210,7 @@ const HomeScreen = () => {
                     }
                     onClick={() => setActiveView("list")}
                   >
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <FcMenu size={22} />
                   </div>
                 </div>
               </div>
@@ -327,31 +329,34 @@ const HomeScreen = () => {
             </div>
           </div>
           <div className="home-agent-container px-4 py-4 mt-md-0 mt-4">
-            <div className="home-agent-title">Agent Analysis</div>
-            <div className="home-agent-subtitle my-3">
-              Realtime status of registered agent
-            </div>
-            <div className="home-agent-status-a mt-5">
-              <div>
-                <span>300</span>
-                <span>Inactive</span>
-              </div>
-              <div>
-                <span>130</span>
-                <span>Unavailable</span>
+            <div className="mt-2">
+              <div className="home-agent-title">Agent Analysis</div>
+              <div className="home-agent-subtitle my-1">
+                Realtime status of registered agent
               </div>
             </div>
-            <div className="home-agent-status-b mt-4">
-              <div>
-                <span>500</span>
-                <span>Available</span>
+            <div>
+              <div className="home-agent-status-a mt-5">
+                <div>
+                  <span>300</span>
+                  <span>Inactive</span>
+                </div>
+                <div>
+                  <span>130</span>
+                  <span>Unavailable</span>
+                </div>
               </div>
-              <div>
-                <span>100</span>
-                <span>Active</span>
+              <div className="home-agent-status-b mt-4">
+                <div>
+                  <span>500</span>
+                  <span>Available</span>
+                </div>
+                <div>
+                  <span>100</span>
+                  <span>Active</span>
+                </div>
               </div>
             </div>
-
             <div className="row home-agent-status mt-5">
               <div className="col-6 mt-2">
                 <div></div>

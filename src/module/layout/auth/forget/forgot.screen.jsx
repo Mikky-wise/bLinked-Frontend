@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import images from "../../../../api/images";
 import Footer from "../_components/_footer";
 import validator from "validator";
+import { useHistory } from "react-router-dom";
 
 const ForgotEmailScreen = () => {
+  const history = useHistory()
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState(false);
 
@@ -23,8 +25,13 @@ const ForgotEmailScreen = () => {
       setEmailErr(true);
     } else {
       setEmailErr(false);
+      history.push("/auth/otp")
     }
   };
+
+  const handleLogin = () => {
+    history.push("/auth/signin")
+  }
 
   return (
     <div className="auth-main">
@@ -93,7 +100,7 @@ const ForgotEmailScreen = () => {
           </div>
 
           <div className="auth-cmn-signin mt-4">
-            Take me back to<span> Login</span>
+            Take me back to<span onClick={handleLogin}> Login</span>
           </div>
         </div>
         <Footer />

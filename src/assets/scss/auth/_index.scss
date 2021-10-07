@@ -12,18 +12,22 @@
 }
 
 .auth-cmn-title {
-  font-weight: 700;
+  font-weight: bold;
   font-size: 24px;
+  font-family: var(--font-gt-walsheim-pro);
 }
 
 .auth-cmn-subtitle {
   font-weight: normal;
   font-size: 16px;
   margin-top: 15px;
+  font-family: var(--font-adineue-pro);
+  color: #5a5d82;
 }
 
 .auth-cmn-btn {
   > button {
+    font-family: var(--font-adineue-pro);
     background: #3842b0;
     color: #fff;
     font-size: 16px;
@@ -36,10 +40,19 @@
 
 .auth-cmn-signin {
   font-size: 14px;
+  font-family: var(--font-adineue-pro);
+  color: #5a5d82;
+  letter-spacing: 0.03em;
 
   > span {
     cursor: pointer;
     color: #3842b0;
+    font-weight: bold;
+    font-family: var(--font-adineue-pro);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

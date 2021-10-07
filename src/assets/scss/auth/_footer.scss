@@ -4,13 +4,16 @@
   color: #5a5d82;
   display: flex;
   justify-content: space-between;
+  font-family: var(--font-adineue-pro);
 
   > .footer-contant-a {
+    color: #5a5d82;
     > span {
       cursor: pointer;
       color: #3842b0;
     }
   }
+  
   > .footer-contant-b {
     display: flex;
 

@@ -1,13 +1,16 @@
 .forgot-email-err {
-  color: red;
-  font-size: 14px;
+  color: #ff4554;
+  font-size: 12px;
   font-weight: 100;
   transition: all 0.2s;
+  font-family: var(--font-adineue-pro);
 }
 
 .otp-main {
   display: flex;
   justify-content: center;
+  font-family: var(--font-inter);
+  font-weight: bold;
 
   > input {
     width: 64px;
@@ -24,6 +27,10 @@
 
     &.active {
       border: 2px solid #3842b0;
+    }
+
+    &.otpError {
+      border: 2px solid #ff4554;
     }
   }
 }

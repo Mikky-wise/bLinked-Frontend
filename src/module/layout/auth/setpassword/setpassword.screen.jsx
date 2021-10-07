@@ -1,11 +1,19 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import images from "../../../../api/images";
 import Footer from "../_components/_footer";
 
 const SetPasswordScreen = () => {
+  const history = useHistory();
+
   const [pass, setPass] = useState({
     npass: "",
     cpass: "",
+  });
+
+  const [passErr, setPassErr] = useState({
+    npassErr: false,
+    cpassErr: false,
   });
 
   const [passFocus, setPassFocus] = useState({
@@ -29,7 +37,15 @@ const SetPasswordScreen = () => {
   };
 
   const handleClick = () => {
-    console.log("object");
+    const { npass, cpass } = pass;
+    if (!npass || !cpass) {
+      setPassErr({
+        npassErr: !npass ? true : false,
+        cpassErr: !cpass ? true : false,
+      });
+    } else {
+      history.push("/auth/success");
+    }
   };
 
   return (
@@ -48,7 +64,11 @@ const SetPasswordScreen = () => {
             <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container fotgot-pass-border">
               <div
                 className={
-                  passFocus.npass ? "input-box active w-100" : "input-box w-100"
+                  passFocus.npass
+                    ? "input-box active w-100"
+                    : passErr.npassErr
+                    ? "input-box w-100 forgot-email-border"
+                    : "input-box w-100"
                 }
               >
                 <div>
@@ -76,7 +96,11 @@ const SetPasswordScreen = () => {
             <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container fotgot-pass-border">
               <div
                 className={
-                  passFocus.cpass ? "input-box active w-100" : "input-box w-100"
+                  passFocus.cpass
+                    ? "input-box active w-100"
+                    : passErr.cpassErr
+                    ? "input-box w-100 forgot-email-border"
+                    : "input-box w-100"
                 }
               >
                 <div>

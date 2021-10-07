@@ -26,11 +26,19 @@
       border-top-right-radius: 8px;
       border-bottom-right-radius: 8px;
       cursor: pointer;
+      font-family: var(--font-adineue-pro);
 
       &.active {
         border-left: 3px solid #3842b0;
         background: rgba(#3842b0, 0.05);
-        font-weight: bold;
+        font-weight: 700;
+        color: #3842b0;
+      }
+
+      &:hover {
+        border-left: 3px solid #3842b0;
+        background: rgba(#3842b0, 0.05);
+        font-weight: 700;
         color: #3842b0;
       }
 
@@ -53,9 +61,10 @@
   }
 
   .setting-user-title {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 22px;
     color: #0f112b;
+    font-family: var(--font-gt-walsheim-pro);
   }
 
   .setting-user-picture {
@@ -70,13 +79,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 28px;
+      font-size: 32px;
       color: #fff;
+      font-weight: 700;
     }
   }
 }
 
 .setting-edit-picture-btn {
+  font-family: var(--font-gt-walsheim-pro);
+
   > label {
     padding: 10px 16px;
     background: none;
@@ -92,14 +104,18 @@
   font-weight: 500;
   font-size: 20px;
   color: #183b56;
+  font-family: var(--font-gt-walsheim-pro);
 }
 
 .settings-user-form-subline {
   font-size: 14px;
   color: #5a5d82;
+  font-family: var(--font-adineue-pro);
 }
 
 .settings-user-form-action-btn {
+  font-family: var(--font-gt-walsheim-pro);
+
   > button {
     padding: 10px 25px;
 
@@ -132,11 +148,13 @@ hr {
   font-weight: 500;
   font-size: 20px;
   color: #e22738;
+  font-family: var(--font-gt-walsheim-pro);
 }
 
 .settings-danger-desc {
   font-size: 14px;
   color: #5a5d82;
+  font-family: var(--font-adineue-pro);
 }
 
 .settings-deactive-user-btn {
@@ -146,6 +164,7 @@ hr {
   font-weight: 500;
   font-size: 16px;
   color: #5a5d82;
+  font-family: var(--font-adineue-pro);
 }
 
 .settings-menu-responsive-container {
@@ -161,6 +180,7 @@ hr {
   display: flex;
   align-items: center;
   font-size: 14px;
+  font-family: var(--font-inter);
 
   > span {
     position: absolute;
@@ -181,6 +201,7 @@ hr {
   margin-left: 10px;
   font-weight: 500;
   font-size: 14px;
+  font-family: var(--font-gt-walsheim-pro);
 
   > button {
     border: none;
@@ -195,6 +216,7 @@ hr {
 
     > img {
       margin-right: 10px;
+      width: 14px;
     }
   }
 }
@@ -214,6 +236,7 @@ hr {
         background: rgba(#9395b4, 0.06);
         font-size: 12px;
         color: #5a5d82;
+        font-family: var(--font-gt-walsheim-pro);
       }
 
       > td {
@@ -221,8 +244,18 @@ hr {
         color: #0f112b;
         font-size: 14px;
 
+        &:nth-child(1) {
+          font-family: var(--font-gt-walsheim-pro);
+        }
+
         &:nth-last-child(2) {
           width: 250px;
+          font-family: var(--font-gt-walsheim-pro);
+        }
+
+        &:nth-last-child(3), 
+        &:nth-last-child(4) {
+          font-family: var(--font-inter);
         }
 
         &:nth-last-child(1) {
@@ -242,14 +275,16 @@ hr {
   font-size: 25px;
 
   > div:nth-child(1) {
-    font-size: 16px;
+    font-size: 14px;
     color: #637381;
+    font-weight: var(--font-adineue-pro);
   }
 
   > div:nth-child(2) {
     display: flex;
     font-size: 14px;
     color: #637381;
+    font-weight: var(--font-adineue-pro);
 
     > div:nth-child(2) {
       height: 35px;
@@ -281,7 +316,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-size: 14px;
     width: 28px;
     height: 35px;
     border: 1px solid #e2e2ea;
@@ -289,12 +324,20 @@ hr {
   }
 
   .order-page {
-    font-weight: 600;
-
+    
     > span {
+      cursor: pointer;
+      font-weight: 400;
       margin: 0 8px;
+      transition: all 0.2s;
 
       &.active {
+        font-weight: 700;
+        color: #3842b0;
+      }
+
+      &:hover {
+        font-weight: 700;
         color: #3842b0;
       }
     }
@@ -305,7 +348,6 @@ hr {
   position: relative;
   // width: 100px;
   cursor: pointer;
-
 
   // > div {
 

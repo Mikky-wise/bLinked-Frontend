@@ -20,13 +20,17 @@
 
   .signin-comp-b-title {
     font-size: 40px;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 44px;
+    font-family: var(--font-gt-walsheim-pro);
   }
 
   .signin-comp-b-desc {
     font-size: 16px;
     font-weight: normal;
+    color: #0f113b;
+    opacity: 0.8;
+    font-family: var(--font-adineue-pro);
   }
 }
 
@@ -85,6 +89,7 @@
   font-weight: 700;
   font-size: 24px;
   text-align: center;
+  font-family: var(--font-gt-walsheim-pro);
 }
 
 .signin-subcontainer {
@@ -103,6 +108,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    font-family: var(--font-adineue-pro);
 
     > div {
       position: absolute;
@@ -132,6 +138,8 @@
     justify-content: center;
     align-items: center;
     color: #5a5d82;
+    font-family: var(--font-adineue-pro);
+    font-size: 14px;
 
     > div:nth-child(1),
     > div:nth-child(3) {
@@ -142,6 +150,8 @@
   }
 
   .signin-with-email-btn {
+    font-family: var(--font-adineue-pro);
+    
     > button {
       background: #3842b0;
       color: #fff;
@@ -159,14 +169,18 @@
     font-weight: normal;
     font-size: 14px;
     text-decoration: underline;
+    font-family: var(--font-adineue-pro);
   }
 
   .signin-create-ac {
     font-size: 14px;
+    font-family: var(--font-adineue-pro);
+    color: #5a7184;
 
     > span {
       cursor: pointer;
       color: #3842b0;
+      text-decoration: underline;
     }
   }
 }
@@ -176,6 +190,9 @@
   justify-content: center;
   // height: 35px;
   margin-top: 10%;
+  font-family: var(--font-adineue-pro);
+  color: #5a5d82;
+  font-size: 14px;
 
   > div {
     padding: 0 12px;

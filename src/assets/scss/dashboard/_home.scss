@@ -206,6 +206,7 @@
   font-weight: 500;
   font-size: 18px;
   color: #0f112b;
+  font-family: var(--font-gt-walsheim-pro);
 }
 
 .home-agent-container {
@@ -214,6 +215,10 @@
   border-radius: 8px;
   margin-left: 30px;
   width: 35%;
+  font-family: var(--font-gt-walsheim-pro);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .home-agent-title {
     font-weight: 500;
@@ -232,6 +237,7 @@
   //   justify-content: center;
   align-items: center;
   padding-left: 10%;
+  
 
   > div {
     border-radius: 100%;
@@ -327,6 +333,7 @@
 }
 
 .home-agent-status {
+  font-family: var(--font-inter);
   > div {
     display: flex;
     align-items: center;
