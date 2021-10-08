@@ -154,15 +154,27 @@ const HomeScreen = (props) => {
           <div className="dashboard-complete-vector px-md-5 py-4">
             <div className="d-flex flex-column justify-content-between">
               <div className="d-flex justify-content-end">
-                <img src={dashboardVector3} alt="" className="img-fluid" />
+                <img
+                  src={dashboardVector3}
+                  alt=""
+                  className="img-fluid"
+                />
               </div>
               <div className="d-flex justify-content-start">
-                <img src={dashboardVector2} alt="" className="img-fluid" />
+                <img
+                  src={dashboardVector2}
+                  alt=""
+                  className="img-fluid"
+                />
               </div>
             </div>
             <div className="mx-md-5 mx-4">
               <div className="d-flex justify-content-end">
-                <img src={dashboardVector1} alt="" className="img-fluid" />
+                <img
+                  src={dashboardVector1}
+                  alt=""
+                  className="img-fluid"
+                />
               </div>
             </div>
           </div>

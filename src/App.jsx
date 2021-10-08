@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { AuthPage } from "./module/auth";
-import { PublicRoutes, PrivateRoutes } from "./routes/navigation";
+import { AuthPage } from './module/auth';
+import { PublicRoutes, PrivateRoutes } from './routes/navigation';
 
 // Auth SCSS Start
 import "./assets/scss/auth/_footer.scss";
@@ -27,7 +27,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path={PublicRoutes.AUTH} component={AuthPage} />
+         <Route path={PublicRoutes.AUTH} component={AuthPage} />
           <Route path={PrivateRoutes.DASHBOARD} component={Dashboard} />
         </Switch>
       </BrowserRouter>
