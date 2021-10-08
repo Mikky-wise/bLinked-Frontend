@@ -1,18 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
 import { BsGridFill, BsThreeDots } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
-import { Dropdown } from "react-bootstrap";
+import {
+  Button,
+  Dropdown,
+  Overlay,
+  OverlayTrigger,
+  Popover,
+} from "react-bootstrap";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import { GoogleLocate, MapMarker } from "../../assets/img";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
-import { calenderIcon, dashboardVector1, dashboardVector2, dashboardVector3, filterIcon, orderEmpty, map } from "../../assets/img";
+import {
+  calenderIcon,
+  dashboardVector1,
+  dashboardVector2,
+  dashboardVector3,
+  filterIcon,
+  orderEmpty,
+  map,
+} from "../../assets/img";
 import TotalRatingCard from "./_components/_total_rating_card";
 import order from "../../mockData/pending_order.json";
 import PendingOrderBox from "./_components/_pending_order_box";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
+  const mapRef = useRef(null);
+  const ref = useRef(null);
   const [activeView, setActiveView] = useState("grid");
+  // const [showInfoWindow, setShowInfoWinidow] = useState(false);
+  const [zoom, setZoom] = useState(12);
+  // const [show, setShow] = useState(false);
+  // const [target, setTarget] = useState(null);
+  const [selectPlace, setSelectPlace] = useState({});
+  const [activeMarker, setActiveMarker] = useState({});
+  const [showInfoWindow, setShowInfoWindow] = useState(false);
+
+  // const handleClick = (event) => {
+  //   setShow(!show);
+  //   setTarget(event.target);
+  // };
+
+  const icon = {
+    url: MapMarker, // url
+    scaledSize: new props.google.maps.Size(90, 42), // scaled size
+  };
+
+  const onMarkerClick = (marker) => {
+    setShowInfoWindow(true);
+    // setSelectPlace(props);
+    setActiveMarker(marker);
+  };
+  // console.log("=>", activeMarker);
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <span
@@ -25,6 +68,20 @@ const HomeScreen = () => {
       {children}
     </span>
   ));
+
+  const handleMouseOver = (e) => {
+    setShowInfoWindow(true);
+    console.log("enter");
+  };
+
+  const handleMouseExit = (e) => {
+    setShowInfoWindow(false);
+    console.log("exit");
+  };
+
+  const handleClickMarker = () => {
+    setShowInfoWindow(!showInfoWindow);
+  };
 
   return (
     <div className="main-container">
@@ -97,27 +154,15 @@ const HomeScreen = () => {
           <div className="dashboard-complete-vector px-md-5 py-4">
             <div className="d-flex flex-column justify-content-between">
               <div className="d-flex justify-content-end">
-                <img
-                  src={dashboardVector3}
-                  alt=""
-                  className="img-fluid"
-                />
+                <img src={dashboardVector3} alt="" className="img-fluid" />
               </div>
               <div className="d-flex justify-content-start">
-                <img
-                  src={dashboardVector2}
-                  alt=""
-                  className="img-fluid"
-                />
+                <img src={dashboardVector2} alt="" className="img-fluid" />
               </div>
             </div>
             <div className="mx-md-5 mx-4">
               <div className="d-flex justify-content-end">
-                <img
-                  src={dashboardVector1}
-                  alt=""
-                  className="img-fluid"
-                />
+                <img src={dashboardVector1} alt="" className="img-fluid" />
               </div>
             </div>
           </div>
@@ -326,7 +371,95 @@ const HomeScreen = () => {
           <div className="home-location-container px-4 py-4">
             <div className="mt-2 mb-4">Agent Locations</div>
             <div>
-              <img src={map} alt="" className="img-fluid w-100" />
+              <figure style={{ borderRadius: 8, overflow: "hidden" }}>
+                <Map
+                  ref={mapRef}
+                  google={props.google}
+                  zoom={zoom}
+                  style={{
+                    width: "100%",
+                    height: "400px",
+                    position: "relative",
+                  }}
+                  containerStyle={{
+                    width: "100%",
+                    height: "100%",
+                    position: "relative",
+                  }}
+                  initialCenter={{
+                    lat: 40.71562160638466,
+                    lng: -74.06895258935187,
+                  }}
+                >
+                  <div className="google-map-controller-main">
+                    <button
+                      onClick={() => {
+                        setZoom(12);
+                      }}
+                    >
+                      <img src={GoogleLocate} alt="" className="img-fluid" />
+                    </button>
+                    <div className="google-controller-line" />
+                    <button
+                      className="google-map-controller-btn"
+                      onClick={() => {
+                        if (zoom > 2) {
+                          setZoom(zoom + 1);
+                        }
+                      }}
+                    >
+                      <FiPlus />
+                    </button>
+                    <div className="google-controller-line" />
+                    <button
+                      className="google-map-controller-btn"
+                      onClick={() => {
+                        if (zoom > 2) {
+                          setZoom(zoom - 1);
+                        }
+                      }}
+                    >
+                      <FiMinus />
+                    </button>
+                  </div>
+                  {/* <Marker
+                    onClick={onMarkerClick}
+                    position={{
+                      lat: 40.71562160638466,
+                      lng: -74.06895258935187,
+                    }}
+                    icon={icon}
+                  />
+                  <Marker
+                    onClick={onMarkerClick}
+                    position={{
+                      lat: 40.71990657881245,
+                      lng: -74.00246744525771,
+                    }}
+                    icon={icon}
+                  /> */}
+                  <Marker
+                    onClick={onMarkerClick}
+                    position={{
+                      lat: 40.735101054791166,
+                      lng: -74.04221478648014,
+                    }}
+                    icon={icon}
+                  ></Marker>
+                  {activeMarker && (
+                    <InfoWindow
+                      marker={activeMarker}
+                      visible={showInfoWindow}
+                      google={props.google}
+                      // map={mapRef}
+                    >
+                      <div>
+                        <h1>Hello</h1>
+                      </div>
+                    </InfoWindow>
+                  )}
+                </Map>
+              </figure>
             </div>
           </div>
           <div className="home-agent-container px-4 py-4 mt-md-0 mt-4">
@@ -383,4 +516,9 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+const LoadingContainer = () => <div></div>;
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyC445P-0GdRNz_li2hPGjYLzHzFokCpj68",
+  LoadingContainer: LoadingContainer,
+})(HomeScreen);
