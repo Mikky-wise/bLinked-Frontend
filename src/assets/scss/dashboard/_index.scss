@@ -6,13 +6,13 @@
 }
 
 .dashboard-container {
-  width: 86%;
+  width: 82%;
 }
 
 .sidebar-main {
   position: fixed;
   // overflow-x: hidden;
-  width: 14%;
+  width: 18%;
   height: 100%;
   top: 0;
   left: 0;
@@ -126,7 +126,7 @@
 
 .dashboard-header-main {
   border-bottom: 1px solid #ecebf5;
-  padding: 20px 0;
+  padding: 24px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

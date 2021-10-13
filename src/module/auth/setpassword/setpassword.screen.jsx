@@ -45,7 +45,7 @@ const SetPasswordScreen = () => {
         cpassErr: !cpass ? true : false,
       });
     } else {
-      history.push("/auth/success");
+      history.push("/auth/password_success");
     }
   };
 
