@@ -5,11 +5,7 @@ import { IoClose } from "react-icons/io5";
 import { BsGridFill, BsThreeDots } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
 import {
-  Button,
   Dropdown,
-  Overlay,
-  OverlayTrigger,
-  Popover,
 } from "react-bootstrap";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { GoogleLocate, MapMarker } from "../../assets/img";
@@ -22,7 +18,6 @@ import {
   dashboardVector3,
   filterIcon,
   orderEmpty,
-  map,
 } from "../../assets/img";
 import TotalRatingCard from "./_components/_total_rating_card";
 import order from "../../mockData/pending_order.json";
@@ -30,13 +25,13 @@ import PendingOrderBox from "./_components/_pending_order_box";
 
 const HomeScreen = (props) => {
   const mapRef = useRef(null);
-  const ref = useRef(null);
+  // const ref = useRef(null);
   const [activeView, setActiveView] = useState("grid");
   // const [showInfoWindow, setShowInfoWinidow] = useState(false);
   const [zoom, setZoom] = useState(12);
   // const [show, setShow] = useState(false);
   // const [target, setTarget] = useState(null);
-  const [selectPlace, setSelectPlace] = useState({});
+  // const [selectPlace, setSelectPlace] = useState({});
   const [activeMarker, setActiveMarker] = useState({});
   const [showInfoWindow, setShowInfoWindow] = useState(false);
 
@@ -69,19 +64,19 @@ const HomeScreen = (props) => {
     </span>
   ));
 
-  const handleMouseOver = (e) => {
-    setShowInfoWindow(true);
-    console.log("enter");
-  };
+  // const handleMouseOver = (e) => {
+  //   setShowInfoWindow(true);
+  //   console.log("enter");
+  // };
 
-  const handleMouseExit = (e) => {
-    setShowInfoWindow(false);
-    console.log("exit");
-  };
+  // const handleMouseExit = (e) => {
+  //   setShowInfoWindow(false);
+  //   console.log("exit");
+  // };
 
-  const handleClickMarker = () => {
-    setShowInfoWindow(!showInfoWindow);
-  };
+  // const handleClickMarker = () => {
+  //   setShowInfoWindow(!showInfoWindow);
+  // };
 
   return (
     <div className="main-container">

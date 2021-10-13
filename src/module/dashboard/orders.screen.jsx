@@ -43,8 +43,8 @@ const OrdersScreen = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAgents(value);
+    // const { name, value } = e.target;
+    // setAgents(value);
   };
 
   const handleConfirm = () => {

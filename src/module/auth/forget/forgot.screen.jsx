@@ -19,6 +19,30 @@ const ForgotEmailScreen = () => {
   const handleChange = (e) => {
     const { value } = e.target;
     setEmail(value);
+    if (!value) {
+      // formIsValid = false;
+      setEmailErr('true');
+    }
+
+    if (typeof value !== "undefined") {
+      let lastAtPos = value.lastIndexOf("@");
+      let lastDotPos = value.lastIndexOf(".");
+
+      if (
+        !(
+          lastAtPos < lastDotPos &&
+          lastAtPos > 0 &&
+          value.indexOf("@@") == -1 &&
+          lastDotPos > 2 &&
+          value.length - lastDotPos > 2
+        )
+      ) {
+        setEmailErr('true');
+      }else{
+        setEmailErr(false)
+      }
+    }
+
   };
 
   const handleSendLink = () => {

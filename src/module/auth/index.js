@@ -14,7 +14,7 @@ export const AuthPage = () => {
     return (
         <Switch>
             <Route exact path={PublicRoutes.SIGN_IN} component={SignInScreen} />
-            <Route exact path={PublicRoutes.SIGN_IN} component={Signup1Screen} />
+            <Route exact path={PublicRoutes.SIGN_UP1} component={Signup1Screen} />
             <Route exact path={PublicRoutes.SIGN_UP2} component={Signup2Screen} />
             <Route exact path={PublicRoutes.FORGOT_PASSWORD} component={ForgotEmailScreen} />
             <Route exact path={PublicRoutes.OTP} component={OTPScreen} />
