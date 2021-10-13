@@ -42,7 +42,7 @@ const Signup2Screen = () => {
           </div>
 
           <div className="row mt-4">
-            <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container">
+            <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
                   cmpFocus.cname ? "input-box active w-100" : "input-box w-100"
@@ -70,7 +70,7 @@ const Signup2Screen = () => {
           </div>
 
           <div className="row">
-            <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container">
+            <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
                   cmpFocus.cemail ? "input-box active w-100" : "input-box w-100"
@@ -97,7 +97,7 @@ const Signup2Screen = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container">
+            <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
                   cmpFocus.cphone ? "input-box active w-100" : "input-box w-100"

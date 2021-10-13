@@ -71,8 +71,8 @@ const Signup1Screen = () => {
             First of, let’s get to know you
           </div>
 
-          <div className="row mt-5">
-            <div className="col-lg-6 px-4 mt-md-2 mt-4 auth-input-container">
+          <div className="row martop-32">
+            <div className="col-lg-6  auth-input-container">
               <div
                 className={
                   userFocus.fname
@@ -103,7 +103,7 @@ const Signup1Screen = () => {
                 />
               </div>
             </div>
-            <div className="col-lg-6 px-4 mt-md-2 mt-4 auth-input-container">
+            <div className="col-lg-6  auth-input-container">
               <div
                 className={
                   userFocus.lname
@@ -134,7 +134,7 @@ const Signup1Screen = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container">
+            <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
                   userFocus.email
@@ -165,7 +165,7 @@ const Signup1Screen = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container">
+            <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
                   userFocus.password

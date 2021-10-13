@@ -20,7 +20,6 @@ const ForgotEmailScreen = () => {
     const { value } = e.target;
     setEmail(value);
     if (!value) {
-      // formIsValid = false;
       setEmailErr('true');
     }
 
