@@ -49,11 +49,11 @@ const SigninScreen = () => {
   };
 
   const handleForgot = () => {
-    history.push("/auth/forgot");
+    history.push("/auth/forgot_password");
   };
 
   const handleCreateAC = () => {
-    history.push("/auth/signup1");
+    history.push("/auth/sign_up1");
   };
 
   return (

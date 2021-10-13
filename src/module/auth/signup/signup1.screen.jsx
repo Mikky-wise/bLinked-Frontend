@@ -53,7 +53,7 @@ const Signup1Screen = () => {
         passwordErr: !password ? true : false,
       });
     } else {
-      history.push("/auth/signin");
+      history.push("/auth/sign_up2");
     }
   };
 
