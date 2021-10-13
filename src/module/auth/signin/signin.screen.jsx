@@ -71,13 +71,13 @@ const SigninScreen = () => {
               </div>
               <button className="w-100">Sign in with Google</button>
             </div>
-            <div className="signin-with-email mt-4">
+            <div className="signin-with-email">
               <div></div>
               <div className="mx-4">Or, sign in with your email</div>
               <div></div>
             </div>
             <div className="row">
-              <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
+              <div className="col-lg-12 auth-input-container">
                 <div
                   className={
                     userFocus.email
@@ -106,7 +106,7 @@ const SigninScreen = () => {
                   />
                 </div>
               </div>
-              <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
+              <div className="col-lg-12 auth-input-container">
                 <div
                   className={
                     userFocus.password
@@ -140,13 +140,13 @@ const SigninScreen = () => {
               </div>
             </div>
 
-            <div className="signin-with-email-btn px-md-3 mt-5">
+            <div className="signin-with-email-btn px-md-3">
               <button className="w-100" onClick={handleLogin}>
                 Log in
               </button>
             </div>
             <div
-              className="signin-forgot-password mt-5 px-3"
+              className="signin-forgot-password px-3"
               onClick={handleForgot}
             >
               Forgot your password?

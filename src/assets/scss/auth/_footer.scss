@@ -1,10 +1,12 @@
 .footer-main {
   font-size: 14px;
-  width: 65%;
+  width: 49.65%;
   color: #5a5d82;
   display: flex;
   justify-content: space-between;
   font-family: var(--font-adineue-pro);
+  padding-bottom: 76px;
+  margin-top: 24px;
 
   > .footer-contant-a {
     color: #5a5d82;
@@ -25,6 +27,7 @@
       cursor: pointer;
     }
   }
+  
 }
 
 @media only screen and (max-width: 991px) {
