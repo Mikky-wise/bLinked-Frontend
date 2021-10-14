@@ -31,7 +31,7 @@ const ForgotEmailScreen = () => {
         !(
           lastAtPos < lastDotPos &&
           lastAtPos > 0 &&
-          value.indexOf("@@") == -1 &&
+          value.indexOf("@@") === -1 &&
           lastDotPos > 2 &&
           value.length - lastDotPos > 2
         )
