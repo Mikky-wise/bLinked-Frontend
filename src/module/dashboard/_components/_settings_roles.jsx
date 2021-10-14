@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import SettingsChangePassword from "./_settings_change_password";
-import SettingsTeamMember from "./_settings_team_member";
-import SettingsUserProfile from "./_settings_user_profile";
+import React from "react";
+// import { HiOutlineMenuAlt3 } from "react-icons/hi";
+// import SettingsChangePassword from "./_settings_change_password";
+// import SettingsTeamMember from "./_settings_team_member";
+// import SettingsUserProfile from "./_settings_user_profile";
 
 const SettingsRolesScreen = () => {
   return (
