@@ -1,10 +1,11 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { agentsMenu, feedbackMenu, homeMenu, logo, logoutMenu, orderMenu, settingMenu } from "../assets/img";
 
 const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
   const location = useLocation();
+  const history = useHistory();
 
   return (
     <div className={!activeSidebar ? "" : "sidebar-bg"}>
@@ -22,10 +23,11 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
         <div className="sidebar-menu">
           <ul className="mt-5">
             <li
-              className={location?.state?.menu === "Home" ? "active" : ""}
+              className={activeMenu === "Home" ? "active" : ""}
               onClick={() => {
                 handleMenu("Home");
                 handleSideBar();
+                history.push('/')
               }}
             >
               <div>
@@ -37,10 +39,11 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
             </li>
 
             <li
-              className={location?.state?.menu === "Orders" ? "active" : ""}
+              className={activeMenu === "orders" ? "active" : ""}
               onClick={() => {
-                handleMenu("Orders");
+                handleMenu("orders");
                 handleSideBar();
+                history.push('/orders')
               }}
             >
               <div>
@@ -80,10 +83,11 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
               </div>
             </li>
             <li
-              className={location?.state?.menu === "General Settings" ? "active" : ""}
+              className={activeMenu === "settings" ? "active" : ""}
               onClick={() => {
-                handleMenu("General Settings");
+                handleMenu("settings");
                 handleSideBar();
+                history.push('/settings')
               }}
             >
               <div>

@@ -5,7 +5,7 @@ import RolesScreen from "./RolesScreen";
 import TeamMember from "./TeamMember";
 import UserProfile from "./UserProfile";
 
-const SettingsScreen = () => {
+const SettingsPage = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [menu, setMenu] = useState("profile");
 
@@ -122,4 +122,4 @@ const SettingsScreen = () => {
   );
 };
 
-export default SettingsScreen;
+export default SettingsPage;
