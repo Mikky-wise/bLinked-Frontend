@@ -46,7 +46,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Switch>
-          <PrivateRoute path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={Dashboard} />
           <Route exact path="/auth/sign_in" component={SignInPage} />
           <Route exact path="/auth/sign_up1" component={SignUpPage1} />
           <Route exact path="/auth/sign_up2" component={SignUpPage2} />
