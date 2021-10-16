@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // Auth SCSS Start
-import "./assets/scss/auth/_footer.scss";
-import "./assets/scss/auth/_input_box.scss";
-import "./assets/scss/auth/_signin.scss";
-import "./assets/scss/auth/_signup.scss";
-import "./assets/scss/auth/_forgot.scss";
-import "./assets/scss/auth/_index.scss";
+import "./Components/Footer.scss";
+import "./InputBox.scss";
+import "./Pages/Sign-in/SignIn.scss";
+import "./Pages/Sign-up/SignUp.scss";
+import "./Pages/Forgot/Forgot.scss";
+import "./index.scss";
 // Auth SCSS End
 
 // Dashboard SCSS Start
-import "./assets/scss/dashboard/_index.scss";
-import "./assets/scss/dashboard/_home.scss";
-import "./assets/scss/dashboard/_settings.scss";
-import "./assets/scss/dashboard/_orders.scss";
+import "./App.scss";
+import "./Pages/Home/Home.scss";
+import "./Pages/Settings/Settings.scss";
+import "./Pages/Orders/Orders.scss";
 // Dashboard SCSS End
 
 import SignInPage from "./Pages/Sign-in/SignIn";
