@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, useLocation } from "react-router";
+import { useLocation } from "react-router";
 import { ImSearch } from "react-icons/im";
 import { GoChevronDown } from "react-icons/go";
 import { CgMenuLeftAlt } from "react-icons/cg";
@@ -22,61 +22,60 @@ const Header = ({ handleSideBar }) => {
     ));
 
     return (
-        <Route path={'/' || '/orders' || '/settings'} exact>
-            <div className="dashboard-header-main px-md-4 px-2">
-                <div className="dashboard-header-path">
-                    <span onClick={handleSideBar} className="d-flex d-md-none">
-                        <CgMenuLeftAlt size={28} />
+        <div className="dashboard-header-main px-md-4 px-2">
+            <div className="dashboard-header-path">
+                <span onClick={handleSideBar} className="d-flex d-md-none">
+                    <CgMenuLeftAlt size={28} />
+                </span>
+                <span className="mx-2 ">
+                    {!location?.state?.menu || location?.state?.menu === "Home"
+                        ? "Home"
+                        : location?.state?.menu}
+                </span>
+            </div>
+            <div className="dashboard-header-account">
+                <div className="dashboard-header-search">
+                    <span className="search-icon">
+                        <ImSearch size={20} />
+                        {/* <img src={searchIcon} alt="Search" /> */}
                     </span>
-                    <span className="mx-2 ">
-                        {!location?.state?.menu || location?.state?.menu === "Home"
-                            ? "Home"
-                            : location?.state?.menu}
-                    </span>
+                    <span className="d-none d-md-flex">Search</span>
                 </div>
-                <div className="dashboard-header-account">
-                    <div className="dashboard-header-search">
-                        <span className="search-icon">
-                            <ImSearch size={20} />
-                            {/* <img src={searchIcon} alt="Search" /> */}
-                        </span>
-                        <span className="d-none d-md-flex">Search</span>
-                    </div>
-                    <div className="dashboard-header-notification">
-                        <img src={notificationIcon} alt="Bell" className="img-fluid" />
-                    </div>
-                    <Dropdown className="d-inline mx-2 border-0">
-                        <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
-                            <div className="dashboard-header-ac-section">
-                                <div className="dashboard-header-ac">
-                                    <div className="dashboard-header-ac-icon">BL</div>
-                                    <div className="dashboard-header-ac-name d-flex align-items-center">
-                                        <span className="d-none d-md-flex">Bamboo Lounge</span>
-                                        <GoChevronDown size={18} />
-                                    </div>
+                <div className="dashboard-header-notification">
+                    <img src={notificationIcon} alt="Bell" className="img-fluid" />
+                </div>
+                <Dropdown className="d-inline mx-2 border-0">
+                    <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
+                        <div className="dashboard-header-ac-section">
+                            <div className="dashboard-header-ac">
+                                <div className="dashboard-header-ac-icon">BL</div>
+                                <div className="dashboard-header-ac-name d-flex align-items-center">
+                                    <span className="d-none d-md-flex">Bamboo Lounge</span>
+                                    <GoChevronDown size={18} />
                                 </div>
                             </div>
-                        </Dropdown.Toggle>
+                        </div>
+                    </Dropdown.Toggle>
 
-                        <Dropdown.Menu className="p-1">
-                            <Dropdown.Item className="drop-home-profile py-3">
-                                <div>BL</div>
-                                <div>
-                                    <span>Bamboo Lounge</span>
-                                    <span>Sales manager</span>
-                                </div>
-                            </Dropdown.Item>
+                    <Dropdown.Menu className="p-1">
+                        <Dropdown.Item className="drop-home-profile py-3">
+                            <div>BL</div>
+                            <div>
+                                <span>Bamboo Lounge</span>
+                                <span>Sales manager</span>
+                            </div>
+                        </Dropdown.Item>
 
-                            <Dropdown.Divider />
-                            <Dropdown.Item className="drop-menu-item">Profile</Dropdown.Item>
-                            <Dropdown.Item className="drop-menu-item">Add money</Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Item className="drop-menu-item logout">
-                                Logout
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    {/* <div className="dashboard-header-ac-section">
+                        <Dropdown.Divider />
+                        <Dropdown.Item className="drop-menu-item">Profile</Dropdown.Item>
+                        <Dropdown.Item className="drop-menu-item">Add money</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item className="drop-menu-item logout">
+                            Logout
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                {/* <div className="dashboard-header-ac-section">
           <div className="dashboard-header-ac">
             <div className="dashboard-header-ac-icon">BL</div>
             <div className="dashboard-header-ac-name d-flex align-items-center">
@@ -85,9 +84,8 @@ const Header = ({ handleSideBar }) => {
             </div>
           </div>
         </div> */}
-                </div>
             </div>
-        </Route>
+        </div>
     );
 };
 
