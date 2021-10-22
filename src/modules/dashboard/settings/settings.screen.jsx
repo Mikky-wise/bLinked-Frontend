@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import SettingsChangePassword from "./_components/_settings_change_password";
-import SettingsRolesScreen from "./_components/_settings_roles";
-import SettingsTeamMember from "./_components/_settings_team_member";
-import SettingsUserProfile from "./_components/_settings_user_profile";
+import SettingsChangePassword from "../../../module/dashboard/_components/_settings_change_password";
+import SettingsRolesScreen from "../../../module/dashboard/_components/_settings_roles";
+import SettingsTeamMember from "../../../module/dashboard/_components/_settings_team_member";
+import SettingsUserProfile from "../../../module/dashboard/_components/_settings_user_profile";
 
 const SettingsScreen = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [menu, setMenu] = useState("profile");
-
 
   const handleMenu = () => {
     setMenuActive(!menuActive);
@@ -22,7 +21,9 @@ const SettingsScreen = () => {
             <ul>
               <li
                 className={menu === "profile" ? "active" : ""}
-                onClick={() => {setMenu("profile")}}
+                onClick={() => {
+                  setMenu("profile");
+                }}
               >
                 User profile
               </li>
@@ -46,7 +47,13 @@ const SettingsScreen = () => {
               </li>
             </ul>
           </div>
-          <div className={menu === "teammember" ? "settings-form-container w-100" : "settings-form-container"}>
+          <div
+            className={
+              menu === "teammember"
+                ? "settings-form-container w-100"
+                : "settings-form-container"
+            }
+          >
             <div
               onClick={handleMenu}
               className="d-flex d-md-none pb-0 mt-3 justify-content-end"
@@ -62,29 +69,37 @@ const SettingsScreen = () => {
               <ul className="pt-4">
                 <li
                   className={menu === "profile" ? "active" : ""}
-                  onClick={() => {handleMenu() 
-                  setMenu("profile")}}
+                  onClick={() => {
+                    handleMenu();
+                    setMenu("profile");
+                  }}
                 >
                   User profile
                 </li>
                 <li
                   className={menu === "changepassword" ? "active" : ""}
-                  onClick={() => {handleMenu() 
-                  setMenu("changepassword")}}
+                  onClick={() => {
+                    handleMenu();
+                    setMenu("changepassword");
+                  }}
                 >
                   Change password
                 </li>
                 <li
                   className={menu === "teammember" ? "active" : ""}
-                  onClick={() => {handleMenu() 
-                  setMenu("teammember")}}
+                  onClick={() => {
+                    handleMenu();
+                    setMenu("teammember");
+                  }}
                 >
                   Team members
                 </li>
                 <li
                   className={menu === "roles" ? "active" : ""}
-                  onClick={() => {handleMenu() 
-                  setMenu("roles")}}
+                  onClick={() => {
+                    handleMenu();
+                    setMenu("roles");
+                  }}
                 >
                   Roles & Permissions
                 </li>
@@ -95,9 +110,11 @@ const SettingsScreen = () => {
               <SettingsUserProfile />
             ) : menu === "changepassword" ? (
               <SettingsChangePassword />
-              ) : menu === "teammember" ? (
-                <SettingsTeamMember />
-              ) : <SettingsRolesScreen />}
+            ) : menu === "teammember" ? (
+              <SettingsTeamMember />
+            ) : (
+              <SettingsRolesScreen />
+            )}
           </div>
         </div>
       </div>

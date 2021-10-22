@@ -1,3 +1,7 @@
+.bg-theme-1 {
+  background: rgba(#3842b0, 0.05);
+}
+
 .dashboard-main {
   height: 100vh;
   overflow-y: auto;
@@ -5,44 +9,12 @@
   background: rgba(#3842b0, 0.05);
 }
 
-.dashboard-container {
-  width: 86%;
-}
-
-.sidebar-main {
-  position: fixed;
-  // overflow-x: hidden;
-  width: 14%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: #fff;
-  transition: all 0.5s linear;
-  padding: 0 20px;
-
-  .sidebar-logo {
-    > div {
-      position: absolute;
-      top: -100%;
-      right: -22%;
-      width: 30px;
-      height: 30px;
-      font-size: 18px;
-      background: #ffffff;
-      border-radius: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-
 .sidebar-menu {
   ul {
     font-family: var(--font-adineue-pro);
     list-style: none;
     padding-left: 0;
-    
+
     li {
       font-style: normal;
       font-weight: normal;
@@ -297,7 +269,7 @@
       align-items: center;
     }
   }
-  
+
   .dashboard-complate-setup-btn {
     > button {
       font-family: var(--font-adineue-pro);
@@ -333,7 +305,7 @@
         font-weight: bold;
         font-size: 28px;
         color: #3842b0;
-      font-family: var(--font-gt-walsheim-pro);
+        font-family: var(--font-gt-walsheim-pro);
       }
       > span:nth-child(2) {
         font-weight: 500;
@@ -390,9 +362,9 @@
       height: 38px;
       color: #9395b4;
       width: 220px;
-    
+
       &::placeholder {
-        color: #9395B4;
+        color: #9395b4;
       }
     }
   }
@@ -426,51 +398,7 @@
     background: #dfe5ed;
   }
 
-  // .home-pending-order-grid-view {
-  //   cursor: pointer;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   width: 38px;
-  //   height: 38px;
-  //   border-radius: 8px;
-  //   margin-right: 10px;
-
-  //   &.active {
-  //     background: #f5f5f7;
-  //   }
-  // }
-
-  // .home-pending-order-list-view {
-  //   cursor: pointer;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  //   width: 38px;
-  //   height: 38px;
-  //   background: none;
-  //   border-radius: 8px;
-  //   margin-right: 10px;
-  //   border: 1px solid #ecebf5;
-
-  //   > div {
-  //     width: 50%;
-  //     height: 2px;
-  //     background: grey;
-
-  //     &:nth-child(2) {
-  //       margin: 5px 0;
-  //     }
-  //   }
-
-  //   &.active {
-  //     background: #f5f5f7;
-  //   }
-  // }
-
   .home-pending-order-grid-container {
-    // background: cornsilk;
     margin-top: 23px;
   }
 
@@ -783,8 +711,8 @@
       font-family: var(--font-gt-walsheim-pro);
       font-style: normal;
       font-weight: normal;
-      font-size: 8px;     
-      color: #212B36;
+      font-size: 8px;
+      color: #212b36;
       mix-blend-mode: normal;
       opacity: 0.5;
     }
@@ -794,7 +722,7 @@
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
-      color: #212B36;
+      color: #212b36;
     }
   }
 }

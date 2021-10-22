@@ -12,7 +12,7 @@ import {
   Popover,
 } from "react-bootstrap";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import { GoogleLocate, MapMarker } from "../../assets/img";
+import { GoogleLocate, MapMarker } from "../../../assets/img";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 import {
@@ -23,10 +23,10 @@ import {
   filterIcon,
   orderEmpty,
   map,
-} from "../../assets/img";
-import TotalRatingCard from "./_components/_total_rating_card";
-import order from "../../mockData/pending_order.json";
-import PendingOrderBox from "./_components/_pending_order_box";
+} from "../../../assets/img";
+import TotalRatingCard from "../../../module/dashboard/_components/_total_rating_card";
+import order from "../../../mockData/pending_order.json";
+import PendingOrderBox from "../../../module/dashboard/_components/_pending_order_box";
 
 const HomeScreen = (props) => {
   const mapRef = useRef(null);
@@ -154,27 +154,15 @@ const HomeScreen = (props) => {
           <div className="dashboard-complete-vector px-md-5 py-4">
             <div className="d-flex flex-column justify-content-between">
               <div className="d-flex justify-content-end">
-                <img
-                  src={dashboardVector3}
-                  alt=""
-                  className="img-fluid"
-                />
+                <img src={dashboardVector3} alt="" className="img-fluid" />
               </div>
               <div className="d-flex justify-content-start">
-                <img
-                  src={dashboardVector2}
-                  alt=""
-                  className="img-fluid"
-                />
+                <img src={dashboardVector2} alt="" className="img-fluid" />
               </div>
             </div>
             <div className="mx-md-5 mx-4">
               <div className="d-flex justify-content-end">
-                <img
-                  src={dashboardVector1}
-                  alt=""
-                  className="img-fluid"
-                />
+                <img src={dashboardVector1} alt="" className="img-fluid" />
               </div>
             </div>
           </div>

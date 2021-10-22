@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { AuthPage } from './module/auth';
-import { PublicRoutes, PrivateRoutes } from './routes/navigation';
+import { AuthPage } from "./module/auth";
+import { PublicRoutes, PrivateRoutes } from "./routes/navigation";
 
 // Auth SCSS Start
 import "./assets/scss/auth/_footer.scss";
@@ -20,15 +20,17 @@ import "./assets/scss/dashboard/_settings.scss";
 import "./assets/scss/dashboard/_orders.scss";
 // Dashboard SCSS End
 
-import Dashboard from "./module/dashboard";
+// Pages
+import Board from "./pages/dashboard";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Switch>
-         <Route path={PublicRoutes.AUTH} component={AuthPage} />
-          <Route path={PrivateRoutes.DASHBOARD} component={Dashboard} />
+          <Route path={PublicRoutes.AUTH} component={AuthPage} />
+          <Route path={PrivateRoutes.HOMEPAGE} component={Board} />
+          {/* <Route path={PrivateRoutes.DASHBOARD} component={Dashboard} /> */}
         </Switch>
       </BrowserRouter>
     </div>
