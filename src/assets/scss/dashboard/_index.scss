@@ -42,7 +42,7 @@
     font-family: var(--font-adineue-pro);
     list-style: none;
     padding-left: 0;
-
+    
     li {
       font-style: normal;
       font-weight: normal;
@@ -297,7 +297,7 @@
       align-items: center;
     }
   }
-
+  
   .dashboard-complate-setup-btn {
     > button {
       font-family: var(--font-adineue-pro);
@@ -333,7 +333,7 @@
         font-weight: bold;
         font-size: 28px;
         color: #3842b0;
-        font-family: var(--font-gt-walsheim-pro);
+      font-family: var(--font-gt-walsheim-pro);
       }
       > span:nth-child(2) {
         font-weight: 500;
@@ -390,9 +390,9 @@
       height: 38px;
       color: #9395b4;
       width: 220px;
-
+    
       &::placeholder {
-        color: #9395b4;
+        color: #9395B4;
       }
     }
   }
@@ -783,8 +783,8 @@
       font-family: var(--font-gt-walsheim-pro);
       font-style: normal;
       font-weight: normal;
-      font-size: 8px;
-      color: #212b36;
+      font-size: 8px;     
+      color: #212B36;
       mix-blend-mode: normal;
       opacity: 0.5;
     }
@@ -794,7 +794,7 @@
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
-      color: #212b36;
+      color: #212B36;
     }
   }
 }
