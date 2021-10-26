@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import validator from "validator";
+import { logo, eye } from "../../assets/img";
+import Footer from "../../Components/Footer";
 
-import { logo, eye } from "../../../assets/img";
-import Footer from "../_components/_footer";
-
-const SetPasswordScreen = () => {
+const CreatePassword = () => {
   const history = useHistory();
 
   const [pass, setPass] = useState({
@@ -22,6 +22,11 @@ const SetPasswordScreen = () => {
     cpass: false,
   });
 
+  const [passwordType, setPasswordType] = useState({
+    npassType: 'password',
+    cpassType: 'password'
+  })
+
   const inputFocus = (name) => {
     setPassFocus({
       ...passFocus,
@@ -35,19 +40,68 @@ const SetPasswordScreen = () => {
       ...pass,
       [name]: value,
     });
-  };
+
+    if (name === 'npass') {
+      if (!value) {
+        setPassErr({ ...passErr, npassErr: true });
+      }
+      else if (!validator.isStrongPassword(value)) {
+        setPassErr({ ...passErr, npassErr: true });
+      } else {
+        setPassErr({ ...passErr, npassErr: false });
+      }
+    } else {
+      if (!value && pass.npass !== null) {
+        setPassErr({ ...passErr, cpassErr: true });
+      }
+      else if (value !== pass.npass) {
+        setPassErr({ ...passErr, cpassErr: true });
+      } else {
+        setPassErr({ ...passErr, cpassErr: false });
+      }
+    }
+  }
 
   const handleClick = () => {
     const { npass, cpass } = pass;
-    if (!npass || !cpass) {
+    if (!npass && !passErr.npassErr) {
       setPassErr({
+        ...passErr,
         npassErr: !npass ? true : false,
-        cpassErr: !cpass ? true : false,
       });
+    } else if (!cpass && !passErr.cpassErr) {
+      setPassErr({
+        ...passErr,
+        cpassErr: !cpass ? true : false,
+      })
+    } else if (passErr.npassErr || passErr.cpassErr) {
+      return;
     } else {
       history.push("/auth/password_success");
     }
   };
+
+  const handlePassType = (e) => {
+    const { id } = e.target;
+
+    if (id === 'cpass') {
+      if (passwordType.cpassType === 'password') {
+        setPasswordType({ ...passwordType, cpassType: 'text' })
+      } else {
+        setPasswordType({ ...passwordType, cpassType: 'password' })
+      }
+    } else {
+      if (passwordType.npassType === 'password') {
+        setPasswordType({ ...passwordType, npassType: 'text' })
+      } else {
+        setPasswordType({ ...passwordType, npassType: 'password' })
+      }
+    }
+  }
+
+  const handleLogin = () => {
+    history.push("/");
+  }
 
   return (
     <div className="auth-main">
@@ -66,18 +120,20 @@ const SetPasswordScreen = () => {
               <div
                 className={
                   passFocus.npass
-                    ? "input-box active w-100"
+                    ? passErr.npassErr ?
+                      "input-box active w-100 forgot-email-border"
+                      : "input-box active w-100"
                     : passErr.npassErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div>
-                  <img src={eye} alt="Eye" className="img-fluid" />
+                  <img src={eye} alt="Eye" className="img-fluid" id="npass" onClick={handlePassType} />
                 </div>
                 <label>New password</label>
                 <input
-                  type="password"
+                  type={passwordType.npassType}
                   className="w-100"
                   name="npass"
                   value={pass.npass}
@@ -94,22 +150,34 @@ const SetPasswordScreen = () => {
                 />
               </div>
             </div>
+            <div
+              className={
+                passErr.npassErr
+                  ? "col-lg-12 text-start px-4 forgot-email-err"
+                  : "d-none"
+              }
+            >
+              Enter a strong password containing at least 8 characters with
+              1 lower case letter, 1 upper case letter, 1 number and 1 special character
+            </div>
             <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container fotgot-pass-border">
               <div
                 className={
                   passFocus.cpass
-                    ? "input-box active w-100"
+                    ? passErr.cpassErr ?
+                      "input-box active w-100 forgot-email-border"
+                      : "input-box active w-100"
                     : passErr.cpassErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div>
-                  <img src={eye} alt="Eye" className="img-fluid" />
+                  <img src={eye} alt="Eye" className="img-fluid" id="cpass" onClick={handlePassType} />
                 </div>
                 <label>Confirm new password</label>
                 <input
-                  type="password"
+                  type={passwordType.cpassType}
                   className="w-100"
                   name="cpass"
                   value={pass.cpass}
@@ -126,6 +194,15 @@ const SetPasswordScreen = () => {
                 />
               </div>
             </div>
+            <div
+              className={
+                passErr.cpassErr
+                  ? "col-lg-12 text-start px-4 forgot-email-err"
+                  : "d-none"
+              }
+            >
+              Passwords do not match
+            </div>
           </div>
 
           <div className="px-2 auth-cmn-btn mt-5">
@@ -135,7 +212,7 @@ const SetPasswordScreen = () => {
           </div>
 
           <div className="auth-cmn-signin mt-4">
-            Take me back to<span> Login</span>
+            Take me back to<span onClick={handleLogin}> Login</span>
           </div>
         </div>
         <Footer />
@@ -144,4 +221,4 @@ const SetPasswordScreen = () => {
   );
 };
 
-export default SetPasswordScreen;
+export default CreatePassword;

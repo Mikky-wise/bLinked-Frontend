@@ -1,29 +1,27 @@
-import React, { useState, useRef } from "react";
+import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
+import React, { useRef, useState } from "react";
+import {
+  Dropdown
+} from "react-bootstrap";
+import { BsGridFill, BsThreeDots } from "react-icons/bs";
+import { FcMenu } from "react-icons/fc";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
-import { BsGridFill, BsThreeDots } from "react-icons/bs";
-import { FcMenu } from "react-icons/fc";
-import {
-  Dropdown,
-} from "react-bootstrap";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import { GoogleLocate, MapMarker } from "../../assets/img";
-import { FiMinus, FiPlus } from "react-icons/fi";
-
 import {
   calenderIcon,
   dashboardVector1,
   dashboardVector2,
   dashboardVector3,
-  filterIcon,
-  orderEmpty,
+  filterIcon, GoogleLocate, MapMarker, orderEmpty
 } from "../../assets/img";
-import TotalRatingCard from "./_components/_total_rating_card";
 import order from "../../mockData/pending_order.json";
-import PendingOrderBox from "./_components/_pending_order_box";
+import PendingOrder from "../Orders/PendingOrder";
+import RatingCard from "../../Components/RatingCard";
 
-const HomeScreen = (props) => {
+
+const HomePage = (props) => {
   const mapRef = useRef(null);
   // const ref = useRef(null);
   const [activeView, setActiveView] = useState("grid");
@@ -180,7 +178,7 @@ const HomeScreen = (props) => {
         <div className="total-rating-container">
           <div className="row px-md-4 px-2 py-4">
             <div className="col-lg-4 px-md-3">
-              <TotalRatingCard
+              <RatingCard
                 title="Total Orders"
                 total="32,400"
                 rating="+51%"
@@ -188,7 +186,7 @@ const HomeScreen = (props) => {
               />
             </div>
             <div className="col-lg-4 px-md-3 mt-md-0 mt-4">
-              <TotalRatingCard
+              <RatingCard
                 title="Transactions"
                 total="32,400"
                 rating="+51%"
@@ -196,7 +194,7 @@ const HomeScreen = (props) => {
               />
             </div>
             <div className="col-lg-4 px-md-3 mt-md-0 mt-4">
-              <TotalRatingCard
+              <RatingCard
                 title="Performance"
                 total="32,400"
                 rating="+51%"
@@ -276,7 +274,7 @@ const HomeScreen = (props) => {
                   {order.map((item, i) => {
                     return (
                       <div className="col-lg-4 mt-3" key={i}>
-                        <PendingOrderBox item={item} />
+                        <PendingOrder item={item} />
                       </div>
                     );
                   })}
@@ -326,14 +324,14 @@ const HomeScreen = (props) => {
                                 item.status === "New"
                                   ? "#FFEBEC"
                                   : item.status === "Enroute Dropoff"
-                                  ? "#E9EEFF"
-                                  : "#FCF2E3",
+                                    ? "#E9EEFF"
+                                    : "#FCF2E3",
                               color:
                                 item.status === "New"
                                   ? "#FF4554"
                                   : item.status === "Enroute Dropoff"
-                                  ? "#1752FF"
-                                  : "#F1872D",
+                                    ? "#1752FF"
+                                    : "#F1872D",
                             }}
                           >
                             {item.status}
@@ -458,7 +456,7 @@ const HomeScreen = (props) => {
                       marker={activeMarker}
                       visible={showInfoWindow}
                       google={props.google}
-                      // map={mapRef}
+                    // map={mapRef}
                     >
                       <div>
                         <h1>Hello</h1>
@@ -528,4 +526,4 @@ const LoadingContainer = () => <div></div>;
 export default GoogleApiWrapper({
   apiKey: "AIzaSyC445P-0GdRNz_li2hPGjYLzHzFokCpj68",
   LoadingContainer: LoadingContainer,
-})(HomeScreen);
+})(HomePage);

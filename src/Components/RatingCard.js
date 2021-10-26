@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
-const TotalRatingCard = ({ title, total, rating, desc }) => {
+const RatingCard = ({ title, total, rating, desc }) => {
   return (
     <div className="total-rating-card p-4">
       <div className="total-rating-card-title">{title}</div>
@@ -16,4 +16,4 @@ const TotalRatingCard = ({ title, total, rating, desc }) => {
   );
 };
 
-export default TotalRatingCard;
+export default RatingCard;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { eye } from "../../../assets/img";
+import { eye } from "../../assets/img";
 
 const SettingsChangePassword = () => {
   const [user, setUser] = useState({
