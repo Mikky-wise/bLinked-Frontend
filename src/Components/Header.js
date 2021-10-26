@@ -1,14 +1,15 @@
 import React from "react";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { ImSearch } from "react-icons/im";
 import { GoChevronDown } from "react-icons/go";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { Dropdown } from "react-bootstrap";
 
-import { notificationIcon } from "../../../assets/img";
+import { notificationIcon } from "../assets/img";
 
 const Header = ({ handleSideBar }) => {
   const location = useLocation();
+  const history = useHistory();
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <span
@@ -21,6 +22,15 @@ const Header = ({ handleSideBar }) => {
       {children}
     </span>
   ));
+
+  const handleProfile = () => {
+    history.push('/settings');
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    history.push('/');
+  }
 
   return (
     <div className="dashboard-header-main px-md-4 px-2">
@@ -68,10 +78,10 @@ const Header = ({ handleSideBar }) => {
             </Dropdown.Item>
 
             <Dropdown.Divider />
-            <Dropdown.Item className="drop-menu-item">Profile</Dropdown.Item>
+            <Dropdown.Item className="drop-menu-item" onClick={handleProfile}>Profile</Dropdown.Item>
             <Dropdown.Item className="drop-menu-item">Add money</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item className="drop-menu-item logout">
+            <Dropdown.Item className="drop-menu-item logout" onClick={handleLogout}>
               Logout
             </Dropdown.Item>
           </Dropdown.Menu>

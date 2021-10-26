@@ -1,11 +1,20 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import { MdClose } from "react-icons/md";
+import { useHistory } from "react-router-dom";
+import { agentsMenu, feedbackMenu, homeMenu, logo, logoutMenu, orderMenu, settingMenu } from "../assets/img";
 
-import { logo, homeMenu, orderMenu, feedbackMenu, agentsMenu, settingMenu, logoutMenu } from "../../../assets/img";
+const Sidebar = ({ activeMenu, setActiveMenu, activeSidebar, handleSideBar }) => {
+  const history = useHistory();
 
-const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
-  const location = useLocation();
+  const handleMenu = (menuItem) => {
+    setActiveMenu(menuItem);
+    history.push(`/${menuItem}`);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    history.push('/');
+  }
 
   return (
     <div className={!activeSidebar ? "" : "sidebar-bg"}>
@@ -23,7 +32,7 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
         <div className="sidebar-menu">
           <ul className="mt-5">
             <li
-              className={location?.state?.menu === "Home" ? "active" : ""}
+              className={activeMenu === "Home" ? "active" : ""}
               onClick={() => {
                 handleMenu("Home");
                 handleSideBar();
@@ -38,9 +47,9 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
             </li>
 
             <li
-              className={location?.state?.menu === "Orders" ? "active" : ""}
+              className={activeMenu === "orders" ? "active" : ""}
               onClick={() => {
-                handleMenu("Orders");
+                handleMenu("orders");
                 handleSideBar();
               }}
             >
@@ -81,9 +90,9 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
               </div>
             </li>
             <li
-              className={location?.state?.menu === "General Settings" ? "active" : ""}
+              className={activeMenu === "settings" ? "active" : ""}
               onClick={() => {
-                handleMenu("General Settings");
+                handleMenu("settings");
                 handleSideBar();
               }}
             >
@@ -98,7 +107,7 @@ const Sidebar = ({ activeMenu, handleMenu, activeSidebar, handleSideBar }) => {
                 <span>Settings</span>
               </div>
             </li>
-            <li>
+            <li onClick={handleLogout}>
               <div>
                 <span>
                   <img

@@ -1,11 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router";
 
-import { logo, lock } from "../../../assets/img";
-import Footer from "../_components/_footer";
+import { logo, lock } from "../../assets/img";
+import Footer from "../../Components/Footer";
 
-const PassResetSuccessScreen = () => {
+const PasswordReset = () => {
+  const history = useHistory();
+
   const handleClick = () => {
-    console.log("object");
+    history.push("/home");
   };
 
   return (
@@ -21,7 +24,7 @@ const PassResetSuccessScreen = () => {
           <div className="auth-cmn-title">Password reset successful!</div>
           <div className="row justify-content-center">
             <div className="auth-cmn-subtitle px-5">
-              The password for your Kwiksell account has been successful reset
+              The password for your bLinked account has been successful reset
             </div>
           </div>
 
@@ -37,4 +40,4 @@ const PassResetSuccessScreen = () => {
   );
 };
 
-export default PassResetSuccessScreen;
+export default PasswordReset;

@@ -1,13 +1,22 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
+import validator from "validator";
+import { logo, validemail } from "../../assets/img";
+import Footer from "../../Components/Footer";
 
-import { logo } from "../../../assets/img";
-import Footer from "../_components/_footer";
+const SignUpPage2 = () => {
+  const history = useHistory();
 
-const Signup2Screen = () => {
   const [cmp, setCmp] = useState({
     cname: "",
     cemail: "",
     cphone: "",
+  });
+
+  const [cmpErr, setCmpErr] = useState({
+    nameErr: false,
+    emailErr: false,
+    phoneErr: false,
   });
 
   const [cmpFocus, setCmpFocus] = useState({
@@ -29,7 +38,71 @@ const Signup2Screen = () => {
       ...cmp,
       [name]: value,
     });
+
+    if (name === 'cemail') {
+
+      if (!value) {
+        setCmpErr({
+          ...cmpErr,
+          emailErr: true
+        });
+      }
+
+      if (typeof value !== "undefined") {
+        let lastAtPos = value.lastIndexOf("@");
+        let lastDotPos = value.lastIndexOf(".");
+
+        if (
+          !(
+            lastAtPos < lastDotPos &&
+            lastAtPos > 0 &&
+            value.indexOf("@@") === -1 &&
+            lastDotPos > 2 &&
+            value.length - lastDotPos > 2
+          )
+        ) {
+          setCmpErr({
+            ...cmpErr,
+            emailErr: true
+          });
+        } else {
+          setCmpErr({
+            ...cmpErr,
+            emailErr: false
+          });
+        }
+      }
+    }
   };
+
+  const handleSignUp = () => {
+    const { cname, cphone, cemail } = cmp;
+    if (!cname) {
+      setCmpErr({
+        ...cmpErr,
+        nameErr: !cname ? true : false,
+
+      });
+    } else if (!cemail && !cmpErr.emailErr) {
+      setCmpErr({
+        ...cmpErr,
+        emailErr: !cemail ? true : false,
+      });
+    } else if (cmpErr.emailErr) {
+      return;
+    } else if (!cphone) {
+      setCmpErr({
+        ...cmpErr,
+        phoneErr: !cphone ? true : false,
+      })
+    } else {
+      history.push("/home");
+    }
+  }
+
+  const handleLogin = () => {
+    history.push("/");
+  }
 
   return (
     <div className="auth-main">
@@ -45,7 +118,11 @@ const Signup2Screen = () => {
             <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
-                  cmpFocus.cname ? "input-box active w-100" : "input-box w-100"
+                  cmpFocus.cname
+                    ? "input-box active w-100"
+                    : cmpErr.nameErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>Company name</label>
@@ -73,9 +150,22 @@ const Signup2Screen = () => {
             <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
-                  cmpFocus.cemail ? "input-box active w-100" : "input-box w-100"
+                  cmpFocus.cemail
+                    ? cmpErr.emailErr ?
+                      "input-box active w-100 forgot-email-border"
+                      : "input-box active w-100"
+                    : cmpErr.emailErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
+                <div className={!validator.isEmail(cmp.cemail) ? "d-none" : ""}>
+                  <img
+                    src={validemail}
+                    alt="Valid Email"
+                    className="img-fluid"
+                  />
+                </div>
                 <label>Company Email address</label>
                 <input
                   type="text"
@@ -95,12 +185,25 @@ const Signup2Screen = () => {
                 />
               </div>
             </div>
+            <div
+              className={
+                cmpErr.emailErr
+                  ? "col-lg-12 text-start px-4 forgot-email-err"
+                  : "d-none"
+              }
+            >
+              Enter a valid email address
+            </div>
           </div>
           <div className="row">
             <div className="col-lg-12 martop-32 auth-input-container">
               <div
                 className={
-                  cmpFocus.cphone ? "input-box active w-100" : "input-box w-100"
+                  cmpFocus.cphone
+                    ? "input-box active w-100"
+                    : cmpErr.phoneErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>Company phone</label>
@@ -125,11 +228,11 @@ const Signup2Screen = () => {
           </div>
 
           <div className="px-2 auth-cmn-btn mt-5">
-            <button className="w-100">Sign up</button>
+            <button className="w-100" onClick={handleSignUp}>Sign up</button>
           </div>
 
           <div className="auth-cmn-signin mt-4">
-            Don’t have an account yet? <span> Create account </span>
+            Already have an account yet? <span onClick={handleLogin}>Sign in</span>
           </div>
         </div>
         <Footer />
@@ -138,4 +241,4 @@ const Signup2Screen = () => {
   );
 };
 
-export default Signup2Screen;
+export default SignUpPage2;

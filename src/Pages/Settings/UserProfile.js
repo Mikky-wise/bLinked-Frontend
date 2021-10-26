@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
-const SettingsUserProfile = () => {
+const UserProfile = () => {
 
   const [user, setUser] = useState({
     fname: "",
@@ -215,4 +215,4 @@ const SettingsUserProfile = () => {
   );
 };
 
-export default SettingsUserProfile;
+export default UserProfile;

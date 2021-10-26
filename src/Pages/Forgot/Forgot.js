@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import validator from "validator";
 import { useHistory } from "react-router-dom";
 
-import { logo, validemail } from "../../../assets/img";
-import Footer from "../_components/_footer";
+import { logo, validemail } from "../../assets/img";
+import Footer from "../../Components/Footer";
 
 const ForgotEmailScreen = () => {
   const history = useHistory()
@@ -37,7 +37,7 @@ const ForgotEmailScreen = () => {
         )
       ) {
         setEmailErr('true');
-      }else{
+      } else {
         setEmailErr(false)
       }
     }
@@ -54,7 +54,7 @@ const ForgotEmailScreen = () => {
   };
 
   const handleLogin = () => {
-    history.push("/auth/signin")
+    history.push("/")
   }
 
   return (
@@ -79,8 +79,8 @@ const ForgotEmailScreen = () => {
                       ? "input-box active w-100 forgot-email-border"
                       : "input-box active w-100"
                     : emailErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div className={!validator.isEmail(email) ? "d-none" : ""}>

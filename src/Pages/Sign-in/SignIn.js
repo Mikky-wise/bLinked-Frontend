@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import validator from "validator";
+import { logo, google, eye, partical, partical2, partical3, partical4, partical5, loginVectorA, validemail } from "../../assets/img";
 
-import { logo, google, eye, partical, partical2, partical3, partical4, partical5, loginVectorA } from "../../../assets/img";
-
-const SigninScreen = () => {
+const SignInPage = () => {
   const history = useHistory();
 
   const [user, setUser] = useState({
@@ -21,6 +21,8 @@ const SigninScreen = () => {
     password: false,
   });
 
+  const [passwordType, setPasswordType] = useState("password");
+
   const inputFocus = (name) => {
     setUserFocus({
       ...userFocus,
@@ -34,17 +36,72 @@ const SigninScreen = () => {
       ...user,
       [name]: value,
     });
+
+    if (name === 'email') {
+      setUser({
+        ...user,
+        [name]: value,
+      });
+
+      if (!value) {
+        setUserErr({
+          ...userErr,
+          emailErr: true
+        });
+      }
+
+      if (typeof value !== "undefined") {
+        let lastAtPos = value.lastIndexOf("@");
+        let lastDotPos = value.lastIndexOf(".");
+
+        if (
+          !(
+            lastAtPos < lastDotPos &&
+            lastAtPos > 0 &&
+            value.indexOf("@@") === -1 &&
+            lastDotPos > 2 &&
+            value.length - lastDotPos > 2
+          )
+        ) {
+          setUserErr({
+            ...userErr,
+            emailErr: true
+          });
+        } else {
+          setUserErr({
+            ...userErr,
+            emailErr: false
+          });
+        }
+      }
+    }
   };
+
+  const handlePassType = (e) => {
+    if (passwordType === "password") {
+      setPasswordType("text")
+    } else {
+      setPasswordType('password')
+    }
+  }
 
   const handleLogin = () => {
     const { email, password } = user;
-    if (!email || !password) {
+    if (!password) {
       setUserErr({
-        emailErr: !email ? true : false,
+        ...userErr,
         passwordErr: !password ? true : false,
       });
+    } else if (!email && !userErr.emailErr) {
+      setUserErr({
+        ...userErr,
+        emailErr: !email ? true : false,
+      });
+    } else if (userErr.emailErr || userErr.passwordErr) {
+      return;
     } else {
-      history.push("/");
+      localStorage.setItem("accessToken", email);
+      history.push("/home");
     }
   };
 
@@ -81,12 +138,21 @@ const SigninScreen = () => {
                 <div
                   className={
                     userFocus.email
-                      ? "input-box active w-100"
+                      ? userErr.emailErr ?
+                        "input-box active w-100 forgot-email-border"
+                        : "input-box active w-100"
                       : userErr.emailErr
-                      ? "input-box w-100 forgot-email-border"
-                      : "input-box w-100"
+                        ? "input-box w-100 forgot-email-border"
+                        : "input-box w-100"
                   }
                 >
+                  <div className={!validator.isEmail(user.email) ? "d-none" : ""}>
+                    <img
+                      src={validemail}
+                      alt="Valid Email"
+                      className="img-fluid"
+                    />
+                  </div>
                   <label>Email</label>
                   <input
                     type="text"
@@ -106,22 +172,31 @@ const SigninScreen = () => {
                   />
                 </div>
               </div>
+              <div
+                className={
+                  userErr.emailErr
+                    ? "col-lg-12 text-start px-4 forgot-email-err"
+                    : "d-none"
+                }
+              >
+                Enter a valid email address
+              </div>
               <div className="col-lg-12 auth-input-container">
                 <div
                   className={
                     userFocus.password
                       ? "input-box active w-100"
                       : userErr.passwordErr
-                      ? "input-box w-100 forgot-email-border"
-                      : "input-box w-100"
+                        ? "input-box w-100 forgot-email-border"
+                        : "input-box w-100"
                   }
                 >
-                <div>
-                  <img src={eye} alt="Eye" className="img-fluid" />
-                </div>
+                  <div>
+                    <img src={eye} alt="Eye" className="img-fluid" onClick={handlePassType} />
+                  </div>
                   <label>Password</label>
                   <input
-                    type="password"
+                    type={passwordType}
                     className="w-100"
                     name="password"
                     value={user.password}
@@ -202,4 +277,4 @@ const SigninScreen = () => {
   );
 };
 
-export default SigninScreen;
+export default SignInPage;

@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-
-import { logo } from "../../../assets/img";
-import Footer from "../_components/_footer"
+import { logo } from "../../assets/img";
+import Footer from "../../Components/Footer";
 
 const OTPScreen = () => {
   const history = useHistory()
@@ -44,7 +43,7 @@ const OTPScreen = () => {
   }
 
   const handleLogin = () => {
-    history.push("/auth/signin")
+    history.push("/")
   }
 
 
@@ -74,7 +73,7 @@ const OTPScreen = () => {
                 maxLength={1}
                 onChange={(e) => {
                   setPin1(e.target.value);
-                  setPinErr({...pinErr, pin1Err: false})
+                  setPinErr({ ...pinErr, pin1Err: false })
                   if (e.target.value !== "") {
                     pin2ref.current.focus();
                   } else {
@@ -91,7 +90,7 @@ const OTPScreen = () => {
                 maxLength={1}
                 onChange={(e) => {
                   setPin2(e.target.value);
-                  setPinErr({...pinErr, pin2Err: false})
+                  setPinErr({ ...pinErr, pin2Err: false })
                   if (e.target.value !== "") {
                     pin3ref.current.focus();
                   } else {
@@ -108,7 +107,7 @@ const OTPScreen = () => {
                 maxLength={1}
                 onChange={(e) => {
                   setPin3(e.target.value);
-                  setPinErr({...pinErr, pin3Err: false})
+                  setPinErr({ ...pinErr, pin3Err: false })
                   if (e.target.value !== "") {
                     pin4ref.current.focus();
                   } else {
@@ -125,7 +124,7 @@ const OTPScreen = () => {
                 maxLength={1}
                 onChange={(e) => {
                   setPin4(e.target.value);
-                  setPinErr({...pinErr, pin4Err: false})
+                  setPinErr({ ...pinErr, pin4Err: false })
                   if (e.target.value !== "") {
                     pin5ref.current.focus();
                   } else {
@@ -142,7 +141,7 @@ const OTPScreen = () => {
                 maxLength={1}
                 onChange={(e) => {
                   setPin5(e.target.value);
-                  setPinErr({...pinErr, pin5Err: false})
+                  setPinErr({ ...pinErr, pin5Err: false })
                   if (e.target.value !== "") {
                     pin6ref.current.focus();
                   } else {
@@ -159,7 +158,7 @@ const OTPScreen = () => {
                 maxLength={1}
                 onChange={(e) => {
                   setPin6(e.target.value);
-                  setPinErr({...pinErr, pin6Err: false})
+                  setPinErr({ ...pinErr, pin6Err: false })
                   if (e.target.value !== "") {
                     pin6ref.current.focus();
                   } else {
