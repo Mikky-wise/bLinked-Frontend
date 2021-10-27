@@ -23,7 +23,6 @@
     display: flex;
     align-items: center;
     font-family: var(--font-adineue-pro);
-      
 
     > span {
       position: absolute;
@@ -48,7 +47,7 @@
 
   .orders-filter {
     margin-right: 10px;
-    
+
     > button {
       font-family: var(--font-adineue-pro);
       font-size: 14px;
@@ -79,7 +78,7 @@
     > table {
       overflow-x: scroll;
       word-wrap: break-word;
-  
+
       // width: 100%;
 
       tr {
@@ -138,7 +137,7 @@
     color: #92929d;
     font-family: var(--font-adineue-pro);
     font-size: 14px;
-    
+
     > div:nth-child(1) {
       color: #637381;
     }
@@ -344,23 +343,23 @@
 
 .order-modal-search-agent {
   .order-modal-search-agent-input {
-     > input {
-       width: 100%;
-       border: 1px solid #ecebf5;
-       padding: 12px 16px;
-       border-radius: 6px;
-       font-size: 14px;
-       color: #9395B4;
+    > input {
+      width: 100%;
+      border: 1px solid #ecebf5;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #9395b4;
       outline: none;
 
-       &:focus {
+      &:focus {
         border: 1px solid #ecebf5;
-       }
+      }
 
-       &::placeholder {
-        color: #9395B4;
-       }
-     }
+      &::placeholder {
+        color: #9395b4;
+      }
+    }
   }
 }
 
@@ -387,9 +386,9 @@
   width: 40px;
   height: 40px;
   color: #fff;
-  background: #0D99F2;
+  background: #0d99f2;
   font-weight: 500;
-  font-size: 16px;  
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -402,14 +401,14 @@
   flex-direction: column;
 
   > span:nth-child(1) {
-    font-size: 14px;    
-    color: #0F112B;
+    font-size: 14px;
+    color: #0f112b;
   }
 
   > span:nth-child(2) {
     font-size: 13px;
     text-transform: capitalize;
-    color: rgba(#5A5D82, 0.8);
+    color: rgba(#5a5d82, 0.8);
   }
 }
 
@@ -420,5 +419,9 @@
 
 .order-agent-err {
   font-size: 12px;
-  color: #FF4554;
+  color: #ff4554;
+}
+
+.three_dots {
+  cursor: pointer;
 }

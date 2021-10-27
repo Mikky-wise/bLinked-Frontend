@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router";
-import { ImSearch } from "react-icons/im";
 import { GoChevronDown } from "react-icons/go";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { Dropdown } from "react-bootstrap";
@@ -45,13 +44,6 @@ const Header = ({ handleSideBar }) => {
         </span>
       </div>
       <div className="dashboard-header-account">
-        <div className="dashboard-header-search">
-          <span className="search-icon">
-            <ImSearch size={20} />
-            {/* <img src={searchIcon} alt="Search" /> */}
-          </span>
-          <span className="d-none d-md-flex">Search</span>
-        </div>
         <div className="dashboard-header-notification">
           <img src={notificationIcon} alt="Bell" className="img-fluid" />
         </div>

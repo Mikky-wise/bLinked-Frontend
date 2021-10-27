@@ -25,7 +25,7 @@ const CreatePassword = () => {
   const [passwordType, setPasswordType] = useState({
     npassType: 'password',
     cpassType: 'password'
-  })
+  });
 
   const inputFocus = (name) => {
     setPassFocus({

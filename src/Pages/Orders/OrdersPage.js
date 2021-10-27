@@ -29,15 +29,22 @@ const OrdersPage = () => {
   const [activeMenu, setActiveMenu] = useState("");
   const [activeSidebar, setActiveSidebar] = useState(false);
 
-  const [search, setSearch] = useState("");
+  const [orderSearch, setOrderSearch] = useState("");
+  const [agentSearch, setAgentSearch] = useState("");
 
-  const handleSearch = (event) => {
+  const handleOrderSearch = (event) => {
     event.preventDefault();
-    setSearch(event.target.value);
+    setOrderSearch(event.target.value);
+  };
+
+  const handleAgentSearch = (event) => {
+    event.preventDefault();
+    setAgentSearch(event.target.value);
   };
 
   const handleModal = (status) => {
     setSearchResult(false);
+    setAgentSearch("");
     setAgentErr(false);
     setAgents("");
     setShow(!show);
@@ -73,11 +80,21 @@ const OrdersPage = () => {
 
   let orders = [...order];
 
-  if (search !== "") {
-    orders = orders.filter(row => {
-      return row.name?.toLowerCase().includes(search.toLowerCase()) ||
-        row.from?.toLowerCase().includes(search.toLowerCase()) ||
-        row.status?.toLowerCase().includes(search.toLowerCase())
+  if (orderSearch !== "") {
+    orders = orders.filter(order => {
+      return order.name?.toLowerCase().includes(orderSearch.toLowerCase()) ||
+        order.from?.toLowerCase().includes(orderSearch.toLowerCase()) ||
+        order.status?.toLowerCase().includes(orderSearch.toLowerCase())
+    });
+  }
+
+  let searchAgents = [...agentsData];
+
+  if (agentSearch !== "") {
+    searchAgents = searchAgents.filter(agent => {
+      return agent.agentName?.toLowerCase().includes(agentSearch.toLowerCase()) ||
+        agent.location?.toLowerCase().includes(agentSearch.toLowerCase()) ||
+        agent.status?.toLowerCase().includes(agentSearch.toLowerCase())
     });
   }
 
@@ -149,7 +166,7 @@ const OrdersPage = () => {
                       <span>
                         <ImSearch size={15} color="#A3A3C2" />
                       </span>
-                      <input type="text" placeholder="Search orders" value={search} onChange={handleSearch} />
+                      <input type="text" placeholder="Search orders" value={orderSearch} onChange={handleOrderSearch} />
                     </div>
                   </div>
                 </div>
@@ -215,7 +232,7 @@ const OrdersPage = () => {
                                 {item.status}
                               </span>
                             </td>
-                            <td onClick={() => handleModal(item.status)}>
+                            <td className="three_dots" onClick={() => handleModal(item.status)}>
                               <BsThreeDots color="#727E8F" size={23} />
                             </td>
                           </tr>
@@ -383,11 +400,11 @@ const OrdersPage = () => {
                         }
                       >
                         <div className="order-modal-search-agent-input position-absolute w-100">
-                          <input type="text" placeholder="Search agent" />
+                          <input type="text" placeholder="Search agent" value={agentSearch} onChange={handleAgentSearch} />
                         </div>
                         <div className="order-modal-agent-result-main position-absolute w-100 mt-5">
                           <ul>
-                            {agentsData.map((item, i) => {
+                            {searchAgents.map((item, i) => {
                               return (
                                 <li
                                   key={itemStatus}
