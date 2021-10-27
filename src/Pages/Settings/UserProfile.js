@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
+import validator from "validator";
+import { validemail } from "../../assets/img";
 
 const UserProfile = () => {
 
@@ -9,6 +11,13 @@ const UserProfile = () => {
     email: "",
     phonenumber: "",
     choosepermission: "",
+  });
+
+  const [userErr, setUserErr] = useState({
+    fnameErr: false,
+    lnameErr: false,
+    emailErr: false,
+    phonenumberErr: false,
   });
 
   const [userFocus, setUserFocus] = useState({
@@ -32,6 +41,78 @@ const UserProfile = () => {
       ...user,
       [name]: value,
     });
+
+    if (name === 'email') {
+
+      if (!value) {
+        setUserErr({
+          ...userErr,
+          emailErr: true
+        });
+      }
+
+      if (typeof value !== "undefined") {
+        let lastAtPos = value.lastIndexOf("@");
+        let lastDotPos = value.lastIndexOf(".");
+
+        if (
+          !(
+            lastAtPos < lastDotPos &&
+            lastAtPos > 0 &&
+            value.indexOf("@@") === -1 &&
+            lastDotPos > 2 &&
+            value.length - lastDotPos > 2
+          )
+        ) {
+          setUserErr({
+            ...userErr,
+            emailErr: true
+          });
+        } else {
+          setUserErr({
+            ...userErr,
+            emailErr: false
+          });
+        }
+      }
+    }
+  };
+
+  const handleSave = () => {
+    const { fname, lname, email, phonenumber } = user;
+    if (!fname || !lname) {
+      setUserErr({
+        ...userErr,
+        fnameErr: !fname ? true : false,
+        lnameErr: !lname ? true : false,
+      });
+    } else if (!email && !userErr.emailErr) {
+      setUserErr({
+        ...userErr,
+        emailErr: !email ? true : false,
+      });
+    } else if (userErr.emailErr) {
+      return;
+    } else if (!phonenumber) {
+      setUserErr({
+        ...userErr,
+        phonenumberErr: !phonenumber ? true : false,
+      });
+    } else {
+      setUserErr({
+        fnameErr: false,
+        lnameErr: false,
+        emailErr: false,
+        phonenumberErr: false,
+      });
+      setUser({
+        fname: "",
+        lname: "",
+        email: "",
+        phonenumber: "",
+        choosepermission: "",
+      });
+    }
   };
 
   return (
@@ -61,7 +142,11 @@ const UserProfile = () => {
             <div className="col-lg-6 mt-md-4 mt-4 auth-input-container">
               <div
                 className={
-                  userFocus.fname ? "input-box active w-100" : "input-box w-100"
+                  userFocus.fname
+                    ? "input-box active w-100"
+                    : userErr.fnameErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>First Name</label>
@@ -86,7 +171,11 @@ const UserProfile = () => {
             <div className="col-lg-6 mt-md-4 mt-4 auth-input-container">
               <div
                 className={
-                  userFocus.lname ? "input-box active w-100" : "input-box w-100"
+                  userFocus.lname
+                    ? "input-box active w-100"
+                    : userErr.lnameErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>Last Name</label>
@@ -113,9 +202,22 @@ const UserProfile = () => {
             <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
               <div
                 className={
-                  userFocus.email ? "input-box active w-100" : "input-box w-100"
+                  userFocus.email
+                    ? userErr.emailErr ?
+                      "input-box active w-100 forgot-email-border"
+                      : "input-box active w-100"
+                    : userErr.emailErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
+                <div className={!validator.isEmail(user.email) ? "d-none" : ""}>
+                  <img
+                    src={validemail}
+                    alt="Valid Email"
+                    className="img-fluid"
+                  />
+                </div>
                 <label>Email</label>
                 <input
                   type="text"
@@ -135,12 +237,23 @@ const UserProfile = () => {
                 />
               </div>
             </div>
+            <div
+              className={
+                userErr.emailErr
+                  ? "col-lg-12 text-start px-4 forgot-email-err"
+                  : "d-none"
+              }
+            >
+              Enter a valid email address
+            </div>
             <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
               <div
                 className={
                   userFocus.phonenumber
                     ? "input-box active w-100"
-                    : "input-box w-100"
+                    : userErr.phonenumberErr
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>Phone number</label>
@@ -196,7 +309,7 @@ const UserProfile = () => {
           </div>
           <div className="settings-user-form-action-btn d-flex justify-content-md-end justify-content-center my-5">
             <button>Discard</button>
-            <button>Save</button>
+            <button onClick={handleSave}>Save</button>
           </div>
           <hr className="my-4" />
           <div className="py-4">

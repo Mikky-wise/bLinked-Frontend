@@ -29,7 +29,12 @@ const OrdersPage = () => {
   const [activeMenu, setActiveMenu] = useState("");
   const [activeSidebar, setActiveSidebar] = useState(false);
 
-  // const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+  };
 
   const handleModal = (status) => {
     setSearchResult(false);
@@ -65,6 +70,16 @@ const OrdersPage = () => {
   }, []);
 
   const handleSideBar = () => setActiveSidebar(!activeSidebar);
+
+  let orders = [...order];
+
+  if (search !== "") {
+    orders = orders.filter(row => {
+      return row.name?.toLowerCase().includes(search.toLowerCase()) ||
+        row.from?.toLowerCase().includes(search.toLowerCase()) ||
+        row.status?.toLowerCase().includes(search.toLowerCase())
+    });
+  }
 
   return (
     <div className="dashboard-main">
@@ -134,7 +149,7 @@ const OrdersPage = () => {
                       <span>
                         <ImSearch size={15} color="#A3A3C2" />
                       </span>
-                      <input type="text" placeholder="Search orders" />
+                      <input type="text" placeholder="Search orders" value={search} onChange={handleSearch} />
                     </div>
                   </div>
                 </div>
@@ -151,7 +166,7 @@ const OrdersPage = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {order.map((item, i) => {
+                      {orders.map((item, i) => {
                         return (
                           <tr key={i}>
                             <td className="order-item-name">
