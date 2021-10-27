@@ -33,6 +33,13 @@ const HomePage = (props) => {
   const [activeMarker, setActiveMarker] = useState({});
   const [showInfoWindow, setShowInfoWindow] = useState(false);
 
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+  };
+
   // const handleClick = (event) => {
   //   setShow(!show);
   //   setTarget(event.target);
@@ -75,6 +82,17 @@ const HomePage = (props) => {
   // const handleClickMarker = () => {
   //   setShowInfoWindow(!showInfoWindow);
   // };
+
+
+  let orders = [...order];
+
+  if (search !== "") {
+    orders = orders.filter(row => {
+      return row.name?.toLowerCase().includes(search.toLowerCase()) ||
+        row.from?.toLowerCase().includes(search.toLowerCase()) ||
+        row.status?.toLowerCase().includes(search.toLowerCase())
+    });
+  }
 
   return (
     <div className="main-container">
@@ -232,7 +250,7 @@ const HomePage = (props) => {
                 <span>
                   <ImSearch size={15} color="#A3A3C2" />
                 </span>
-                <input type="text" placeholder="Search orders e.g, ID" />
+                <input type="text" placeholder="Search orders e.g, ID" value={search} onChange={handleSearch} />
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="home-pending-filter my-3 my-md-0">
@@ -269,9 +287,9 @@ const HomePage = (props) => {
           </div>
           {activeView === "grid" ? (
             <div className="home-pending-order-grid-container">
-              {order.length > 0 ? (
+              {orders.length > 0 ? (
                 <div className="row">
-                  {order.map((item, i) => {
+                  {orders.map((item, i) => {
                     return (
                       <div className="col-lg-4 mt-3" key={i}>
                         <PendingOrder item={item} />
@@ -309,7 +327,7 @@ const HomePage = (props) => {
                 </thead>
                 <tbody>
                   {/* {order.length > 0 ? "" : ""} */}
-                  {order.map((item, i) => {
+                  {orders.map((item, i) => {
                     return (
                       <tr key={i}>
                         <td>{item.name}</td>
