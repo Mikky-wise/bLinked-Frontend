@@ -108,7 +108,7 @@ const OrdersPage = () => {
           handleSideBar={handleSideBar}
         />
         <div className="dashboard-container pb-4">
-          <Header handleSideBar={handleSideBar} />
+          <Header handleSideBar={handleSideBar} title="Orders" />
           <div className="main-container">
             <div className="px-md-4 px-2 pb-4 mt-4">
               <div className="total-rating-container">

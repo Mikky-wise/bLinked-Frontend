@@ -27,7 +27,7 @@ const Dashboard = () => {
           handleSideBar={handleSideBar}
         />
         <div className="dashboard-container pb-4">
-          <Header handleSideBar={handleSideBar} />
+          <Header handleSideBar={handleSideBar} title={activeMenu} />
           {activeMenu === "Home" ? (
             <HomePage />
           ) : activeMenu === "orders" ? (

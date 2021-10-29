@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import validator from "validator";
 import { validemail } from "../../assets/img";
@@ -27,6 +27,8 @@ const UserProfile = () => {
     phonenumber: false,
     choosepermission: false,
   });
+
+  const inputFile = useRef(null)
 
   const inputFocus = (name) => {
     setUserFocus({
@@ -115,6 +117,11 @@ const UserProfile = () => {
     }
   };
 
+  const onEditClick = () => {
+    inputFile.current.click();
+    console.log(inputFile)
+  };
+
   return (
     <>
       <div className="setting-user-profile">
@@ -126,7 +133,8 @@ const UserProfile = () => {
         <div className="setting-user-picture mt-4">
           <div>BL</div>
           <div className="setting-edit-picture-btn mx-4">
-            <label>Edit photo</label>
+            <input type="file" accept="image/*" id="file" ref={inputFile} style={{ display: 'none' }} />
+            <button onClick={onEditClick}>Edit photo </button>
           </div>
         </div>
       </div>

@@ -237,7 +237,6 @@
   //   justify-content: center;
   align-items: center;
   padding-left: 10%;
-  
 
   > div {
     border-radius: 100%;
@@ -413,11 +412,9 @@
       }
     }
 
-  .home-pending-order-list-view {
-    margin-right: 0px;
-
-  }
-
+    .home-pending-order-list-view {
+      margin-right: 0px;
+    }
   }
 
   .home-location-container {
@@ -464,4 +461,39 @@
       }
     }
   }
+}
+
+.info_window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile_image {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-color: gray;
+  margin: 10px 0px;
+}
+
+.info_address {
+  display: block;
+}
+
+.info_address img {
+  display: inline-block;
+  max-width: 16px;
+  margin: 0px 10px;
+}
+
+.info_address p {
+  display: inline-block;
+}
+
+.info_status {
+  color: #1752ff;
+  background: #e9eeff;
+  border-radius: 50rem;
+  padding: 0.25rem 1rem;
 }

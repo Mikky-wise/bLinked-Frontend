@@ -89,7 +89,7 @@
 .setting-edit-picture-btn {
   font-family: var(--font-gt-walsheim-pro);
 
-  > label {
+  > button {
     padding: 10px 16px;
     background: none;
     border: 1px solid #3842b0;
@@ -253,7 +253,7 @@ hr {
           font-family: var(--font-gt-walsheim-pro);
         }
 
-        &:nth-last-child(3), 
+        &:nth-last-child(3),
         &:nth-last-child(4) {
           font-family: var(--font-inter);
         }
@@ -324,7 +324,6 @@ hr {
   }
 
   .order-page {
-    
     > span {
       cursor: pointer;
       font-weight: 400;

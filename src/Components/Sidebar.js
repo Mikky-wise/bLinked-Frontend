@@ -23,8 +23,8 @@ const Sidebar = ({ activeMenu, setActiveMenu, activeSidebar, handleSideBar }) =>
           !activeSidebar ? "sidebar-main" : "sidebar-main active"
         }
       >
-        <div className="mt-5 position-relative sidebar-logo">
-          <img src={logo} alt="" className="img-fluid" />
+        <div className="mt-5 position-relative sidebar-logo" style={{ cursor: 'pointer' }}>
+          <img src={logo} alt="" className="img-fluid" onClick={() => history.push("/home")} />
           <div onClick={handleSideBar} className="d-flex d-md-none">
             <MdClose />
           </div>
