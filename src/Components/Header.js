@@ -1,13 +1,12 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import { GoChevronDown } from "react-icons/go";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { Dropdown } from "react-bootstrap";
 
 import { notificationIcon } from "../assets/img";
 
-const Header = ({ handleSideBar }) => {
-  const location = useLocation();
+const Header = ({ handleSideBar, title }) => {
   const history = useHistory();
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -38,9 +37,7 @@ const Header = ({ handleSideBar }) => {
           <CgMenuLeftAlt size={28} />
         </span>
         <span className="mx-2 ">
-          {!location?.state?.menu || location?.state?.menu === "Home"
-            ? "Home"
-            : location?.state?.menu}
+          {title}
         </span>
       </div>
       <div className="dashboard-header-account">
@@ -65,13 +62,10 @@ const Header = ({ handleSideBar }) => {
               <div>BL</div>
               <div>
                 <span>Bamboo Lounge</span>
-                <span>Sales manager</span>
               </div>
             </Dropdown.Item>
-
             <Dropdown.Divider />
             <Dropdown.Item className="drop-menu-item" onClick={handleProfile}>Profile</Dropdown.Item>
-            <Dropdown.Item className="drop-menu-item">Add money</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item className="drop-menu-item logout" onClick={handleLogout}>
               Logout

@@ -3,22 +3,17 @@ import React, { useRef, useState } from "react";
 import {
   Dropdown
 } from "react-bootstrap";
-import { BsGridFill, BsThreeDots } from "react-icons/bs";
+import { BsGridFill } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
-import { IoClose } from "react-icons/io5";
 import {
-  calenderIcon,
-  dashboardVector1,
-  dashboardVector2,
-  dashboardVector3,
-  filterIcon, GoogleLocate, MapMarker, orderEmpty
+  calenderIcon, filterIcon, GoogleLocate, MapMarker, orderEmpty
 } from "../../assets/img";
+import RatingCard from "../../Components/RatingCard";
 import order from "../../mockData/pending_order.json";
 import PendingOrder from "../Orders/PendingOrder";
-import RatingCard from "../../Components/RatingCard";
 
 
 const HomePage = (props) => {
@@ -50,7 +45,7 @@ const HomePage = (props) => {
     scaledSize: new props.google.maps.Size(90, 42), // scaled size
   };
 
-  const onMarkerClick = (marker) => {
+  const onMarkerClick = (props, marker) => {
     setShowInfoWindow(true);
     // setSelectPlace(props);
     setActiveMarker(marker);
@@ -68,6 +63,13 @@ const HomePage = (props) => {
       {children}
     </span>
   ));
+
+  const onMapClicked = (props) => {
+    if (showInfoWindow) {
+      setShowInfoWindow(false);
+      setActiveMarker(null);
+    }
+  };
 
   // const handleMouseOver = (e) => {
   //   setShowInfoWindow(true);
@@ -90,6 +92,7 @@ const HomePage = (props) => {
     orders = orders.filter(row => {
       return row.name?.toLowerCase().includes(search.toLowerCase()) ||
         row.from?.toLowerCase().includes(search.toLowerCase()) ||
+        row.to?.toLowerCase().includes(search.toLowerCase()) ||
         row.status?.toLowerCase().includes(search.toLowerCase())
     });
   }
@@ -141,53 +144,6 @@ const HomePage = (props) => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </div>
-        </div>
-        <div className="dashboard-complete-registration mt-4 p-3 p-md-4">
-          <div className="dashboard-complate-close-icon mx-4">
-            <IoClose size={18} color="#332C2C" />
-          </div>
-          <div className="d-flex flex-column justify-content-between">
-            <div>
-              <div className="dashboard-complete-title">
-                You're off to a great start! 🎉
-              </div>
-              <div className="dashboard-complete-subtitle mt-2">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. You’re are almost setup. 2 out of 5 completed
-                already.
-              </div>
-            </div>
-            <div className="dashboard-complate-setup-btn mt-md-0 mt-4">
-              <button>Continue to setup</button>
-            </div>
-          </div>
-          <div className="dashboard-complete-vector px-md-5 py-4">
-            <div className="d-flex flex-column justify-content-between">
-              <div className="d-flex justify-content-end">
-                <img
-                  src={dashboardVector3}
-                  alt=""
-                  className="img-fluid"
-                />
-              </div>
-              <div className="d-flex justify-content-start">
-                <img
-                  src={dashboardVector2}
-                  alt=""
-                  className="img-fluid"
-                />
-              </div>
-            </div>
-            <div className="mx-md-5 mx-4">
-              <div className="d-flex justify-content-end">
-                <img
-                  src={dashboardVector1}
-                  alt=""
-                  className="img-fluid"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -322,7 +278,6 @@ const HomePage = (props) => {
                     <th>TO LOCATION</th>
                     <th>TOTAL AMOUNT</th>
                     <th>STATUS</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -354,27 +309,6 @@ const HomePage = (props) => {
                           >
                             {item.status}
                           </span>
-                        </td>
-                        <td>
-                          <Dropdown className="d-inline mx-2 border-0">
-                            <Dropdown.Toggle
-                              as={CustomToggle}
-                              id="dropdown-autoclose-true"
-                            >
-                              <BsThreeDots color="#727E8F" size={23} />
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu className="p-1">
-                              <Dropdown.Item className="drop-menu-item">
-                                Edit Agent
-                              </Dropdown.Item>
-                              <Dropdown.Item className="drop-menu-item">
-                                Suspend Agent
-                              </Dropdown.Item>
-                              <Dropdown.Item className="drop-menu-item logout">
-                                Remove Agent
-                              </Dropdown.Item>
-                            </Dropdown.Menu>
-                          </Dropdown>
                         </td>
                       </tr>
                     );
@@ -413,6 +347,7 @@ const HomePage = (props) => {
                     lat: 40.71562160638466,
                     lng: -74.06895258935187,
                   }}
+                  onClick={onMapClicked}
                 >
                   <div className="google-map-controller-main">
                     <button
@@ -468,19 +403,27 @@ const HomePage = (props) => {
                       lng: -74.04221478648014,
                     }}
                     icon={icon}
-                  ></Marker>
-                  {activeMarker && (
+                  />
+                  {showInfoWindow &&
                     <InfoWindow
                       marker={activeMarker}
-                      visible={showInfoWindow}
-                      google={props.google}
-                    // map={mapRef}
+                      visible={true}
                     >
-                      <div>
-                        <h1>Hello</h1>
+                      <div className="info_window">
+                        <img className="profile_image" alt="" />
+                        <p>Tajao Bullaha</p>
+                        <div className="info_address">
+                          <img src={MapMarker} alt="" />
+                          <p>Ire-akari Estate Isolo, Lagos State</p>
+                        </div>
+                        <span
+                          className="info_status"
+                        >
+                          Enroute Dropoff
+                        </span>
                       </div>
                     </InfoWindow>
-                  )}
+                  }
                 </Map>
               </figure>
             </div>

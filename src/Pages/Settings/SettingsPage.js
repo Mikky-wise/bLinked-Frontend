@@ -33,7 +33,7 @@ const SettingsPage = () => {
           handleSideBar={handleSideBar}
         />
         <div className="dashboard-container pb-4">
-          <Header handleSideBar={handleSideBar} />
+          <Header handleSideBar={handleSideBar} title="General Settings" />
           <div className="px-md-4 px-2 pb-4 mt-4">
             <div className="settings-container h-100">
               <div className="settings-menu-container ">
