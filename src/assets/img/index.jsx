@@ -1,4 +1,5 @@
 export { default as logo } from "./logo.png";
+export { default as Logo } from "./logo.svg";
 export { default as validemail } from "./validemail.png";
 export { default as eye } from "./eye.png";
 export { default as lock } from "./lock.png";
@@ -27,4 +28,4 @@ export { default as orderEmpty } from "./order-empty.png";
 export { default as map } from "./map.png";
 export { default as location } from "./location.png";
 export { default as MapMarker } from "./market.svg";
-export { default as GoogleLocate } from './googleLocate.svg'
+export { default as GoogleLocate } from "./googleLocate.svg";
