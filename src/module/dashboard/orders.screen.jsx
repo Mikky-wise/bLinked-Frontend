@@ -11,10 +11,10 @@ import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
 import { MdClose } from "react-icons/md";
 
-import TotalRatingCard from "../../../module/dashboard/_components/_total_rating_card";
-import order from "../../../mockData/orders.json";
-import agentsData from "../../../mockData/agents.json";
-import { filterIcon, location } from "../../../assets/img";
+import TotalRatingCard from "./_components/_total_rating_card";
+import order from "../../mockData/orders.json";
+import agentsData from "../../mockData/agents.json";
+import { filterIcon, location } from "../../assets/img";
 
 const OrdersScreen = () => {
   const [show, setShow] = useState(false);
@@ -360,7 +360,7 @@ const OrdersScreen = () => {
                               setAgentsFocus(true);
                               setAgents(item.agentName);
                               setSearchResult(false);
-                              setAgentErr(false);
+                              setAgentErr(false)
                             }}
                           >
                             <div className="d-flex align-items-center">
