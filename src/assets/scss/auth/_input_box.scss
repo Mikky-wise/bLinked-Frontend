@@ -73,3 +73,12 @@
     border: 1px solid red;
   }
 }
+
+@media screen and (max-width: 778px) {
+  .input-box {
+    padding: 2px 20px;
+    border-radius: 6px;
+    position: relative;
+    font-family: var(--font-adineue-pro);
+  }
+}
