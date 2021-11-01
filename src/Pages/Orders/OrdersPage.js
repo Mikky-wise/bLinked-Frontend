@@ -84,6 +84,7 @@ const OrdersPage = () => {
     orders = orders.filter(order => {
       return order.name?.toLowerCase().includes(orderSearch.toLowerCase()) ||
         order.from?.toLowerCase().includes(orderSearch.toLowerCase()) ||
+        order.to?.toLowerCase().includes(orderSearch.toLowerCase()) ||
         order.status?.toLowerCase().includes(orderSearch.toLowerCase())
     });
   }
