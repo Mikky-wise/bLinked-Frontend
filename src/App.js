@@ -29,48 +29,37 @@ import OrdersPage from "./Pages/Orders/OrdersPage";
 import SettingsPage from "./Pages/Settings/SettingsPage";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={() => {
-        return !localStorage.getItem("accessToken") ? (
-          <Route to="/" />
-        ) : (
-          children
-        );
-      }}
-    />
-  );
+    return (
+        <Route {...rest}
+            render={() => {
+                return !localStorage.getItem("accessToken") ? (
+                    <Route to="/" />
+                ) : (
+                    children
+                );
+            }}
+        />
+    );
 };
 
 const App = () => {
-  return (
-    <div>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={SignInPage} />
-          <Route exact path="/auth/sign_up1" component={SignUpPage1} />
-          <Route exact path="/auth/sign_up2" component={SignUpPage2} />
-          <Route
-            exact
-            path="/auth/forgot_password"
-            component={Forgot}
-          />
-          <Route exact path="/auth/otp" component={OTPScreen} />
-          <Route exact path="/auth/reset" component={CreatePassword} />
-          <Route
-            exact
-            path="/auth/password_success"
-            component={PasswordReset}
-          />
-          <PrivateRoute exact path="/Home" component={Dashboard} />
-          <Route exact path="/orders" component={OrdersPage} />
-          <Route exact path="/settings" component={SettingsPage} />
-          <Route path="*" to={SignInPage} />
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={SignInPage} />
+                <Route exact path="/auth/sign_up1" component={SignUpPage1} />
+                <Route exact path="/auth/sign_up2" component={SignUpPage2} />
+                <Route exact path="/auth/forgot_password" component={Forgot} />
+                <Route exact path="/auth/otp" component={OTPScreen} />
+                <Route exact path="/auth/reset" component={CreatePassword} />
+                <Route exact path="/auth/password_success" component={PasswordReset} />
+                <PrivateRoute exact path="/Home" component={Dashboard} />
+                <Route exact path="/orders" component={OrdersPage} />
+                <Route exact path="/settings" component={SettingsPage} />
+                <Route path="*" to={SignInPage} />
+            </Switch>
+        </BrowserRouter>
+    );
 };
 
 export default App;

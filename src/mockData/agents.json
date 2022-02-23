@@ -7,13 +7,13 @@
     },
     {
         "id": 2,
-        "agentName": "Goodness Chiesom",
+        "agentName": "Another Agent",
         "location": "Agent Current Location",
         "status": "available"
     },
     {
         "id": 3,
-        "agentName": "Goodness Chiesom",
+        "agentName": "Lucas Alonso",
         "location": "Agent Current Location",
         "status": "available"
     },
