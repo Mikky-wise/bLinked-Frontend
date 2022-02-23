@@ -1,38 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { agentsMenu, feedbackMenu, homeMenu, logo, logoutMenu, orderMenu, settingMenu } from "../assets/img";
 
-const Sidebar = ({ activeMenu, setActiveMenu, activeSidebar, handleSideBar }) => {
-    const history = useHistory();
+const Sidebar = ({activeSidebar, setActiveSidebar}) => {
+    const [activeMenu, setActiveMenu] = useState("home");
 
-    const handleMenu = (menuItem) => {
-        setActiveMenu(menuItem);
+    const handleClick = (menuItem) => {
+        setActiveSidebar(!activeSidebar);
         history.push(`/${menuItem}`);
     };
+
+    const history = useHistory();
 
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
         history.push('/');
-    }
+    };
+
+    useEffect(() => {
+        setActiveMenu(history.location.pathname.substring(1));
+    }, [history.location.pathname]);
 
     return (
         <div className={!activeSidebar ? "" : "sidebar-bg"}>
             <div className={!activeSidebar ? "sidebar-main" : "sidebar-main active"}>
                 <div className="mt-5 position-relative sidebar-logo" style={{ cursor: 'pointer' }}>
                     <img src={logo} alt="" className="img-fluid" onClick={() => history.push("/home")} />
-                    <div onClick={handleSideBar} className="d-flex d-md-none">
+                    <div onClick={() => setActiveSidebar(!activeSidebar)}className="d-flex d-md-none">
                         <MdClose />
                     </div>
                 </div>
                 <div className="sidebar-menu">
                     <ul className="mt-5">
                         <li
-                            className={activeMenu === "Home" ? "active" : ""}
-                            onClick={() => {
-                                handleMenu("Home");
-                                handleSideBar();
-                            }}
+                            className={activeMenu === "home" ? "active" : ""}
+                            onClick={() => handleClick("home")}
                         >
                             <div>
                                 <span>
@@ -44,10 +48,7 @@ const Sidebar = ({ activeMenu, setActiveMenu, activeSidebar, handleSideBar }) =>
 
                         <li
                             className={activeMenu === "orders" ? "active" : ""}
-                            onClick={() => {
-                                handleMenu("orders");
-                                handleSideBar();
-                            }}
+                            onClick={() => handleClick("orders")}
                         >
                             <div>
                                 <span>
@@ -87,10 +88,7 @@ const Sidebar = ({ activeMenu, setActiveMenu, activeSidebar, handleSideBar }) =>
                         </li>
                         <li
                             className={activeMenu === "settings" ? "active" : ""}
-                            onClick={() => {
-                                handleMenu("settings");
-                                handleSideBar();
-                            }}
+                            onClick={() => handleClick("settings")}
                         >
                             <div>
                                 <span>

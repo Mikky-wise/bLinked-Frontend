@@ -29,7 +29,7 @@ const SignInPage = () => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value });
 
-        if (!value) setUserErr({ ...userErr, [name]: true });
+        if (!value) return setUserErr({ ...userErr, [name]: true });
         
         if (typeof value !== "undefined" && name === 'email') {
             const lastAtPos = value.lastIndexOf("@");
@@ -42,9 +42,10 @@ const SignInPage = () => {
                 value.length - lastDotPos > 2
             );
 
-            if (!validEmail) setUserErr({ ...userErr, email: true });
+            if (!validEmail) return setUserErr({ ...userErr, [name]: true });
         };
-    }
+        return setUserErr({ ...userErr, [name]: false })
+    };
 
     const handlePassType = () => passwordType === "password" ? setPasswordType("text") : setPasswordType('password');
 

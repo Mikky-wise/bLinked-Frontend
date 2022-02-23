@@ -45,6 +45,48 @@
     }
   }
 
+  .filter {
+    margin-right: 10px;
+
+    > button {
+      border: none;
+      background: #f5f5f7;
+      border-radius: 6px;
+      height: 38px;
+      width: auto;
+      color: #5a5d82;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > img {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .orders-orderSearch-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    > span {
+      position: absolute;
+      left: 10px;
+    }
+
+    > input {
+      border: 1px solid #ecebf5;
+      padding: 0 15px 0 30px;
+      border-radius: 8px;
+      height: 38px;
+      font-size: 14px;
+      color: #9395b4;
+      width: 220px;
+    }
+  }
+
   .orders-filter {
     margin-right: 10px;
 

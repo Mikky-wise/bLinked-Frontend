@@ -42,10 +42,8 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
     }, [agentSearch]);
 
     useEffect(() => {
-        console.log('Whatever')
         if (agents.length > 0 && show) setSelectedAgent(agents[0].agentName);
     }, [agents, show])
-    console.log(selectedAgent)
 
     return (
         <Modal show={show} onHide={handleModal} centered size="lg">

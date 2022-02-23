@@ -17,7 +17,6 @@ import "./Pages/Settings/SettingsPage.scss";
 import "./Pages/Orders/Orders.scss";
 // Dashboard SCSS End
 
-import Dashboard from "./Components/Dashboard";
 import SignInPage from "./Pages/Sign-in/SignIn";
 import SignUpPage1 from "./Pages/Sign-up/SignUp1";
 import SignUpPage2 from "./Pages/Sign-up/SignUp2";
@@ -27,19 +26,11 @@ import CreatePassword from "./Pages/Password/CreatePassword";
 import PasswordReset from "./Pages/Password/PasswordReset";
 import OrdersPage from "./Pages/Orders/OrdersPage";
 import SettingsPage from "./Pages/Settings/SettingsPage";
+import HomePage from "./Pages/Home/HomePage";
 
-const PrivateRoute = ({ children, ...rest }) => {
-    return (
-        <Route {...rest}
-            render={() => {
-                return !localStorage.getItem("accessToken") ? (
-                    <Route to="/" />
-                ) : (
-                    children
-                );
-            }}
-        />
-    );
+const PrivateRoute = ({ ...rest }) => {
+    if (!localStorage.getItem("accessToken")) return window.location.assign('/');
+    return <Route {...rest} />
 };
 
 const App = () => {
@@ -53,9 +44,9 @@ const App = () => {
                 <Route exact path="/auth/otp" component={OTPScreen} />
                 <Route exact path="/auth/reset" component={CreatePassword} />
                 <Route exact path="/auth/password_success" component={PasswordReset} />
-                <PrivateRoute exact path="/Home" component={Dashboard} />
-                <Route exact path="/orders" component={OrdersPage} />
-                <Route exact path="/settings" component={SettingsPage} />
+                <PrivateRoute exact path="/home" component={HomePage} />
+                <PrivateRoute exact path="/orders" component={OrdersPage} />
+                <PrivateRoute exact path="/settings" component={SettingsPage} />
                 <Route path="*" to={SignInPage} />
             </Switch>
         </BrowserRouter>
