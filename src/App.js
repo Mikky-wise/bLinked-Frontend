@@ -15,6 +15,7 @@ import "./Components/Dashboard.scss";
 import "./Pages/Home/HomePage.scss";
 import "./Pages/Settings/SettingsPage.scss";
 import "./Pages/Orders/Orders.scss";
+import "./Pages/Agents/AgentsPage.scss";
 // Dashboard SCSS End
 
 import SignInPage from "./Pages/Sign-in/SignIn";
@@ -27,6 +28,7 @@ import PasswordReset from "./Pages/Password/PasswordReset";
 import OrdersPage from "./Pages/Orders/OrdersPage";
 import SettingsPage from "./Pages/Settings/SettingsPage";
 import HomePage from "./Pages/Home/HomePage";
+import AgentsPage from "./Pages/Agents/AgentsPage";
 
 const PrivateRoute = ({ ...rest }) => {
     if (!localStorage.getItem("accessToken")) return window.location.assign('/');
@@ -47,6 +49,7 @@ const App = () => {
                 <PrivateRoute exact path="/home" component={HomePage} />
                 <PrivateRoute exact path="/orders" component={OrdersPage} />
                 <PrivateRoute exact path="/settings" component={SettingsPage} />
+                <PrivateRoute exact path="/agents" component={AgentsPage} />
                 <Route path="*" to={SignInPage} />
             </Switch>
         </BrowserRouter>

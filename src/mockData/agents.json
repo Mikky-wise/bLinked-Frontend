@@ -3,24 +3,32 @@
         "id": 1,
         "agentName": "Goodness Chiesom",
         "location": "Agent Current Location",
-        "status": "available"
+        "revenue": "5000",
+        "orders": 5,
+        "status": "Available"
     },
     {
         "id": 2,
         "agentName": "Another Agent",
         "location": "Agent Current Location",
-        "status": "available"
+        "revenue": "5000",
+        "orders": 5,
+        "status": "Available"
     },
     {
         "id": 3,
         "agentName": "Lucas Alonso",
         "location": "Agent Current Location",
-        "status": "available"
+        "revenue": "5000",
+        "orders": 5,
+        "status": "Available"
     },
     {
         "id": 4,
         "agentName": "Goodness Chiesom",
         "location": "Agent Current Location",
-        "status": "working"
+        "revenue": "5000",
+        "orders": 5,
+        "status": "Working"
     }
 ]

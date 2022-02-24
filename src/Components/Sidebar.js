@@ -4,7 +4,7 @@ import { MdClose } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { agentsMenu, feedbackMenu, homeMenu, logo, logoutMenu, orderMenu, settingMenu } from "../assets/img";
 
-const Sidebar = ({activeSidebar, setActiveSidebar}) => {
+const Sidebar = ({ activeSidebar, setActiveSidebar }) => {
     const [activeMenu, setActiveMenu] = useState("home");
 
     const handleClick = (menuItem) => {
@@ -28,7 +28,7 @@ const Sidebar = ({activeSidebar, setActiveSidebar}) => {
             <div className={!activeSidebar ? "sidebar-main" : "sidebar-main active"}>
                 <div className="mt-5 position-relative sidebar-logo" style={{ cursor: 'pointer' }}>
                     <img src={logo} alt="" className="img-fluid" onClick={() => history.push("/home")} />
-                    <div onClick={() => setActiveSidebar(!activeSidebar)}className="d-flex d-md-none">
+                    <div onClick={() => setActiveSidebar(!activeSidebar)} className="d-flex d-md-none">
                         <MdClose />
                     </div>
                 </div>
@@ -74,7 +74,10 @@ const Sidebar = ({activeSidebar, setActiveSidebar}) => {
                                 <span>Feedback</span>
                             </div>
                         </li>
-                        <li>
+                        <li
+                            className={activeMenu === "agents" ? "active" : ""}
+                            onClick={() => handleClick("agents")}
+                        >
                             <div>
                                 <span>
                                     <img

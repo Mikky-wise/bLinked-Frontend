@@ -3,7 +3,6 @@
   border: 1px solid #ecebf5;
   border-radius: 8px;
   margin-bottom: 1.5rem;
-  overflow-x: hidden;
 
   .orders-title {
     display: flex;
@@ -87,6 +86,16 @@
     }
   }
 
+  .filter-btn {
+    border: none;
+    background: #3842b0;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 10px 25px;
+  }
+
   .orders-filter {
     margin-right: 10px;
 
@@ -112,19 +121,19 @@
   }
 
   .order-list-container {
-    overflow-x: auto;
-    // overflow: hidden;
+    overflow: visible;
     width: 100%;
     font-family: var(--font-gt-walsheim-pro);
 
     > table {
-      overflow-x: scroll;
-      word-wrap: break-word;
+      overflow:hidden;
+      overflow-y: visible;
 
       // width: 100%;
 
       tr {
         border-bottom: 2px solid rgba(#9395b4, 0.06);
+        overflow-y: visible;
 
         > th {
           padding: 15px 18px;
@@ -138,6 +147,7 @@
         }
 
         > td {
+            overflow-y: visible;
           padding: 15px 18px;
           color: #0f112b;
           font-size: 14px;
@@ -151,6 +161,8 @@
 
         .order-list-status {
           font-size: 11px;
+          overflow: visible;
+          position: relative;
         }
 
         .order-item-name {
@@ -465,5 +477,6 @@
 }
 
 .three_dots {
-  cursor: pointer;
+    cursor: pointer;
+    position: relative;
 }
