@@ -121,14 +121,14 @@ export default function Table({ items, page, show, setShow, showDropdown, setSho
                                 </td>
                                 <td className="three_dots"
                                     onClick={() => {
-                                        setSelectedAgent(id);
+                                        setSelectedAgent(item);
                                         setShowDropdown(!showDropdown);
                                         setItemStatus(status);
                                     }}
                                     onBlur={() => setShowDropdown(false)}
                                 >
                                     <BsThreeDots color="#727E8F" size={23} />
-                                    {showDropdown && selectedAgent === id && <AgentDropdown setModalAction={setModalAction} setShowDropdown={setShowDropdown} />}
+                                    {showDropdown && selectedAgent.id === id && <AgentDropdown setShow={setShow} setModalAction={setModalAction} setShowDropdown={setShowDropdown} />}
                                 </td>
                             </tr>
                         );

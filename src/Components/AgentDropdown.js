@@ -1,8 +1,9 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 
-export default function AgentDropdown({ setModalAction, setShowDropdown }) {
+export default function AgentDropdown({ setShow, setModalAction, setShowDropdown }) {
     const handleClick = (action) => {
+        setShow(true);
         setShowDropdown(false);
         setModalAction(action)
     };
@@ -15,7 +16,7 @@ export default function AgentDropdown({ setModalAction, setShowDropdown }) {
             <Dropdown.Item className="drop-menu-item py-3" onClick={() => handleClick('Suspend')}>
                 Suspend Agent
             </Dropdown.Item>
-            <Dropdown.Item className="drop-menu-item py-3" onClick={() => handleClick('Working')} style={{color: '#F00'}}>
+            <Dropdown.Item className="drop-menu-item py-3" onClick={() => handleClick('Remove')} style={{color: '#F00'}}>
                 Remove Agent
             </Dropdown.Item>
         </div>

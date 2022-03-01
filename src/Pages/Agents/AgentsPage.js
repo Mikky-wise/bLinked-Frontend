@@ -13,6 +13,7 @@ import FilterOrdersDropdown from "../../Components/FilterOrdersDropdown";
 import agent from "../../mockData/agents.json";
 // Helpers
 import { filterAgents } from "../../helpers/filterAgents";
+import AgentActionModal from "../../Components/AgentActionModal";
 
 const AgentsPage = () => {
     const [show, setShow] = useState(false);
@@ -28,7 +29,7 @@ const AgentsPage = () => {
     const handleOrderSearch = (e) => setOrderSearch(e.target.value);
 
     useEffect(() => setAgents(filterAgents(agent, agentSearch, filter)), [agentSearch, filter]);
-    console.log(modalAction)
+
     return (
         <Dashboard title="Agents">
             <div className="main-container">
@@ -85,7 +86,10 @@ const AgentsPage = () => {
                             <div>
                                 <button
                                     className="filter-btn d-flex justify-content-between align-items-center"
-                                    onClick={() => setModalAction('Add')}
+                                    onClick={() => {
+                                        setModalAction('Add');
+                                        setShow(true);
+                                    }}
                                 >
                                     <MdAdd color="#FFF" fontWeight={700} size={24} />&nbsp;Add Agent
                                 </button>
@@ -142,6 +146,7 @@ const AgentsPage = () => {
 
                 <div className="px-md-4 px-2 mb-4"></div>
 
+                <AgentActionModal show={show} setShow={setShow} action={modalAction} selected={selectedAgent}/>
             </div>
         </Dashboard>
     );

@@ -29,3 +29,4 @@ export { default as map } from "./map.png";
 export { default as location } from "./location.png";
 export { default as MapMarker } from "./market.svg";
 export { default as GoogleLocate } from "./googleLocate.svg";
+export { default as Memoji } from "./Memoji.png"; 

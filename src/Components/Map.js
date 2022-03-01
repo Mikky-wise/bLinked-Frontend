@@ -71,6 +71,11 @@ const MapComponent = (props) => {
                                     position={{ lat: 40.735101054791166, lng: -74.04221478648014 }}
                                     icon={icon}
                                 />
+                                <Marker
+                                    onClick={onMarkerClick}
+                                    position={{ lat: 40.745101054791166, lng: -74.04221478648014 }}
+                                    icon={icon}
+                                />
                                 {showInfoWindow &&
                                     <InfoWindow marker={activeMarker} visible={showInfoWindow}>
                                         <div className="info_window">
