@@ -5,6 +5,7 @@ import { CgMenuLeftAlt } from "react-icons/cg";
 import { Dropdown } from "react-bootstrap";
 
 import { notificationIcon } from "../assets/img";
+import NotificationDropdown from "./NotificationDropdown";
 
 const Header = ({ handleSideBar, title }) => {
     const history = useHistory();
@@ -37,7 +38,8 @@ const Header = ({ handleSideBar, title }) => {
             </div>
             <div className="dashboard-header-account">
                 <div className="dashboard-header-notification">
-                    <img src={notificationIcon} alt="Bell" className="img-fluid" />
+                    <NotificationDropdown />
+                    {/* <img src={notificationIcon} alt="Bell" className="img-fluid" /> */}
                 </div>
                 <Dropdown className="d-inline mx-2 border-0">
                     <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">

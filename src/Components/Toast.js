@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { AlertImage1, AlertImage2 } from "../assets/img"
 import './Toast.scss';
 
 export default function Toast() {
@@ -15,6 +16,10 @@ export default function Toast() {
 
     return (
         <div className={`toast ${open ? "open" : "closed"}`} style={{ backgroundColor: color }}>
+            <div className="image-bg">
+                <img src={AlertImage1}/>
+                <img src={AlertImage2}/>
+            </div>
             <p>{text}</p>
         </div>
     )

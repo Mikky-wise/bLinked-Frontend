@@ -1,5 +1,7 @@
 div.toast {
     display: none;
+    justify-content: space-around;
+    align-items: center;
     transition: all 0.2s ease-in-out;
     position: absolute;
     top: 64px;
@@ -7,6 +9,25 @@ div.toast {
     width: 360px;
     border-radius: 8px;
     left: calc(50% - 180px);
+    .image-bg {
+        background-color: #288f40;
+        width: 32px;
+        height: 32px;
+        border-radius: 9999px;
+        position: relative;
+        img {
+            &:nth-child(1) {
+                position: absolute;
+                left: 8px;
+                top: 13px;
+            }
+            &:nth-child(2) {
+                position: absolute;
+                right: 8px;
+                top: 10px;
+            }
+        }
+    }
     p {
         color: #0f112b;
         letter-spacing: 0.004em;
@@ -18,5 +39,5 @@ div.toast {
 }
 
 div.toast.open {
-    display: block;
+    display: flex;
 }
