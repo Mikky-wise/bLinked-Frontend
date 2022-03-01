@@ -1,0 +1,22 @@
+div.toast {
+    display: none;
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    top: 64px;
+    padding: 16px;
+    width: 360px;
+    border-radius: 8px;
+    left: calc(50% - 180px);
+    p {
+        color: #0f112b;
+        letter-spacing: 0.004em;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+div.toast.open {
+    display: block;
+}
