@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 // Auth SCSS Start
 import "./Components/Footer.scss";
 import "./assets/scss/auth/_input_box.scss";

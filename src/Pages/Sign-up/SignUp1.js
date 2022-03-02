@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import validator from "validator";
 // Assets
 import { validemail } from "../../assets/img";
-import { logo, eye } from "../../assets/img";
+import { logo, eye, hiddenEye } from "../../assets/img";
 // Components
 import Footer from "../../Components/Footer";
 
@@ -204,7 +204,7 @@ const SignUpPage1 = () => {
                                 }
                             >
                                 <div>
-                                    <img src={eye} alt="Eye" className="img-fluid" onClick={handlePassType} />
+                                    <img src={passwordType === 'password' ? eye : hiddenEye} alt="Eye" className="img-fluid" onClick={handlePassType} />
                                 </div>
                                 <label>Create password</label>
                                 <input

@@ -1,7 +1,8 @@
 export { default as logo } from "./logo.png";
 export { default as Logo } from "./logo.svg";
 export { default as validemail } from "./validemail.png";
-export { default as eye } from "./eye.png";
+export { default as eye } from "./eye.svg";
+export { default as hiddenEye } from "./hidden-eye.svg";
 export { default as lock } from "./lock.png";
 export { default as loginVectorA } from "./login-vector-a.png";
 export { default as loginVectorB } from "./login-vector-b.png";

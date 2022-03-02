@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import validator from "validator";
-import { logo, google, eye, partical, partical2, partical3, partical4, partical5, loginVectorA, validemail } from "../../assets/img";
+import { logo, google, eye, hiddenEye, partical, partical2, partical3, partical4, partical5, loginVectorA, validemail } from "../../assets/img";
 
 const SignInPage = () => {
     const history = useHistory();
@@ -136,7 +136,7 @@ const SignInPage = () => {
                                     }
                                 >
                                     <div>
-                                        <img src={eye} alt="Eye" className="img-fluid" onClick={handlePassType} />
+                                        <img src={passwordType === 'password' ? eye : hiddenEye} alt="Eye" className="img-fluid" onClick={handlePassType} />
                                     </div>
                                     <label>Password</label>
                                     <input

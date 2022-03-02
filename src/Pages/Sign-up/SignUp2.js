@@ -56,6 +56,7 @@ const SignUpPage2 = () => {
         if (!cemail) return setCmpErr({ ...cmpErr, cemail: true });
         if (!cphone) return setCmpErr({ ...cmpErr, cphone: true });
         if (cmpErr.cname) return;
+        localStorage.setItem("accessToken", cemail);
         return history.push("/home");
     }
 

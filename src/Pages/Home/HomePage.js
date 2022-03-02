@@ -13,10 +13,11 @@ import Table from "../../Components/Table";
 import Dashboard from "../../Components/Dashboard";
 import { CustomToggle } from "../../Components/CustomToggle";
 import FilterOrdersDropdown from "../../Components/FilterOrdersDropdown";
+import DateDropdown from "../../Components/DateDropdown";
 // Data
 import order from "../../mockData/pending_order.json";
 // Assets
-import { calenderIcon, orderEmpty } from "../../assets/img";
+import { orderEmpty } from "../../assets/img";
 // Helpers
 import { filterOrders } from "../../helpers/filterOrders";
 
@@ -27,7 +28,10 @@ const HomePage = () => {
     // const [show, setShow] = useState(false);
     // const [target, setTarget] = useState(null);
     // const [selectPlace, setSelectPlace] = useState({});
-
+    const from = new Date()
+    from.setMonth(new Date().getMonth() - 1)
+    const [fromDate, setFromDate] = useState(from)
+    const [toDate, setToDate] = useState(new Date())
     const [orders, setOrders] = useState(order)
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState("All")
@@ -68,43 +72,12 @@ const HomePage = () => {
                             <div className="tag-line">
                                 Here is what's happening with your business today!
                             </div>
-                            <Dropdown className="d-inline mx-2 border-0">
-                                <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
-                                    <div className="dashboard-date mt-md-0 mt-4 shadow-sm">
-                                        <div className="d-flex align-items-center">
-                                            <img
-                                                src={calenderIcon}
-                                                alt="Calender"
-                                                className="img-fluid"
-                                            />
-                                            <div className="mx-2">Jan 04, 2019 - Dec 04 2019</div>
-                                        </div>
-                                        <div>
-                                            <GoChevronDown size={18} />
-                                        </div>
-                                    </div>
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu className="p-2">
-                                    <Dropdown.Item className="drop-menu-item">
-                                        <div className="drop--menu-date-item">
-                                            <span>LAST 28 DAYS</span>
-                                            <span>Desc 04, 2019 - Feb 04 2020</span>
-                                        </div>
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Item className="drop-menu-item">Today</Dropdown.Item>
-                                    <Dropdown.Item className="drop-menu-item">
-                                        Last 7 days
-                                    </Dropdown.Item>
-                                    <Dropdown.Item className="drop-menu-item">
-                                        Last 90 days
-                                    </Dropdown.Item>
-                                    <Dropdown.Item className="drop-menu-item">
-                                        Customize
-                                    </Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            <DateDropdown
+                                fromDate={fromDate}
+                                setFromDate={setFromDate}
+                                toDate={toDate}
+                                setToDate={setToDate}
+                            />
                         </div>
                     </div>
                 </div>
