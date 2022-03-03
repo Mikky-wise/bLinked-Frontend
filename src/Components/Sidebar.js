@@ -62,7 +62,10 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }) => {
                             </div>
                             <div>1</div>
                         </li>
-                        <li>
+                        <li
+                            className={activeMenu === "feedback" ? "active" : ""}
+                            onClick={() => handleClick("feedback")}
+                        >
                             <div>
                                 <span>
                                     <img

@@ -2,68 +2,56 @@ import React, { useEffect, useState } from "react";
 // Icons
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
-import { MdAdd } from 'react-icons/md'
 import { ImSearch } from "react-icons/im";
 // Components
 import RatingCard from "../../Components/RatingCard";
 import Table from "../../Components/Table";
 import Dashboard from "../../Components/Dashboard";
 import FilterOrdersDropdown from "../../Components/FilterOrdersDropdown";
+import FeedbackModal from "../../Components/FeedbackModal";
 // Data
-import agent from "../../mockData/agents.json";
+import order from "../../mockData/orders.json";
 // Helpers
-import { filterAgents } from "../../helpers/filterAgents";
-import AgentActionModal from "../../Components/AgentActionModal";
+import { filterOrders } from "../../helpers/filterOrders";
 
-const AgentsPage = () => {
+const FeedbackPage = () => {
     const [show, setShow] = useState(false);
-    const [showDropdown, setShowDropdown] = useState(false);
-    const [selectedAgent, setSelectedAgent] = useState(null);
-    const [modalAction, setModalAction] = useState('');
-    const [itemStatus, setItemStatus] = useState("New");
-    const [agents, setAgents] = useState(agent);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [orders, setOrders] = useState(order);
 
     const [filter, setFilter] = useState("All");
-    const [agentSearch, setOrderSearch] = useState("");
+    const [orderSearch, setOrderSearch] = useState("");
 
     const handleOrderSearch = (e) => setOrderSearch(e.target.value);
 
-    useEffect(() => setAgents(filterAgents(agent, agentSearch, filter)), [agentSearch, filter]);
+    useEffect(() => setOrders(filterOrders(order, orderSearch, filter)), [orderSearch, filter]);
 
     return (
-        <Dashboard title="Agents">
+        <Dashboard title="Feedback">
             <div className="main-container">
                 <div className="px-md-4 px-2 pb-4 mt-4">
                     <div className="total-rating-container">
                         <div className="row px-4 py-4">
-                            <div className="col-lg-3 px-md-3">
+                            <div className="col-lg-4 px-md-3">
                                 <RatingCard
-                                    title="Total Agents"
+                                    title="Total Tickets"
                                     total="400"
                                     rating="+51%"
                                     desc="Analytics for last 30 days"
                                 />
                             </div>
-                            <div className="col-lg-3 px-md-3 mt-lg-0 mt-4">
+                            <div className="col-lg-4 px-md-3 mt-lg-0 mt-4">
                                 <RatingCard
-                                    title="Available Agents"
-                                    total="40"
+                                    title="Open Ticket"
+                                    total="30"
                                     rating="+51%"
                                     desc="Analytics for last 30 days"
                                 />
                             </div>
-                            <div className="col-lg-3 px-md-3 mt-lg-0 mt-4">
+                            <div className="col-lg-4 px-md-3 mt-lg-0 mt-4">
                                 <RatingCard
-                                    title="Working Agents"
-                                    total="120"
-                                    rating="+51%"
-                                    desc="Analytics for last 30 days"
-                                />
-                            </div>
-                            <div className="col-lg-3 px-md-3 mt-lg-0 mt-4">
-                                <RatingCard
-                                    title="Unavailable"
-                                    total="28"
+                                    title="Closed Ticket"
+                                    total="370"
                                     rating="+51%"
                                     desc="Analytics for last 30 days"
                                 />
@@ -76,41 +64,26 @@ const AgentsPage = () => {
                     <div className="orders-container py-4 ">
                         <div className="d-md-flex justify-content-between px-4 align-items-center">
                             <div className="d-md-flex">
-                                <FilterOrdersDropdown setFilter={setFilter} page="agents" />
+                                <FilterOrdersDropdown setFilter={setFilter} page="orders" />
 
                                 <div className="orders-orderSearch-input mt-md-0">
                                     <span><ImSearch size={15} color="#A3A3C2" /></span>
-                                    <input type="text" placeholder="Search agents" value={agentSearch} onChange={handleOrderSearch} />
+                                    <input type="text" placeholder="Search orders" value={orderSearch} onChange={handleOrderSearch} />
                                 </div>
-                            </div>
-                            <div>
-                                <button
-                                    className="filter-btn d-flex justify-content-between align-items-center"
-                                    onClick={() => {
-                                        setModalAction('Add');
-                                        setShow(true);
-                                    }}
-                                >
-                                    <MdAdd color="#FFF" fontWeight={700} size={24} />&nbsp;Add Agent
-                                </button>
                             </div>
                         </div>
                         <div className="order-list-container mt-4 table-responsive">
                             <Table
-                                items={agents}
-                                page="agents"
+                                items={orders}
+                                page="feedback"
                                 setShow={setShow}
-                                setItemStatus={setItemStatus}
-                                showDropdown={showDropdown}
-                                selected={selectedAgent}
-                                setSelected={setSelectedAgent}
-                                setShowDropdown={setShowDropdown}
-                                setModalAction={setModalAction}
+                                selected={selectedOrder}
+                                setSelected={setSelectedOrder}
                             />
                         </div>
                         <div
                             className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
-                            <div className="my-2">Showing 9 of 290 agents</div>
+                            <div className="my-2">Showing 9 of 290 orders</div>
                             <div className="d-md-flex">
                                 <div className="d-flex align-items-center">
                                     <div className="order-prev">
@@ -146,10 +119,10 @@ const AgentsPage = () => {
 
                 <div className="px-md-4 px-2 mb-4"></div>
 
-                <AgentActionModal show={show} setShow={setShow} action={modalAction} selected={selectedAgent}/>
+                <FeedbackModal show={show} setShow={setShow} selected={selectedOrder}/>
             </div>
         </Dashboard>
     );
 };
 
-export default AgentsPage;
+export default FeedbackPage;

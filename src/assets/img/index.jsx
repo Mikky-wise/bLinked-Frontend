@@ -34,3 +34,4 @@ export { default as Memoji } from "./Memoji.png";
 export { default as AlertImage1 } from './AlertImage1.png';
 export { default as AlertImage2 } from './AlertImage2.png';
 export { default as NoNotificationsIcon } from './no-notifications.png';
+export { default as AvatarPlaceholder } from './Oval.png';

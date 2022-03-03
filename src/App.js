@@ -18,7 +18,9 @@ import "./Pages/Home/HomePage.scss";
 import "./Pages/Settings/SettingsPage.scss";
 import "./Pages/Orders/Orders.scss";
 import "./Pages/Agents/AgentsPage.scss";
+import "./Pages/Feedback/FeedbackPage.scss";
 // Dashboard SCSS End
+import { GlobalProvider } from './context/GlobalState';
 
 import SignInPage from "./Pages/Sign-in/SignIn";
 import SignUpPage1 from "./Pages/Sign-up/SignUp1";
@@ -31,7 +33,7 @@ import OrdersPage from "./Pages/Orders/OrdersPage";
 import SettingsPage from "./Pages/Settings/SettingsPage";
 import HomePage from "./Pages/Home/HomePage";
 import AgentsPage from "./Pages/Agents/AgentsPage";
-import { GlobalProvider } from './context/GlobalState';
+import FeedbackPage from "./Pages/Feedback/FeedbackPage";
 import AlertToast from "./Components/Toast";
 
 const PrivateRoute = ({ ...rest }) => {
@@ -56,6 +58,7 @@ const App = () => {
                     <PrivateRoute exact path="/orders" component={OrdersPage} />
                     <PrivateRoute exact path="/settings" component={SettingsPage} />
                     <PrivateRoute exact path="/agents" component={AgentsPage} />
+                    <PrivateRoute exact path="/feedback" component={FeedbackPage} />
                     <Route path="*" to={SignInPage} />
                 </Switch>
             </BrowserRouter>

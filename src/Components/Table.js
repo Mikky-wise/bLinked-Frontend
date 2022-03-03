@@ -3,7 +3,7 @@ import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
 import AgentDropdown from './AgentDropdown';
 
-export default function Table({ items, page, show, setShow, showDropdown, setShowDropdown, setItemStatus, setModalAction, selectedAgent, setSelectedAgent }) {
+export default function Table({ items, page, setShow, showDropdown, setShowDropdown, setItemStatus, setModalAction, selected, setSelected }) {
     if (page === 'home') {
         return (
             <table className="mt-4">
@@ -121,14 +121,63 @@ export default function Table({ items, page, show, setShow, showDropdown, setSho
                                 </td>
                                 <td className="three_dots"
                                     onClick={() => {
-                                        setSelectedAgent(item);
+                                        setSelected(item);
                                         setShowDropdown(!showDropdown);
                                         setItemStatus(status);
                                     }}
                                     onBlur={() => setShowDropdown(false)}
                                 >
                                     <BsThreeDots color="#727E8F" size={23} />
-                                    {showDropdown && selectedAgent.id === id && <AgentDropdown setShow={setShow} setModalAction={setModalAction} setShowDropdown={setShowDropdown} />}
+                                    {showDropdown && selected.id === id && <AgentDropdown setShow={setShow} setModalAction={setModalAction} setShowDropdown={setShowDropdown} />}
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        )
+    };
+
+    if (page === 'feedback') {
+        return (
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>AGENT NAME</th>
+                        <th>ORDER ID</th>
+                        <th>CUSTOMER NAME</th>
+                        <th>BUDGET</th>
+                        <th>STATUS</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items.map((item, i) => {
+                        const { name, from, to, price, status } = item;
+                        return (
+                            <tr key={i}>
+                                <td className="order-item-name">
+                                    <span className="d-flex align-items-center">
+                                        <span>TB</span>
+                                        {name}
+                                    </span>
+                                </td>
+                                <td><span>{from}</span></td>
+                                <td><span>{to}</span></td>
+                                <td><span>₦{parseInt(price).toFixed(2)}</span></td>
+                                <td className="order-list-status">
+                                    <span className="px-2 py-1 rounded-pill" style={getOrderStyle(status)}>
+                                        {status}
+                                    </span>
+                                </td>
+                                <td className="three_dots"
+                                    onClick={() => {
+                                        setSelected(item);
+                                        setShow(true);
+                                    }}
+                                    onBlur={() => setShowDropdown(false)}
+                                >
+                                    <BsThreeDots color="#727E8F" size={23} />
                                 </td>
                             </tr>
                         );
