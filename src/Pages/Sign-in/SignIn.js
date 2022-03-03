@@ -136,7 +136,7 @@ const SignInPage = () => {
                                     }
                                 >
                                     <div>
-                                        <img src={passwordType === 'password' ? eye : hiddenEye} alt="Eye" className="img-fluid" onClick={handlePassType} />
+                                        <img src={passwordType === 'password' ? eye : hiddenEye} alt="Eye" className="img-fluid pointer" onClick={handlePassType} />
                                     </div>
                                     <label>Password</label>
                                     <input

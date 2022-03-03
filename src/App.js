@@ -35,6 +35,7 @@ import HomePage from "./Pages/Home/HomePage";
 import AgentsPage from "./Pages/Agents/AgentsPage";
 import FeedbackPage from "./Pages/Feedback/FeedbackPage";
 import AlertToast from "./Components/Toast";
+import LoadingState from "./Components/LoadingState";
 
 const PrivateRoute = ({ ...rest }) => {
     if (!localStorage.getItem("accessToken")) return window.location.assign('/');
@@ -45,6 +46,7 @@ const App = () => {
     return (
         <GlobalProvider>
             <AlertToast />
+            <LoadingState />
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={SignInPage} />

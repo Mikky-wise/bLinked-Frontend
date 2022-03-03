@@ -118,8 +118,9 @@ const FeedbackPage = () => {
                 </div>
 
                 <div className="px-md-4 px-2 mb-4"></div>
-
+                {show &&
                 <FeedbackModal show={show} setShow={setShow} selected={selectedOrder}/>
+                }
             </div>
         </Dashboard>
     );
