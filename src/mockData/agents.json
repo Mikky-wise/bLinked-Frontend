@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "agentName": "Lucas Alonso",
+        "agentName": "Mikky Brasi",
         "location": "Agent Current Location",
         "revenue": "5000",
         "orders": 5,
@@ -25,7 +25,7 @@
     },
     {
         "id": 4,
-        "agentName": "Goodness Chiesom",
+        "agentName": "Great Agent",
         "location": "Agent Current Location",
         "revenue": "5000",
         "orders": 5,

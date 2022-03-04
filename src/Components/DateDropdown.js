@@ -13,7 +13,7 @@ export default function DateDropdown({ fromDate, setFromDate, toDate, setToDate 
     const [isCustom, setIsCustom] = useState(false);
 
     return (
-        <Dropdown className="d-inline mx-2 border-0">
+        <Dropdown className="d-inline mx-2 border-0" alignRight={true}>
             <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
                 <div className="dashboard-date mt-md-0 mt-4 shadow-sm">
                     <div className="d-flex align-items-center">

@@ -10,21 +10,21 @@ import Dashboard from "../../Components/Dashboard";
 import FilterOrdersDropdown from "../../Components/FilterOrdersDropdown";
 import FeedbackModal from "../../Components/FeedbackModal";
 // Data
-import order from "../../mockData/orders.json";
+import feedback from "../../mockData/feedback.json";
 // Helpers
 import { filterOrders } from "../../helpers/filterOrders";
 
 const FeedbackPage = () => {
     const [show, setShow] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
-    const [orders, setOrders] = useState(order);
+    const [orders, setOrders] = useState(feedback);
 
     const [filter, setFilter] = useState("All");
     const [orderSearch, setOrderSearch] = useState("");
 
     const handleOrderSearch = (e) => setOrderSearch(e.target.value);
 
-    useEffect(() => setOrders(filterOrders(order, orderSearch, filter)), [orderSearch, filter]);
+    useEffect(() => setOrders(filterOrders(feedback, orderSearch, filter)), [orderSearch, filter]);
 
     return (
         <Dashboard title="Feedback">

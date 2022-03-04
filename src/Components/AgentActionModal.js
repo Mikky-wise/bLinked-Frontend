@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal } from 'react-bootstrap';
 import { MdClose } from 'react-icons/md';
 import { Memoji } from '../assets/img';
@@ -10,7 +10,7 @@ export default function AgentActionModal({ show, setShow, action, selected }) {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null);
 
     useEffect(() => {
         const getContent = () => {
@@ -58,14 +58,34 @@ export default function AgentActionModal({ show, setShow, action, selected }) {
             setLastName(selected.agentN || '');
             setEmail(selected.email || '');
             setPhone(selected.phone || '');
+            setImage(selected.image || null);
         }
         else {
             setFirstName('');
             setLastName('');
             setEmail('');
             setPhone('');
+            setImage(null)
         }
     }, [action]);
+
+    const handleReaderLoaded = (readerEvt) => {
+        if (readerEvt.target === null) return;
+        const { result } = readerEvt.target;
+        setImage(btoa(result));
+    };
+
+    const handleImg = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = handleReaderLoaded;
+            reader.readAsBinaryString(file);
+        }
+    };
+
+    const inputRef = useRef(null);
+    const onInputClick = () => inputRef.current.click();
 
     return (
         <Modal show={show} centered size="lg" className="agent-action-modal">
@@ -86,10 +106,16 @@ export default function AgentActionModal({ show, setShow, action, selected }) {
                     <form className="form">
                         <p className="image-label">{content.image}</p>
                         <div className="image-container">
-                            {image !== null && <div className="bg">
-                                <img src={Memoji} alt="Emoji placeholder" className="img"/>
-                            </div>}
-                            <button className="photo-btn">Edit photo</button>
+                            <div className="bg">
+                                <img src={image ? `data:image/png;base64,${image}` : Memoji} alt="Emoji placeholder" className="img" />
+                                <input
+                                    className="hidden"
+                                    accept="image/png, image/jpeg, image/jpg, image/webp"
+                                    ref={inputRef}
+                                    onChange={(e) => handleImg(e)}
+                                    type="file" />
+                            </div>
+                            <button className="photo-btn" type="button" onClick={() => onInputClick()}>Edit photo</button>
                         </div>
                         <div className="row">
                             <div className="group">

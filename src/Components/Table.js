@@ -14,6 +14,7 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                         <th>TO LOCATION</th>
                         <th>TOTAL AMOUNT</th>
                         <th>STATUS</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,14 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                     <span className="px-2 py-1 rounded-pill" style={getOrderStyle(status)}>
                                         {status}
                                     </span>
+                                </td>
+                                <td className="three_dots"
+                                    onClick={() => {
+                                        setSelected(item);
+                                        setShow(true);
+                                    }}
+                                >
+                                    <BsThreeDots color="#727E8F" size={23} />
                                 </td>
                             </tr>
                         )
@@ -153,18 +162,18 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                 </thead>
                 <tbody>
                     {items.map((item, i) => {
-                        const { name, from, to, price, status } = item;
+                        const { agentName, orderId, customerName, budget, status } = item;
                         return (
                             <tr key={i}>
                                 <td className="order-item-name">
                                     <span className="d-flex align-items-center">
                                         <span>TB</span>
-                                        {name}
+                                        {agentName}
                                     </span>
                                 </td>
-                                <td><span>{from}</span></td>
-                                <td><span>{to}</span></td>
-                                <td><span>₦{parseInt(price).toFixed(2)}</span></td>
+                                <td><span>{orderId}</span></td>
+                                <td><span>{customerName}</span></td>
+                                <td><span>₦{parseInt(budget).toFixed(2)}</span></td>
                                 <td className="order-list-status">
                                     <span className="px-2 py-1 rounded-pill" style={getOrderStyle(status)}>
                                         {status}

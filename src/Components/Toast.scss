@@ -13,6 +13,7 @@ div.toast {
         background-color: #288f40;
         width: 32px;
         height: 32px;
+        margin-right: 24px;
         border-radius: 9999px;
         position: relative;
         img {
@@ -29,12 +30,12 @@ div.toast {
         }
     }
     p {
-        color: #0f112b;
+        color: #4A5361;
         letter-spacing: 0.004em;
         font-size: 14px;
         line-height: 24px;
-        text-align: center;
         margin: 0;
+        flex-grow: 1;
     }
 }
 

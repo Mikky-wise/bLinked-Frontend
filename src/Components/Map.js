@@ -1,19 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { GoogleLocate, MapMarker } from "../assets/img";
+import { GoogleLocate, MapMarker, MapMarkerGreen, MapMarkerGray, MapMarkerRed } from "../assets/img";
 
 const MapComponent = (props) => {
     const mapRef = useRef(null);
     const [zoom, setZoom] = useState(12);
-    const [mapCenter, setMapCenter] = useState({ lat: 40.71562160638466, lng: -74.06895258935187 })
+    const [mapCenter, setMapCenter] = useState({ lat: 6.45567900007564, lng: 3.388292095013091 })
     const [activeMarker, setActiveMarker] = useState({});
     const [showInfoWindow, setShowInfoWindow] = useState(false);
-
-    const icon = {
-        url: MapMarker, // url
-        scaledSize: new props.google.maps.Size(90, 42), // scaled size
-    };
 
     const style = {
         width: "100%",
@@ -31,7 +26,9 @@ const MapComponent = (props) => {
         setShowInfoWindow(true);
         setActiveMarker(marker);
     };
-    
+
+    const agents = [{ lat: 6.43567900007564, lng: 3.408292095013091, status: "Available" }, { lat: 6.45467900007564, lng: 3.408292095013091, status: "Active" }, { lat: 6.42567900007564, lng: 3.388292095013091, status: "Active" }, { lat: 6.44567900007564, lng: 3.370292095013091, status: "Unavailable" }, { lat: 6.46567900007564, lng: 3.398292095013091, status: "Inactive" }]
+
     return (
         <div className="px-md-4 px-2 pb-4">
             <div className="d-md-flex">
@@ -66,16 +63,19 @@ const MapComponent = (props) => {
                                         <FiMinus />
                                     </button>
                                 </div>
-                                <Marker
-                                    onClick={onMarkerClick}
-                                    position={{ lat: 40.735101054791166, lng: -74.04221478648014 }}
-                                    icon={icon}
-                                />
-                                <Marker
-                                    onClick={onMarkerClick}
-                                    position={{ lat: 40.745101054791166, lng: -74.04221478648014 }}
-                                    icon={icon}
-                                />
+                                {agents.map(agent => {
+                                    const icon = {
+                                        url: agent.status === 'Active' ? MapMarker : 
+                                        agent.status === 'Available' ? MapMarkerGreen : 
+                                        agent.status === 'Inactive' ? MapMarkerGray : MapMarkerRed, // url
+                                        scaledSize: new props.google.maps.Size(90, 42), // scaled size
+                                    };
+                                    return <Marker
+                                        onClick={onMarkerClick}
+                                        position={{ lat: agent.lat, lng: agent.lng }}
+                                        icon={icon}
+                                    />
+                                })}
                                 {showInfoWindow &&
                                     <InfoWindow marker={activeMarker} visible={showInfoWindow}>
                                         <div className="info_window">

@@ -20,12 +20,14 @@ import order from "../../mockData/pending_order.json";
 import { orderEmpty } from "../../assets/img";
 // Helpers
 import { filterOrders } from "../../helpers/filterOrders";
+import OrderDetailsModal from "../../Components/OrderDetailsModal";
 
 const HomePage = () => {
     // const ref = useRef(null);
     const [activeView, setActiveView] = useState("grid");
     // const [showInfoWindow, setShowInfoWinidow] = useState(false);
-    // const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
+    const [selected, setSelected] = useState(null)
     // const [target, setTarget] = useState(null);
     // const [selectPlace, setSelectPlace] = useState({});
     const from = new Date()
@@ -34,7 +36,6 @@ const HomePage = () => {
     const [toDate, setToDate] = useState(new Date())
     const [orders, setOrders] = useState(order)
     const [search, setSearch] = useState("");
-    const [filter, setFilter] = useState("All")
 
     const handleSearch = (event) => {
         event.preventDefault();
@@ -59,8 +60,6 @@ const HomePage = () => {
     // const handleClickMarker = () => {
     //   setShowInfoWindow(!showInfoWindow);
     // };
-
-    useEffect(() => setOrders(filterOrders(order, search, filter)), [search, filter]);
 
     return (
         <Dashboard title="Home">
@@ -141,8 +140,6 @@ const HomePage = () => {
                                     <input type="text" placeholder="Search orders e.g, ID" value={search} onChange={handleSearch} />
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <FilterOrdersDropdown setFilter={setFilter} />
-
                                     <div className="home-pending-vertical mx-3 d-md-block d-none" />
                                     <div className="d-flex">
                                         <div
@@ -173,9 +170,9 @@ const HomePage = () => {
                             <div className="home-pending-order-grid-container">
                                 {orders.length > 0 ? (
                                     <div className="row">
-                                        {orders.map((item, i) => (
+                                        {orders.filter(order => order.status === 'New').map((item, i) => (
                                             <div className="col-lg-4 mt-3" key={i}>
-                                                <PendingOrder item={item} />
+                                                <PendingOrder item={item} setShow={setShow} setSelected={setSelected}/>
                                             </div>
                                         ))}
                                     </div>
@@ -196,7 +193,7 @@ const HomePage = () => {
                             </div>
                         ) : (
                             <div className="home-pending-order-list-container">
-                                <Table items={orders} page="home" />
+                                <Table items={orders.filter(order => order.status === 'New')} page="home" setShow={setShow} setSelected={setSelected} />
                             </div>
                         )}
                         <div className="home-pending-order-loadmore-btn mt-5 mb-3">
@@ -204,7 +201,10 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
+
                 <MapComponent />
+
+                <OrderDetailsModal show={show} setShow={setShow} itemStatus="New" />
             </div>
         </Dashboard>
     );

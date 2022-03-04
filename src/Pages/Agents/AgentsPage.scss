@@ -84,9 +84,14 @@
                     align-items: center;
                     margin-bottom: 24px;
                     margin-right: 32px;
+                    input.hidden {
+                        display: none;
+                    }
                 }
                 img.img {
-                    object-fit: cover;
+                    max-width: 72px;
+                    max-height: 72px;
+                    border-radius: 9999px;
                 }
                 button.photo-btn {
                     display: flex;
