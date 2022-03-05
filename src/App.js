@@ -19,8 +19,10 @@ import "./Pages/Settings/SettingsPage.scss";
 import "./Pages/Orders/Orders.scss";
 import "./Pages/Agents/AgentsPage.scss";
 import "./Pages/Feedback/FeedbackPage.scss";
+import "./Pages/Landing/LandingPage.scss";
 // Dashboard SCSS End
 import { GlobalProvider } from './context/GlobalState';
+
 
 import SignInPage from "./Pages/Sign-in/SignIn";
 import SignUpPage1 from "./Pages/Sign-up/SignUp1";
@@ -36,6 +38,7 @@ import AgentsPage from "./Pages/Agents/AgentsPage";
 import FeedbackPage from "./Pages/Feedback/FeedbackPage";
 import AlertToast from "./Components/Toast";
 import LoadingState from "./Components/LoadingState";
+import LandingPage from "./Pages/Landing/LandingPage";
 
 const PrivateRoute = ({ ...rest }) => {
     if (!localStorage.getItem("accessToken")) return window.location.assign('/');
@@ -49,7 +52,8 @@ const App = () => {
             <LoadingState />
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={SignInPage} />
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/login" component={SignInPage} />
                     <Route exact path="/auth/sign_up1" component={SignUpPage1} />
                     <Route exact path="/auth/sign_up2" component={SignUpPage2} />
                     <Route exact path="/auth/forgot_password" component={Forgot} />
