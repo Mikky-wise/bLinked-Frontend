@@ -15,6 +15,9 @@ import Dribbble from '../../assets/landing/Dribbble.png'
 import Instagram from '../../assets/landing/Instagram.png'
 import Twitter from '../../assets/landing/Twitter.png'
 import Youtube from '../../assets/landing/Youtube.png'
+import { Dropdown } from 'react-bootstrap';
+import { CustomToggle } from '../../Components/CustomToggle';
+import { IoMdMenu } from 'react-icons/io';
 
 export default function LandingPage() {
     return (
@@ -22,6 +25,30 @@ export default function LandingPage() {
             <header>
                 <img src={Logo} />
                 <nav className="nav">
+                    <Dropdown alignRight>
+                        <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
+                            <div className="filter my-3 my-md-0">
+                                <IoMdMenu size={32}/>
+                            </div>
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="p-2">
+                            <Dropdown.Item className="drop-menu-item">
+                                <a href="#">About Us</a>
+                            </Dropdown.Item>
+                            <Dropdown.Item className="drop-menu-item">
+                                <a href="#">How It Works</a>
+                            </Dropdown.Item>
+                            <Dropdown.Item className="drop-menu-item">
+                                <a href="#">FAQs</a>
+                            </Dropdown.Item>
+                            <Dropdown.Item className="drop-menu-item">
+                                <a href="#">Log In</a>
+                            </Dropdown.Item>
+                            <Dropdown.Item className="drop-menu-item">
+                                <a href="#">Sign up</a>
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                     <a href="#">About Us</a>
                     <a href="#">How It Works</a>
                     <a href="#">FAQs</a>
@@ -118,7 +145,7 @@ export default function LandingPage() {
 
                 <section className='fifth-section'>
                     <div className="background">
-                        <img src={Mail} alt="Mail" />
+                        <img src={Mail} alt="Mail" className='image' />
                         <div className="content">
                             <h2 className="title">Join 569 more people in the waitlist</h2>
                             <div className="input-container">
@@ -132,13 +159,13 @@ export default function LandingPage() {
 
             <footer>
                 <div>
-                    <img src={LogoFooter} alt="Logo" className="logo"/>
+                    <img src={LogoFooter} alt="Logo" className="logo" />
                     <p className="text">Lorem ipsum dolor amet, consectetur adipiscing elit. Eget nisl nunc quam ac sed turpis volutpat. Cursus sed massa non nisi, placerat.</p>
                     <div className="icons">
-                        <div className="icon"><img src={Instagram} alt="Instagram"/></div>
-                        <div className="icon"><img src={Dribbble} alt="Dribbble"/></div>
-                        <div className="icon"><img src={Twitter} alt="Twitter"/></div>
-                        <div className="icon"><img src={Youtube} alt="Youtube"/></div>
+                        <div className="icon"><img src={Instagram} alt="Instagram" /></div>
+                        <div className="icon"><img src={Dribbble} alt="Dribbble" /></div>
+                        <div className="icon"><img src={Twitter} alt="Twitter" /></div>
+                        <div className="icon"><img src={Youtube} alt="Youtube" /></div>
                     </div>
                 </div>
                 <div>
