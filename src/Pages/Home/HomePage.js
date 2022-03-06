@@ -133,7 +133,7 @@ const HomePage = () => {
                                 </Dropdown.Menu>
                             </Dropdown>
                             <div className="d-md-flex">
-                                <div className="home-pending-search-input mt-3 mt-md-0">
+                                <div className="home-pending-search-input mt-3 mt-md-0 mb-2 mb-md-0">
                                     <span>
                                         <ImSearch size={15} color="#A3A3C2" />
                                     </span>

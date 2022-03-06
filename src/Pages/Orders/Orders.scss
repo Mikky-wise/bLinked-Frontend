@@ -121,13 +121,11 @@
   }
 
   .order-list-container {
-    overflow: visible;
-    width: 100%;
-    font-family: var(--font-gt-walsheim-pro);
-
+      overflow: auto;
     > table {
-      overflow:hidden;
-      overflow-y: visible;
+        overflow:hidden;
+        overflow-y: visible;
+  
 
       // width: 100%;
 

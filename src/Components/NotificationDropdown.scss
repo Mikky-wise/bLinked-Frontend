@@ -47,4 +47,12 @@
             color: #9395b4;
         }
     }
+    @media all and (max-width: 500px) {
+        .body {
+            width: 90vw;
+            .header {
+                padding: 16px
+            }
+        }
+    }
 }

@@ -42,7 +42,7 @@ export default function LandingPage() {
                                 <a href="#">FAQs</a>
                             </Dropdown.Item>
                             <Dropdown.Item className="drop-menu-item">
-                                <a href="#">Log In</a>
+                                <a href="/login">Log In</a>
                             </Dropdown.Item>
                             <Dropdown.Item className="drop-menu-item">
                                 <a href="#">Sign up</a>
@@ -52,7 +52,7 @@ export default function LandingPage() {
                     <a href="#">About Us</a>
                     <a href="#">How It Works</a>
                     <a href="#">FAQs</a>
-                    <a href="#">Log In</a>
+                    <a href="/login">Log In</a>
                     <button className="button">Sign up</button>
                 </nav>
             </header>

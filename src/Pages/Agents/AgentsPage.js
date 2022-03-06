@@ -78,7 +78,7 @@ const AgentsPage = () => {
                             <div className="d-md-flex">
                                 <FilterOrdersDropdown setFilter={setFilter} page="agents" />
 
-                                <div className="orders-orderSearch-input mt-md-0">
+                                <div className="orders-orderSearch-input mt-md-0 mb-3 mb-md-0">
                                     <span><ImSearch size={15} color="#A3A3C2" /></span>
                                     <input type="text" placeholder="Search agents" value={agentSearch} onChange={handleOrderSearch} />
                                 </div>

@@ -167,5 +167,12 @@
             color: #fff;
             margin-left: 16px;
         }
+        @media all and (max-width: 450px) {
+            padding: 32px 8px;
+            justify-content: center;
+            button {
+                margin-bottom: 8px;
+            }
+        }
     }
 }
