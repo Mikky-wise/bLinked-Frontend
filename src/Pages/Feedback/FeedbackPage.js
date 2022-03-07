@@ -12,7 +12,8 @@ import FeedbackModal from "../../Components/FeedbackModal";
 // Data
 import feedback from "../../mockData/feedback.json";
 // Helpers
-import { filterOrders } from "../../helpers/filterOrders";
+import { filterFeedback } from "../../helpers/filterFeedback";
+
 
 const FeedbackPage = () => {
     const [show, setShow] = useState(false);
@@ -20,11 +21,11 @@ const FeedbackPage = () => {
     const [orders, setOrders] = useState(feedback);
 
     const [filter, setFilter] = useState("All");
-    const [orderSearch, setOrderSearch] = useState("");
+    const [feedbackSearch, setFeedbackSearch] = useState("");
 
-    const handleOrderSearch = (e) => setOrderSearch(e.target.value);
+    const handleFeedbackSearch = (e) => setFeedbackSearch(e.target.value);
 
-    useEffect(() => setOrders(filterOrders(feedback, orderSearch, filter)), [orderSearch, filter]);
+    useEffect(() => setOrders(filterFeedback(feedback, feedbackSearch, filter)), [feedbackSearch, filter]);
 
     return (
         <Dashboard title="Feedback">
@@ -64,11 +65,11 @@ const FeedbackPage = () => {
                     <div className="orders-container py-4 ">
                         <div className="d-md-flex justify-content-between px-4 align-items-center">
                             <div className="d-md-flex">
-                                <FilterOrdersDropdown setFilter={setFilter} page="orders" />
+                                <FilterOrdersDropdown setFilter={setFilter} page="feedback" />
 
                                 <div className="orders-orderSearch-input mt-md-0">
                                     <span><ImSearch size={15} color="#A3A3C2" /></span>
-                                    <input type="text" placeholder="Search orders" value={orderSearch} onChange={handleOrderSearch} />
+                                    <input type="text" placeholder="Search orders" value={feedbackSearch} onChange={handleFeedbackSearch} />
                                 </div>
                             </div>
                         </div>

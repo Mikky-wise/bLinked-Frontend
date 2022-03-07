@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // Icons
 import { BsGridFill } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
@@ -12,14 +12,12 @@ import MapComponent from "../../Components/Map";
 import Table from "../../Components/Table";
 import Dashboard from "../../Components/Dashboard";
 import { CustomToggle } from "../../Components/CustomToggle";
-import FilterOrdersDropdown from "../../Components/FilterOrdersDropdown";
 import DateDropdown from "../../Components/DateDropdown";
 // Data
 import order from "../../mockData/pending_order.json";
 // Assets
 import { orderEmpty } from "../../assets/img";
 // Helpers
-import { filterOrders } from "../../helpers/filterOrders";
 import OrderDetailsModal from "../../Components/OrderDetailsModal";
 
 const HomePage = () => {

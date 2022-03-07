@@ -72,7 +72,7 @@ const OrdersPage = () => {
                     <div className="orders-container py-4 ">
                         <div className="d-md-flex justify-content-between px-4">
                             <div className="d-md-flex">
-                                <FilterOrdersDropdown setFilter={setFilter} />
+                                <FilterOrdersDropdown setFilter={setFilter} page="orders"/>
 
                                 <div className="orders-orderSearch-input mt-md-0">
                                     <span><ImSearch size={15} color="#A3A3C2" /></span>

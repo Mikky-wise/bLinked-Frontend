@@ -45,7 +45,7 @@ export default function LandingPage() {
                                 <a href="/login">Log In</a>
                             </Dropdown.Item>
                             <Dropdown.Item className="drop-menu-item">
-                                <a href="#">Sign up</a>
+                                <a href="/auth/sign_up1">Sign up</a>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -53,7 +53,7 @@ export default function LandingPage() {
                     <a href="#">How It Works</a>
                     <a href="#">FAQs</a>
                     <a href="/login">Log In</a>
-                    <button className="button">Sign up</button>
+                    <button className="button" onClick={() => window.location.assign('/auth/sign_up1')}>Sign up</button>
                 </nav>
             </header>
 
@@ -102,7 +102,7 @@ export default function LandingPage() {
                             <li className="list-item">Built-in services you need for business</li>
                             <li className="list-item">Save time and money</li>
                         </ul>
-                        <button className='button'>Get Started</button>
+                        <button className='button' onClick={() => window.location.assign('/auth/sign_up1')}>Get Started</button>
                     </div>
                 </section>
 
@@ -170,15 +170,15 @@ export default function LandingPage() {
                 </div>
                 <div>
                     <h4 className="subtitle">Company</h4>
-                    <a className='text'>Home</a><br />
-                    <a className='text'>Blogs</a><br />
-                    <a className='text'>About</a><br />
-                    <a className='text'>Carreers</a><br />
+                    <a className='text' href="#">Home</a><br />
+                    <a className='text' href="#">Blogs</a><br />
+                    <a className='text' href="#">About</a><br />
+                    <a className='text' href="#">Carreers</a><br />
                 </div>
                 <div>
                     <h4 className="subtitle">Legal</h4>
-                    <a className='text'>Terms & Conditions</a><br />
-                    <a className='text'>Privacy Policy</a><br />
+                    <a className='text' href="#">Terms & Conditions</a><br />
+                    <a className='text' href="#">Privacy Policy</a><br />
                 </div>
                 <div>
                     <h4 className="subtitle">Reach Us</h4>
@@ -189,10 +189,10 @@ export default function LandingPage() {
                 <div className='bottom'>
                     <p className="text">© 2020 Landify UI Kit. All rights reserved</p>
                     <div className='links'>
-                        <a className='text'>Terms & Conditions</a>
-                        <a className='text'>Privacy Policy</a>
-                        <a className='text'>Sitemap</a>
-                        <a className='text'>Disclaimer</a>
+                        <a className='text' href="#">Terms & Conditions</a>
+                        <a className='text' href="#">Privacy Policy</a>
+                        <a className='text' href="#">Sitemap</a>
+                        <a className='text' href="#">Disclaimer</a>
                     </div>
                 </div>
             </footer>

@@ -71,6 +71,7 @@ const MapComponent = (props) => {
                                         scaledSize: new props.google.maps.Size(90, 42), // scaled size
                                     };
                                     return <Marker
+                                        key={agent.lat + agent.lng}
                                         onClick={onMarkerClick}
                                         position={{ lat: agent.lat, lng: agent.lng }}
                                         icon={icon}

@@ -12,7 +12,7 @@ export default function FilterOrdersDropdown({ setFilter, page }) {
                 <div className="filter my-3 my-md-0">
                     <button className="px-4">
                         <img src={filterIcon} alt="" className="img-fluid" />
-                        <span>{page === 'agents' ? 'Filter agents' : 'Filter orders'}</span>
+                        <span>{`Filter ${page}`}</span>
                     </button>
                 </div>
             </Dropdown.Toggle>
