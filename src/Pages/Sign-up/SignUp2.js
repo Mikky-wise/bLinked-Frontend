@@ -60,7 +60,7 @@ const SignUpPage2 = () => {
         return history.push("/home");
     }
 
-    const handleLogin = () => history.push("/");
+    const handleLogin = () => history.push("/login");
 
     return (
         <div className="auth-main">
